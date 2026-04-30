@@ -2,16 +2,16 @@
   "/_not-found/page": "/_not-found",
   "/icon.png/route": "/icon.png",
   "/about/page": "/about",
-  "/blog/page": "/blog",
-  "/blog/[id]/page": "/blog/[id]",
   "/cart/page": "/cart",
-  "/page": "/",
-  "/panier/page": "/panier",
+  "/blog/[id]/page": "/blog/[id]",
+  "/blog/page": "/blog",
   "/contact/page": "/contact",
+  "/panier/page": "/panier",
+  "/page": "/",
   "/devis/page": "/devis",
   "/a-propos/page": "/a-propos",
   "/projets/page": "/projets",
+  "/ressources/references/page": "/ressources/references",
   "/services-manages/page": "/services-manages",
-  "/solutions/page": "/solutions",
-  "/ressources/references/page": "/ressources/references"
+  "/solutions/page": "/solutions"
 }
