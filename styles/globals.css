@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-dm-serif), serif;
+
+  /* Palette Officielle AMBRA */
+  --color-ambre-lumineux: #F09C3C;
+  --color-ambre-signature: #D86C24;
+  --color-miel-or: #FCCC60;
+  --color-creme-resine: #FBF4E4;
+  --color-taupe-sepia: #5C4A3E;
+  --color-noir-ambre: #1A0F0A;
+  --color-terre-brulee: #C03C0C;
+  --color-rouge-ambra: #900C0C;
+
+  /* Aliases pour compatibilité */
+  --color-primary: var(--color-ambre-signature);
+  --color-primary-light: var(--color-ambre-lumineux);
+  --color-primary-dark: var(--color-terre-brulee);
+  --color-navy: var(--color-noir-ambre);
+  --color-taupe: var(--color-taupe-sepia);
+  --color-cream: var(--color-creme-resine);
+  --color-gold: var(--color-miel-or);
+
+  --breakpoint-xs: 480px;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-taupe bg-white antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-dm-serif), serif;
+  }
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Configurator sliders — colored thumb */
+input[type="range"][style*="--thumb-color"]::-webkit-slider-thumb {
+  background-color: var(--thumb-color) !important;
+}
+input[type="range"][style*="--thumb-color"]::-moz-range-thumb {
+  background-color: var(--thumb-color) !important;
+  border: none;
+}
