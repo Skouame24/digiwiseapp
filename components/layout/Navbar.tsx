@@ -13,15 +13,6 @@ const navLinks: { label: string; href: string; dropdown?: { label: string; href:
   { label: "Accueil", href: "/" },
   { label: "Solutions", href: "/solutions" },
   { label: "Services Managés", href: "/services-manages" },
-  // {
-  //   label: "Ressources",
-  //   href: "#",
-  //   dropdown: [
-  //     { label: "Références", href: "/ressources/references" },
-  //     { label: "Partenaires", href: "/ressources/partenaires" },
-  //     { label: "Certifications", href: "/ressources/certifications" },
-  //   ]
-  // },
   { label: "Blog", href: "/blog" },
   { label: "Projets", href: "/projets" },
   { label: "À propos", href: "/a-propos" },
@@ -62,9 +53,12 @@ export function Navbar() {
           <Image
             src="/logo.png"
             alt="AMBRA Cloud Logo"
-            width={160}
-            height={48}
-            className="h-9 w-auto object-contain"
+            width={200}
+            height={64}
+            // ✅ CORRECTION : h-9 (36px) remplacé par h-14 (56px)
+            // Les props width/height seules ne suffisent pas avec next/image
+            // C'est toujours la classe Tailwind qui contrôle la taille réelle
+            className="h-14 w-auto object-contain"
             priority
           />
         </Link>
@@ -205,7 +199,8 @@ export function Navbar() {
           >
             <div className="p-8 h-full flex flex-col">
               <div className="flex items-center justify-between mb-16">
-                <Image src="/logo.png" alt="Logo" width={140} height={42} className="h-8 w-auto object-contain" />
+                {/* ✅ Logo mobile aussi corrigé : h-8 → h-12 */}
+                <Image src="/logo.png" alt="Logo" width={160} height={48} className="h-12 w-auto object-contain" />
                 <button onClick={() => setMobileOpen(false)} className="p-3 bg-[#FBF4E4] rounded-full text-[#1A0F0A]">
                   <X className="w-6 h-6" />
                 </button>
