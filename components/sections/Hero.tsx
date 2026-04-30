@@ -75,21 +75,7 @@ export function Hero() {
         <div className="max-w-[600px]">
 
           {/* Eyebrow — changes with slide */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`eyebrow-${current}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.45, ease }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-8"
-            >
-              {/* <ShieldCheck className="w-3.5 h-3.5 text-primary-light" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-white">
-                {slide.eyebrow}
-              </span> */}
-            </motion.div>
-          </AnimatePresence>
+          
 
           {/* H1 — changes with slide */}
           <AnimatePresence mode="wait">
