@@ -40,7 +40,7 @@ const blogPosts = [
     excerpt: "Déléguez l'exploitation de votre cloud à nos experts et concentrez-vous sur votre cœur de métier.",
     category: "Expertise",
     date: "28 Avril 2024",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc48?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop",
   },
   {
     id: "fintech-cloud-compliance",
@@ -48,7 +48,7 @@ const blogPosts = [
     excerpt: "Guide pratique pour les institutions financières souhaitant migrer vers le cloud en respectant les régulations locales.",
     category: "Secteurs",
     date: "20 Avril 2024",
-    image: "https://images.unsplash.com/photo-1611974714024-4607a55d463f?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000&auto=format&fit=crop",
   },
   {
     id: "disaster-recovery-plan",

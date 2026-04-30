@@ -19,7 +19,7 @@ const features = [
     title: "Ultra Basse Latence",
     desc: "Chaque milliseconde compte pour vos applications critiques. Notre Backbone 100Gbps assure une fluidité exceptionnelle pour vos services financiers et industriels.",
     icon: <Zap className="w-6 h-6" />,
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc48?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop",
     details: ["Réseau 100Gbps redondé", "Peerings locaux directs", "Temps de réponse < 5ms"]
   },
   {
