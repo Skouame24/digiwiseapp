@@ -170,8 +170,11 @@ export function About() {
             className="text-4xl md:text-5xl font-display text-navy leading-tight mb-4"
           >
             Infrastructure cloud{" "}
-            <span className="italic text-rouge-ambra">souveraine</span>{" "}
-            pour l&apos;Afrique de l&apos;Ouest
+            <span className="italic text-rouge-ambra">moderne</span>{" "}
+            pour les organisations de l&apos;Ouest africaines.
+
+             cloud 
+africaines.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -209,8 +212,8 @@ export function About() {
               <div className="w-12 h-px bg-primary-light mb-8" />
               <blockquote className="text-xl md:text-2xl font-display text-navy leading-[1.35] tracking-tight mb-8">
                 &ldquo;Un cloud résident conçu pour répondre aux enjeux de{" "}
-                <span className="text-primary-light italic">souveraineté</span>,{" "}
-                de sécurité et de performance des entreprises africaines.&rdquo;
+                <span className="text-primary-light italic">sécurité</span>,{" "}
+                de conformité et de performance des entreprises africaines.&rdquo;
               </blockquote>
               <div className="space-y-4 text-[14px] text-taupe/70 leading-[1.85]">
                 <p>
@@ -242,7 +245,7 @@ export function About() {
                 // Fondée en 2021 — Abidjan, Côte d&apos;Ivoire
               </p>
               <h2 className="text-3xl md:text-[40px] font-display text-navy leading-tight mb-6">
-                Premier opérateur cloud{" "}
+                Meilleur opérateur cloud{" "}
                 <span className="italic text-primary-light">résident</span>{" "}
                 de Côte d&apos;Ivoire
               </h2>

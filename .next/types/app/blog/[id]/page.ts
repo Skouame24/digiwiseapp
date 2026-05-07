@@ -1,4 +1,4 @@
-// File: C:\Users\HP\Documents\ambra-cloud\src\app\blog\[id]\page.tsx
+// File: C:\Users\HP\Documents\Agilly\ambra-cloud\src\app\blog\[id]\page.tsx
 import * as entry from '../../../../../app/blog/[id]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

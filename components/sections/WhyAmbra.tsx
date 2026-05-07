@@ -24,7 +24,7 @@ const features = [
   },
   {
     id: "sovereign",
-    title: "Souveraineté Totale",
+    title: "Maitrise totale",
     desc: "Vos données ne quittent jamais le sol ivoirien. Une infrastructure résidente qui vous garantit une conformité totale avec les régulations locales et régionales.",
     icon: <Globe className="w-6 h-6" />,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
