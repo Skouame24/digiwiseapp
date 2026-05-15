@@ -104,7 +104,7 @@ export function DataCenter() {
             </h2>
             <p className="text-[14px] text-white/40 max-w-xs leading-[1.8] md:text-right">
               Des infrastructures certifiées Tier III, sécurisées et interconnectées
-              garantissant performance et souveraineté des données.
+              garantissant performance et indépendance des données.
             </p>
           </div>
           <div className="mt-8 h-px bg-gradient-to-r from-primary-light/10 to-transparent" />

@@ -175,9 +175,6 @@ export function About() {
             Infrastructure cloud{" "}
             <span className="italic text-rouge-ambra">moderne</span>{" "}
             pour les organisations de l&apos;Ouest africaines.
-
-             cloud 
-africaines.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -187,7 +184,7 @@ africaines.
           >
             Depuis Abidjan, AMBRA Cloud opère une infrastructure cloud résidente de classe entreprise —
             fiable, sécurisée et conçue pour les organisations africaines qui exigent
-            la gouvernance souveraine de leurs données.
+            la gouvernance locale de leurs données.
           </motion.p>
         </div>
       </section>

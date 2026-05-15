@@ -21,7 +21,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "AMBRA Cloud | Cloud résident en Côte d’Ivoire",
   description:
-    "Le cloud résident fiable, sécurisé et performant. AMBRA Cloud déploie des solutions d'infrastructure robustes et souveraines pour les environnements critiques.",
+    "Le cloud résident fiable, sécurisé et performant. AMBRA Cloud déploie des solutions d'infrastructure robustes pour les environnements critiques.",
 };
 
 export default function RootLayout({

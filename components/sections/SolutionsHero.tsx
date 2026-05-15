@@ -32,7 +32,7 @@ export function SolutionsHero() {
           transition={{ duration: 0.7, delay: 0.2, ease }}
           className="text-[15px] text-taupe/70 max-w-xl leading-relaxed"
         >
-          Infrastructures souveraines hébergées en Côte d&apos;Ivoire — conformité locale,
+          Infrastructures résidentes hébergées en Côte d&apos;Ivoire — conformité locale,
           performance mondiale. Choisissez l&apos;offre adaptée à vos enjeux.
         </motion.p>
       </div>

@@ -11,11 +11,11 @@ const slides = [
   {
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuD-shQRDpB0FX9d92SUhy0QfGhkh4S5_O9prAHr2mRzScke_t6OZ34_-0DJHyHliusDcgqLOO0dRVp9Lo-ThPl8plfnbkrX_y59YSPKQJufS_WJ2jYWlH7R20j7eX44R0ruArneEUq6CLwtt4qxm8tUc2avj6fZvg7-ISW0f3cXI518vUoMmw09gCN19p8MUeooyazwhCWTTAd6_ugC0S0kptkaMjGgYjVNa38ZdRNRF7S96UzxfLkSe4cHP7qQsdA1cymlugH4u0g",
-    eyebrow: "Infrastructure Cloud Souveraine",
+    eyebrow: "Infrastructure Cloud Résidente",
     h1line1: "Le cloud résident",
     h1line2: "conçu pour",
     h1accent: "l'Afrique.",
-    sub: "Fiable, sécurisé et performant. AMBRA Cloud déploie des infrastructures souveraines pour les environnements critiques en Côte d'Ivoire et au-delà.",
+    sub: "Fiable, sécurisé et performant. AMBRA Cloud déploie des infrastructures résidentes pour les environnements critiques en Côte d'Ivoire et au-delà.",
   },
   {
     image:
@@ -29,7 +29,7 @@ const slides = [
   {
     image:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop",
-    eyebrow: "Sécurité & Souveraineté",
+    eyebrow: "Sécurité & Indépendance",
     h1line1: "Vos données restent",
     h1line2: "en Afrique.",
     h1accent: "Protégées. Maîtrisées.",

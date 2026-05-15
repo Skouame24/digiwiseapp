@@ -11,10 +11,10 @@ const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 const blogPosts = [
   {
-    id: "souverainete-numerique-afrique",
-    title: "Souveraineté numérique : pourquoi le cloud résident est vital pour l'Afrique",
+    id: "independance-numerique-afrique",
+    title: "Indépendance numérique : pourquoi le cloud résident est vital pour l'Afrique",
     excerpt: "Découvrez les enjeux de la localisation des données et comment AMBRA Cloud sécurise l'infrastructure numérique de la sous-région.",
-    category: "Souveraineté",
+    category: "Indépendance",
     date: "15 Mai 2024",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop",
   },
@@ -84,7 +84,7 @@ export default function BlogPage() {
             className="text-4xl md:text-5xl font-display text-navy leading-tight mb-4"
           >
             Explorez l&apos;avenir du{" "}
-            <span className="italic text-rouge-ambra">Cloud Souverain</span>
+            <span className="italic text-rouge-ambra">Cloud Résident</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -156,7 +156,7 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex flex-wrap items-center gap-3">
-              {["Tous", "Infrastructure", "Sécurité", "Souveraineté", "Secteurs"].map((cat) => (
+              {["Tous", "Infrastructure", "Sécurité", "Indépendance", "Secteurs"].map((cat) => (
                 <button
                   key={cat}
                   className={`px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${cat === "Tous"

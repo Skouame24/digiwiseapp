@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 const offers = [
   {
     title: "Cloud Résident & Hybride",
-    description: "Infrastructure IaaS, Kubernetes et VPC hébergée à Abidjan. Souveraineté des données, élasticité à la demande.",
+    description: "Infrastructure IaaS, Kubernetes et VPC hébergée à Abidjan. Indépendance des données, élasticité à la demande.",
     icon: <Cloud className="w-6 h-6" />,
-    features: ["IaaS VPC & Kubernetes", "Souveraineté locale", "Haute disponibilité"],
+    features: ["IaaS VPC & Kubernetes", "Indépendance locale", "Haute disponibilité"],
     cta: "Voir les offres",
     href: "/solutions",
     featured: false

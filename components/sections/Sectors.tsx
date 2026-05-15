@@ -13,7 +13,7 @@ const sectors = [
   { 
     name: "Secteur Public", 
     icon: <ShieldAlert className="w-6 h-6" />,
-    desc: "Souveraineté des données citoyennes et administratives."
+    desc: "Indépendance des données citoyennes et administratives."
   },
   { 
     name: "Santé", 
@@ -113,7 +113,7 @@ export function Sectors() {
             
             <div className="absolute bottom-10 left-10 right-10">
                <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-2">Conformité</p>
-               <p className="text-2xl font-display text-white">Certifié Tier III & Souverain</p>
+               <p className="text-2xl font-display text-white">Certifié Tier III & Résident</p>
             </div>
           </motion.div>
 

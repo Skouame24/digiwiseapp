@@ -32,7 +32,7 @@ const testimonials = [
     initials: "SG",
     color: "bg-[#F26522]",
     service: "Cloud Privé",
-    quote: "Le Cloud Privé d'AMBRA CLOUD nous garantit souveraineté, conformité et sécurité pour l'hébergement de nos données sensibles.",
+    quote: "Le Cloud Privé d'AMBRA CLOUD nous garantit indépendance, conformité et sécurité pour l'hébergement de nos données sensibles.",
     author: "CEO & Fondateur"
   }
 ];

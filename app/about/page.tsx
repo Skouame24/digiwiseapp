@@ -5,7 +5,7 @@ export default function AboutPage() {
         À propos
       </h1>
       <p className="text-lg text-taupe">
-        AMBRA Cloud, infrastructure souveraine pour l&apos;Afrique de
+        AMBRA Cloud, infrastructure résidente pour l&apos;Afrique de
         l&apos;Ouest. Performance, Sécurité, Proximité.
       </p>
     </section>

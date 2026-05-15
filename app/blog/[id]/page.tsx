@@ -13,8 +13,8 @@ const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 // Mock data (in a real app, this would be fetched from a CMS based on the ID)
 const getPostData = (id: string) => ({
   id,
-  title: "Souveraineté numérique : pourquoi le cloud résident est vital pour l'Afrique",
-  category: "Souveraineté",
+  title: "Indépendance numérique : pourquoi le cloud résident est vital pour l'Afrique",
+  category: "Indépendance",
   date: "15 Mai 2024",
   readTime: "6 min de lecture",
   author: {
@@ -30,18 +30,18 @@ const getPostData = (id: string) => ({
     <p>Une requête qui traverse l'océan Atlantique met inévitablement plus de temps à revenir. Pour des applications métiers critiques (Fintech, transactions en temps réel, santé), cette latence de quelques dizaines de millisecondes peut se traduire par des abandons de paniers, des désynchronisations ou des expériences utilisateurs dégradées. Un cloud résident comme AMBRA Cloud, opéré localement, réduit cette latence au strict minimum.</p>
 
     <blockquote>
-      La souveraineté numérique n'est pas un concept abstrait. C'est la capacité d'une entreprise à garantir l'intégrité, la disponibilité et la confidentialité de ses données sous la juridiction de son propre pays.
+      L'indépendance numérique n'est pas un concept abstrait. C'est la capacité d'une entreprise à garantir l'intégrité, la disponibilité et la confidentialité de ses données sous la juridiction de son propre pays.
     </blockquote>
 
     <h2>2. Conformité légale et protection des données</h2>
-    <p>De plus en plus de régulateurs africains exigent que les données sensibles (bancaires, médicales, identitaires) restent sur le territoire national. C'est ici que le cloud souverain prend tout son sens. En hébergeant vos infrastructures chez AMBRA Cloud, vous vous assurez de respecter strictement la législation ivoirienne et régionale en matière de protection des données personnelles.</p>
+    <p>De plus en plus de régulateurs africains exigent que les données sensibles (bancaires, médicales, identitaires) restent sur le territoire national. C'est ici que le cloud résident prend tout son sens. En hébergeant vos infrastructures chez AMBRA Cloud, vous vous assurez de respecter strictement la législation ivoirienne et régionale en matière de protection des données personnelles.</p>
 
     <h2>3. L'hybridation : le meilleur des deux mondes</h2>
     <p>Le cloud résident ne signifie pas pour autant se couper de l'innovation mondiale. Les stratégies modernes reposent sur le <strong>Cloud Hybride</strong>. Les données critiques et les cœurs de base de données restent sécurisés localement, tandis que des applications moins sensibles peuvent s'appuyer sur des ressources publiques (AWS, Azure) si nécessaire. Cette flexibilité est au cœur de l'offre AMBRA.</p>
 
     <p>En conclusion, investir dans une infrastructure cloud résidente n'est plus une option de luxe, c'est une composante essentielle de la gestion des risques et de la compétitivité d'une entreprise moderne en Afrique de l'Ouest.</p>
   `,
-  tags: ["Cloud Computing", "Souveraineté", "RGPD", "Infrastructure", "Afrique"],
+  tags: ["Cloud Computing", "Indépendance", "RGPD", "Infrastructure", "Afrique"],
 });
 
 export default function BlogPost() {
