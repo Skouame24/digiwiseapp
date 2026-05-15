@@ -212,7 +212,7 @@ export function DataCenter() {
           {[
             { icon: <Shield className="w-5 h-5" />, label: "Sécurité physique", value: "Contrôle biométrique, CCTV 24/7, accès multi-niveaux" },
             { icon: <Zap className="w-5 h-5" />, label: "Alimentation", value: "UPS & générateurs diesel avec redondance N+1" },
-            { icon: <Lock className="w-5 h-5" />, label: "Conformité", value: "ISO 27001 · Tier III · ARTCI certifié" },
+            // { icon: <Lock className="w-5 h-5" />, label: "Conformité", value: "ISO 27001 · Tier III · ARTCI certifié" },
           ].map((item, i) => (
             <div key={item.label} className="flex items-start gap-4">
               <div className="shrink-0 w-10 h-10 bg-primary-light/10 flex items-center justify-center text-primary-light">

@@ -29,7 +29,7 @@ const projects = [
     longDesc:
       "Déploiement d'une infrastructure IaaS VPC complète pour la gestion de la diffusion en direct, l'archivage numérique de plus de 50 ans de contenus, et la distribution multicanale. Haute disponibilité garantie pour les événements en direct.",
     results: ["99.99% de disponibilité", "Archivage de 500+ TB", "Diffusion multicanale"],
-    image: "https://images.unsplash.com/photo-1598899134739-322da13575f3?q=80&w=1200&auto=format&fit=crop",
+    image: "/Clients/rti.png",
     year: "2023",
   },
   {
@@ -42,22 +42,22 @@ const projects = [
     longDesc:
       "Mise en place d'un cloud privé dédié pour héberger les applications de souscription, de sinistres et la base de données clients. Conformité avec les réglementations de la CIMA et protection des données personnelles.",
     results: ["Conformité CIMA", "Données chiffrées", "DRP opérationnel"],
-    image: "https://images.unsplash.com/photo-1454165804606-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop",
+    image: "/Clients/sunu.png",
     year: "2022",
   },
-  {
-    id: "bgfi",
-    company: "BGFI Bank",
-    fullName: "BGFI Bank Côte d'Ivoire",
-    industry: "Banque & Finance",
-    service: "Bare Metal",
-    shortDesc: "Serveurs physiques dédiés pour les transactions bancaires.",
-    longDesc:
-      "Fourniture de serveurs Bare Metal haute performance pour le core banking, avec latence <1ms et redondance totale. Infrastructure critique supportant plus de 2 millions de transactions mensuelles.",
-    results: ["Latence <1ms", "2M+ transactions/mois", "Résilience 99.95%"],
-    image: "https://images.unsplash.com/photo-1486406146926-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop",
-    year: "2023",
-  },
+  // {
+  //   id: "bgfi",
+  //   company: "BGFI Bank",
+  //   fullName: "BGFI Bank Côte d'Ivoire",
+  //   industry: "Banque & Finance",
+  //   service: "Bare Metal",
+  //   shortDesc: "Serveurs physiques dédiés pour les transactions bancaires.",
+  //   longDesc:
+  //     "Fourniture de serveurs Bare Metal haute performance pour le core banking, avec latence <1ms et redondance totale. Infrastructure critique supportant plus de 2 millions de transactions mensuelles.",
+  //   results: ["Latence <1ms", "2M+ transactions/mois", "Résilience 99.95%"],
+  //   image: "/Clients/image (3).png",
+  //   year: "2023",
+  // },
   {
     id: "bridge",
     company: "Bridge Bank",
@@ -68,7 +68,7 @@ const projects = [
     longDesc:
       "Implémentation d'une stratégie de sauvegarde managée 3-2-1 avec réplication asynchrone vers un site secondaire. Plan de reprise d'activité testé trimestriellement avec un RTO de 4 heures.",
     results: ["RTO 4h", "Tests trimestriels", "Rétention 7 ans"],
-    image: "https://images.unsplash.com/photo-1563986768609-342d2d5b8c03?q=80&w=1200&auto=format&fit=crop",
+    image: "/Clients/image (3).png",
     year: "2024",
   },
   {
@@ -81,22 +81,23 @@ const projects = [
     longDesc:
       "Migration complète de l'infrastructure legacy vers un data center virtuel, incluant la virtualisation des serveurs, du stockage SAN et du réseau SDN. Réduction de 40% des coûts d'exploitation IT.",
     results: ["-40% coûts IT", "Migration 0 downtime", "150+ VMs"],
-    image: "https://images.unsplash.com/photo-1532094349884-9a5fce628f2f?q=80&w=1200&auto=format&fit=crop",
+    image: "/Clients/image (2).png",
     year: "2021",
   },
   {
-    id: "snedai",
-    company: "Snedai Groupe",
-    fullName: "Snedai Groupe",
+    id: "mtn",
+    company: "Mtn company ",
+    fullName: "",
     industry: "Technologie & IT",
     service: "Colocation",
     shortDesc: "Hébergement de serveurs dans notre datacenter Tier III.",
     longDesc:
       "Colocation de 12 baies dans notre datacenter avec bande passante dédiée 10Gbps, accès sécurisé 24/7 et monitoring environnemental. Extension progressive de l'infrastructure selon la croissance du groupe.",
     results: ["12 baies actives", "10Gbps dédié", "Croissance +30%/an"],
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop",
+    image: "/Clients/mtn.png",
     year: "2022",
   },
+
 ];
 
 export function Projects() {
@@ -116,15 +117,15 @@ export function Projects() {
     );
 
   return (
-    <section className="py-20 bg-cream relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+    <section className="py-16 bg-cream relative overflow-hidden">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 md:px-10">
         {/* Filters */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease }}
-          className="flex flex-wrap justify-center gap-2 md:gap-3 mb-16"
+          className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8"
         >
           {filters.map((f) => (
             <button
@@ -152,7 +153,7 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1, ease }}
-          className="relative max-w-md mx-auto mb-12"
+          className="relative max-w-md mx-auto mb-8"
         >
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-taupe/35 pointer-events-none" />
           <input
@@ -183,7 +184,7 @@ export function Projects() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="py-20 text-center"
+                className="py-16 text-center"
               >
                 <Search className="w-8 h-8 text-taupe/20 mx-auto mb-4" />
                 <p className="text-[13px] text-taupe/40 font-medium">Aucun projet ne correspond à votre recherche.</p>
@@ -211,7 +212,7 @@ export function Projects() {
                   transition={{ duration: 0.4, delay: index * 0.06, ease }}
                   className="border-b border-taupe/15"
                 >
-                  {/* Row header – always visible */}
+                  {/* Row header – toujours visible */}
                   <button
                     onClick={() => setOpenId(isOpen ? null : project.id)}
                     className="w-full text-left py-7 flex items-center gap-6 group"
@@ -224,7 +225,7 @@ export function Projects() {
                       {project.year}
                     </span>
 
-                    {/* Company */}
+                    {/* Company Name */}
                     <span className={cn(
                       "text-xl lg:text-2xl font-display font-black leading-tight transition-colors duration-300",
                       isOpen ? "text-rouge-ambra" : "text-navy group-hover:text-rouge-ambra"
@@ -270,19 +271,18 @@ export function Projects() {
                       >
                         <div className="pb-10 grid md:grid-cols-2 gap-8 lg:gap-14">
                           {/* Image */}
-                          <motion.div
+                         <motion.div
                             initial={{ opacity: 0, x: -16 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5, delay: 0.1, ease }}
-                            className="relative aspect-[4/3] overflow-hidden rounded-lg"
+                            className="relative w-full max-w-xs h-40 rounded-lg overflow-hidden bg-white border border-black/5"
                           >
                             <img
                               src={project.image}
                               alt={project.company}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-contain p-6"
                             />
-                            {/* Soft overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-transparent to-cream opacity-70" />
+
                             {/* Service tag */}
                             <div className="absolute bottom-4 left-4">
                               <span className="inline-block px-3 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-bold uppercase tracking-widest text-primary-light">

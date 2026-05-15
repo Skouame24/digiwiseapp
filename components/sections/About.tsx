@@ -11,17 +11,20 @@ import { cn } from "@/lib/utils";
 
 /* ── Partner data (local images from /Collaborateur) ──── */
 const partners = [
-  { name: "Acronis",      logo: "/Collaborateur/image.jpg" },
-  { name: "AWS",           logo: "/Collaborateur/image (8).png" },
-  { name: "Check Point",  logo: "/Collaborateur/image (1).jpg" },
-  { name: "Fortinet",     logo: "/Collaborateur/image (7).png" },
-  { name: "IBM",           logo: "/Collaborateur/image (6).png" },
-  { name: "Kaspersky",    logo: "/Collaborateur/image (5).png" },
-  { name: "Microsoft",    logo: "/Collaborateur/image (4).png" },
-  { name: "Oracle",        logo: "/Collaborateur/image (3).png" },
-  { name: "PECB",          logo: "/Collaborateur/image (1).png" },
-  { name: "SOCRadar",      logo: "/Collaborateur/image.png" },
-  { name: "Synology",     logo: "/Collaborateur/image (2).png" },
+  { name: "Acronis",      logo: "/Collaborateur/image1.jpg" },
+  { name: "AWS",           logo: "/Collaborateur/image2.png" },
+  { name: "Check Point",  logo: "/Collaborateur/image3.jpg" },
+  { name: "Fortinet",     logo: "/Collaborateur/image4.png" },
+  { name: "IBM",           logo: "/Collaborateur/image5.png" },
+  { name: "Kaspersky",    logo: "/Collaborateur/image6.png" },
+  { name: "Microsoft",    logo: "/Collaborateur/image7.png" },
+  { name: "Oracle",        logo: "/Collaborateur/image8.png" },
+  { name: "PECB",          logo: "/Collaborateur/image9.png" },
+  { name: "SOCRadar",      logo: "/Collaborateur/image10.png" },
+  { name: "Synology",     logo: "/Collaborateur/image11.png" },
+  { name: "Synology",     logo: "/Collaborateur/image12.png" },
+  { name: "Synology",     logo: "/Collaborateur/image13.png" },
+  { name: "Synology",     logo: "/Collaborateur/image14.png" },
 ];
 
 /* ── Client data (local images from /Clients) ──────── */
@@ -57,18 +60,18 @@ const certifications = [
     issuer: "ISC²",
     desc: "Fondamentaux de la cybersécurité : réseaux, systèmes et meilleures pratiques de protection.",
   },
-  {
-    img: "/Certification/image.png",
-    label: "ISO/IEC 27001 — Internal Auditor",
-    issuer: "PECB",
-    desc: "Audit interne des systèmes de management de la sécurité de l’information (SMSI).",
-  },
-  {
-    img: "/Certification/image (1).png",
-    label: "ISO/IEC 27001 — Internal Auditor",
-    issuer: "PECB",
-    desc: "Gestion des risques liés à la sécurité de l’information selon la norme ISO/IEC 27005.",
-  },
+  // {
+  //   img: "/Certification/image.png",
+  //   label: "ISO/IEC 27001 — Internal Auditor",
+  //   issuer: "PECB",
+  //   desc: "Audit interne des systèmes de management de la sécurité de l’information (SMSI).",
+  // },
+  // {
+  //   img: "/Certification/image (1).png",
+  //   label: "ISO/IEC 27001 — Internal Auditor",
+  //   issuer: "PECB",
+  //   desc: "Gestion des risques liés à la sécurité de l’information selon la norme ISO/IEC 27005.",
+  // },
 ];
 
 const fadeLeft = {
@@ -86,12 +89,12 @@ const fadeRight = {
 };
 
 const strengths = [
-  {
-    icon: <Shield className="w-6 h-6" />,
-    stat: "ISO 27001",
-    title: "Sécurité",
-    desc: "Chiffrement de bout en bout, conformité réglementaire et protection avancée des données critiques pour les secteurs sensibles.",
-  },
+  // {
+  //   icon: <Shield className="w-6 h-6" />,
+  //   stat: "ISO 27001",
+  //   title: "Sécurité",
+  //   desc: "Chiffrement de bout en bout, conformité réglementaire et protection avancée des données critiques pour les secteurs sensibles.",
+  // },
   {
     icon: <Zap className="w-6 h-6" />,
     stat: "<5ms",
@@ -198,7 +201,7 @@ africaines.
             <motion.div {...fadeLeft} className="relative">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=1200&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop"
                   alt="Infrastructure cloud AMBRA"
                   className="w-full h-full object-cover"
                 />
@@ -268,7 +271,7 @@ africaines.
             <motion.div {...fadeRight} className="relative">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop"
+                  src="cloud.jpg"
                   alt="Équipe AMBRA Cloud Abidjan"
                   className="w-full h-full object-cover"
                 />
@@ -280,7 +283,7 @@ africaines.
       </section>
 
       {/* ── 4. NOS ATOUTS ────────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-cream/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

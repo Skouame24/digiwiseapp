@@ -5,10 +5,22 @@ import Image from "next/image";
 
 /* ── All logos: Collaborateurs + Clients ──────────────── */
 const logos = [
-   { name: "Société Générale", src: "/Clients/image.png" },
-  { name: "Snedai Groupe",    src: "/Clients/image (1).png" },
-  { name: "SODECI",            src: "/Clients/image (2).png" },
-  { name: "Bridge Bank",      src: "/Clients/image (3).png" },
+   { name: "Société Générale", src: "/Collaborateur/image.png" },
+  { name: "Snedai Groupe",    src: "/Collaborateur/image1.png" },
+  { name: "SODECI",            src: "/Collaborateur/image2.png" },
+  { name: "Bridge Bank",      src: "/Collaborateur/image3.png" },
+  { name: "Bridge Bank",      src: "/Collaborateur/image4.png" },
+  { name: "Bridge Bank",      src: "/Collaborateur/image5.png" },
+  { name: "Bridge Bank",      src: "/Collaborateur/image6.png" }, 
+  { name: "Bridge Bank",      src: "/Collaborateur/image7.png" }, 
+  { name: "Bridge Bank",      src: "/Collaborateur/image8.png" }, 
+  { name: "Bridge Bank",      src: "/Collaborateur/image9.png" }, 
+  { name: "Bridge Bank",      src: "/Collaborateur/image10.png" }, 
+  { name: "Bridge Bank",      src: "/Collaborateur/image11.png" }, 
+  { name: "Bridge Bank",      src: "/Collaborateur/image12.png" }, 
+  { name: "Bridge Bank",      src: "/Collaborateur/image13.png" }, 
+  { name: "Bridge Bank",      src: "/Collaborateur/image14.png" }, 
+  
 ];
 
 export function Reassurance() {
