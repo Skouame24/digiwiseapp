@@ -29,10 +29,16 @@ const partners = [
 
 /* ── Client data (local images from /Clients) ──────── */
 const clients = [
-  { name: "Société Générale", logo: "/Clients/image.png" },
-  { name: "Snedai Groupe",    logo: "/Clients/image (1).png" },
-  { name: "SODECI",            logo: "/Clients/image (2).png" },
-  { name: "Bridge Bank",      logo: "/Clients/image (3).png" },
+  { name: "Société Générale", logo: "/Clients/image1.png" },
+  { name: "Snedai Groupe",    logo: "/Clients/image2.png" },
+  { name: "SODECI",            logo: "/Clients/image3.png" },
+  { name: "Bridge Bank",      logo: "/Clients/image5.png" },
+  { name: "Bridge Bank",      logo: "/Clients/image6.png" },
+  { name: "Bridge Bank",      logo: "/Clients/image7.png" },
+  { name: "Bridge Bank",      logo: "/Clients/image8.png" },
+  { name: "Bridge Bank",      logo: "/Clients/image9.png" },
+  { name: "Bridge Bank",      logo: "/Clients/image10.png" },
+
 ];
 
 const certifications = [
