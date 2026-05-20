@@ -48,7 +48,7 @@ export function Navbar() {
           : "py-6 bg-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
         <Link href="/" className="relative group transition-transform duration-500 hover:scale-[1.02]">
           <Image
             src="/logo.png"
@@ -58,7 +58,7 @@ export function Navbar() {
             // ✅ CORRECTION : h-9 (36px) remplacé par h-14 (56px)
             // Les props width/height seules ne suffisent pas avec next/image
             // C'est toujours la classe Tailwind qui contrôle la taille réelle
-            className="h-14 w-auto object-contain"
+            className="h-10 sm:h-12 lg:h-14 w-auto object-contain max-w-[140px] sm:max-w-none"
             priority
           />
         </Link>
@@ -158,11 +158,13 @@ export function Navbar() {
             </AnimatePresence>
           </button>
 
+          
+
           <Link
-            href="/devis"
+            href="/essai"
             className="group relative inline-flex items-center gap-2 bg-[#900C0C] text-white text-[11px] font-black uppercase tracking-[0.2em] px-8 py-3.5 rounded-full overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-[#900C0C]/20 active:scale-95 shadow-lg shadow-[#900C0C]/10"
           >
-            <span className="relative z-10">Démarrer</span>
+            <span className="relative z-10">Essai gratuit</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1.5" />
             <div className="absolute inset-0 bg-[#7a0a0a] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
           </Link>
@@ -195,7 +197,7 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 top-0 h-screen w-screen bg-white z-[60] lg:hidden"
+            className="fixed inset-0 min-h-[100dvh] w-full max-w-full bg-white z-[60] lg:hidden overflow-y-auto"
           >
             <div className="p-8 h-full flex flex-col">
               <div className="flex items-center justify-between mb-16">
@@ -232,13 +234,14 @@ export function Navbar() {
                 ))}
               </div>
 
-              <div className="pt-8 border-t border-[#FBF4E4] mt-auto">
+              <div className="pt-8 border-t border-[#FBF4E4] mt-auto space-y-3">
+                
                 <Link
                   href="/devis"
                   className="flex items-center justify-center gap-3 w-full bg-[#900C0C] text-white text-sm font-black uppercase tracking-widest py-6 rounded-2xl shadow-xl shadow-[#900C0C]/20"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Démarrer mon projet
+                  Démarrer mon essaie gratuit
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
@@ -337,7 +340,7 @@ export function Navbar() {
                       onClick={() => { setCartOpen(false); router.push("/devis"); }}
                       className="w-full flex items-center justify-center gap-2 bg-[#900C0C] text-white text-[12px] font-black uppercase tracking-[0.2em] py-4 hover:bg-[#7a0a0a] transition-colors duration-300"
                     >
-                      Demander un devis <ArrowRight className="w-4 h-4" />
+                      Démarrer mon essaie gratuit <ArrowRight className="w-4 h-4" />
                     </button>
                     <button onClick={() => setCartOpen(false)}
                       className="w-full text-[11px] font-bold uppercase tracking-widest text-taupe/50 hover:text-navy py-2 transition-colors duration-200">

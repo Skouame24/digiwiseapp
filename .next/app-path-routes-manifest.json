@@ -1,0 +1,18 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/icon.png/route": "/icon.png",
+  "/about/page": "/about",
+  "/blog/[id]/page": "/blog/[id]",
+  "/cart/page": "/cart",
+  "/blog/page": "/blog",
+  "/contact/page": "/contact",
+  "/essai/page": "/essai",
+  "/devis/page": "/devis",
+  "/panier/page": "/panier",
+  "/page": "/",
+  "/a-propos/page": "/a-propos",
+  "/projets/page": "/projets",
+  "/ressources/references/page": "/ressources/references",
+  "/services-manages/page": "/services-manages",
+  "/solutions/page": "/solutions"
+}

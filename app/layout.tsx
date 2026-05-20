@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${dmSerif.variable} ${dmSans.variable}`}>
-      <body>
+    <html lang="fr" className={`${dmSerif.variable} ${dmSans.variable} overflow-x-clip`}>
+      <body className="overflow-x-clip">
         <Providers>
           <Navbar />
           <main className="bg-white">{children}</main>

@@ -49,10 +49,10 @@ const itemVariants = {
 
 export function Sectors() {
   return (
-    <section className="py-32 bg-white relative overflow-hidden">
+    <section className="py-16 md:py-24 lg:py-32 bg-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-cream/50 -skew-x-12 translate-x-1/2 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-24 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -102,7 +102,7 @@ export function Sectors() {
              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-             className="relative rounded-[48px] overflow-hidden shadow-2xl border-[12px] border-white z-20"
+             className="relative rounded-2xl lg:rounded-[48px] overflow-hidden shadow-2xl border-4 sm:border-8 lg:border-[12px] border-white z-20"
           >
             <img 
               src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop"
@@ -122,7 +122,7 @@ export function Sectors() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="absolute -bottom-10 -left-10 bg-navy text-white p-8 rounded-3xl shadow-2xl z-30 max-w-[240px] border border-white/10"
+            className="relative mt-6 max-w-full lg:absolute lg:-bottom-10 lg:-left-10 lg:mt-0 bg-navy text-white p-6 sm:p-8 rounded-3xl shadow-2xl z-30 lg:max-w-[240px] border border-white/10"
           >
              <p className="text-[10px] font-bold uppercase tracking-widest text-primary-light mb-4">Engagement</p>
              <p className="text-sm italic font-medium leading-relaxed opacity-90">"La protection de vos données est notre priorité absolue."</p>

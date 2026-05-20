@@ -16,8 +16,8 @@ const contactInfo = [
   {
     icon: <Phone className="w-5 h-5" />,
     label: "Téléphone",
-    value: "+225 07 97 26 47 40",
-    href: "tel:+2250797264740",
+    value: "+225 07 16 74 73 87",
+    href: "tel:+2250716747387",
   },
   {
     icon: <MapPin className="w-5 h-5" />,

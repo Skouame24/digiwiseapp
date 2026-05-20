@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/Button";
 
 export function CtaFinal() {
   return (
-    <section className="py-32 max-w-7xl mx-auto px-6">
-      <div className="relative bg-primary rounded-3xl p-12 md:p-20 overflow-hidden group shadow-2xl shadow-primary/20">
+    <section className="py-16 md:py-24 lg:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-primary rounded-2xl lg:rounded-3xl p-6 sm:p-10 md:p-20 overflow-hidden group shadow-2xl shadow-primary/20">
         {/* Background Patterns - Soft & Brand Aligned */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute inset-x-0 top-0 h-px bg-white/40"></div>
@@ -21,7 +21,7 @@ export function CtaFinal() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-display text-white mb-6 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-display text-white mb-6 leading-tight"
           >
             Prêt à sécuriser votre avenir numérique ?
           </motion.h2>

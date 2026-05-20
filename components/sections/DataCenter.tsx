@@ -98,7 +98,7 @@ export function DataCenter() {
             Infrastructure physique
           </p>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2 className="text-4xl md:text-[52px] font-display text-white leading-[1.05] tracking-tight max-w-lg">
+            <h2 className="text-3xl sm:text-4xl md:text-[52px] font-display text-white leading-[1.05] tracking-tight max-w-lg">
               Nos
               <span className="italic text-primary-light"> Data Centers </span>
             </h2>

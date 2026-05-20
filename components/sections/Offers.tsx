@@ -37,14 +37,14 @@ const offers = [
 
 export function Offers() {
   return (
-    <section className="py-32 bg-[#FBF4E4]">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="text-center max-w-3xl mx-auto mb-24">
+    <section className="py-16 md:py-24 lg:py-32 bg-[#FBF4E4]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[20px] font-bold uppercase tracking-[0.3em] text-rouge-ambra  mb-4"
+            className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-rouge-ambra mb-4"
           >
             Nos Solutions
           </motion.p>
@@ -71,10 +71,10 @@ export function Offers() {
               className="h-full"
             >
               <div className={cn(
-                "relative h-full p-10 transition-all duration-500 flex flex-col group",
+                "relative h-full p-6 sm:p-8 lg:p-10 transition-all duration-500 flex flex-col group",
                 offer.featured 
-                  ? "bg-[#1A0F0A] rounded-[40px] text-white shadow-2xl" 
-                  : "bg-white rounded-[32px] border border-[#5C4A3E]/10"
+                  ? "bg-[#1A0F0A] rounded-2xl lg:rounded-[40px] text-white shadow-2xl" 
+                  : "bg-white rounded-2xl lg:rounded-[32px] border border-[#5C4A3E]/10"
               )}>
                 {offer.featured && (
                   <div className="absolute top-8 right-10 flex items-center gap-2">

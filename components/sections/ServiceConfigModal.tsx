@@ -250,15 +250,30 @@ function SliderField({
   );
 }
 
-/* ── Stepper field ───────────────────────────────────────── */
+/* ── Stepper field (+ saisie directe) ───────────────────── */
 function StepperField({
   label, value, min, max, step, onChange, color,
 }: {
   label: string; value: number; min: number; max: number;
   step: number; onChange: (v: number) => void; color: string;
 }) {
-  const decrement = () => onChange(Math.max(min, value - step));
-  const increment = () => onChange(Math.min(max, value + step));
+  const clamp = (n: number) => Math.min(max, Math.max(min, n));
+  const snap = (n: number) => {
+    const clamped = clamp(n);
+    return Math.round((clamped - min) / step) * step + min;
+  };
+
+  const decrement = () => onChange(snap(value - step));
+  const increment = () => onChange(snap(value + step));
+
+  const commitInput = (raw: string) => {
+    const parsed = parseInt(raw.trim(), 10);
+    if (Number.isNaN(parsed)) {
+      onChange(value);
+      return;
+    }
+    onChange(snap(parsed));
+  };
 
   return (
     <div className="space-y-2">
@@ -267,24 +282,42 @@ function StepperField({
         <button
           type="button"
           onClick={decrement}
-          className="w-9 h-9 border border-taupe/20 flex items-center justify-center hover:border-taupe/40 transition-colors"
+          disabled={value <= min}
+          className="w-9 h-9 border border-taupe/20 flex items-center justify-center hover:border-taupe/40 transition-colors disabled:opacity-40 disabled:pointer-events-none"
         >
           <Minus className="w-3.5 h-3.5 text-taupe/60" />
         </button>
-        <span
-          className="min-w-[60px] text-center text-[15px] font-black border px-3 py-1.5"
+        <input
+          type="number"
+          min={min}
+          max={max}
+          step={step}
+          value={value}
+          onChange={(e) => {
+            const next = e.target.valueAsNumber;
+            if (!Number.isNaN(next)) onChange(clamp(next));
+          }}
+          onBlur={(e) => commitInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              commitInput((e.target as HTMLInputElement).value);
+              (e.target as HTMLInputElement).blur();
+            }
+          }}
+          className="w-24 text-center text-[15px] font-black border px-3 py-1.5 outline-none focus:ring-2 focus:ring-primary-light/20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           style={{ borderColor: color, color }}
-        >
-          {value}
-        </span>
+          aria-label={label}
+        />
         <button
           type="button"
           onClick={increment}
-          className="w-9 h-9 border border-taupe/20 flex items-center justify-center hover:border-taupe/40 transition-colors"
+          disabled={value >= max}
+          className="w-9 h-9 border border-taupe/20 flex items-center justify-center hover:border-taupe/40 transition-colors disabled:opacity-40 disabled:pointer-events-none"
         >
           <Plus className="w-3.5 h-3.5 text-taupe/60" />
         </button>
-        <span className="text-[11px] text-taupe/40">({min} – {max})</span>
+        <span className="text-[11px] text-taupe/40">({min} – {max} Go)</span>
       </div>
     </div>
   );

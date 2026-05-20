@@ -36,7 +36,7 @@ export function Button({
   type = "button",
 }: ButtonProps) {
   const baseClasses = cn(
-    "inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-sm md:text-base transition-all active:scale-95",
+    "inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold text-sm md:text-base transition-all active:scale-95",
     variantStyles[variant],
     className
   );

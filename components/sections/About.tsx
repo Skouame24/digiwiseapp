@@ -11,9 +11,9 @@ import { cn } from "@/lib/utils";
 
 /* ── Partner data (local images from /Collaborateur) ──── */
 const partners = [
-  { name: "Acronis",      logo: "/Collaborateur/image1.jpg" },
+  { name: "Acronis",      logo: "/Collaborateur/image1.png" },
   { name: "AWS",           logo: "/Collaborateur/image2.png" },
-  { name: "Check Point",  logo: "/Collaborateur/image3.jpg" },
+  { name: "Check Point",  logo: "/Collaborateur/image3.png" },
   { name: "Fortinet",     logo: "/Collaborateur/image4.png" },
   { name: "IBM",           logo: "/Collaborateur/image5.png" },
   { name: "Kaspersky",    logo: "/Collaborateur/image6.png" },
@@ -32,12 +32,15 @@ const clients = [
   { name: "Société Générale", logo: "/Clients/image1.png" },
   { name: "Snedai Groupe",    logo: "/Clients/image2.png" },
   { name: "SODECI",            logo: "/Clients/image3.png" },
-  { name: "Bridge Bank",      logo: "/Clients/image5.png" },
-  { name: "Bridge Bank",      logo: "/Clients/image6.png" },
-  { name: "Bridge Bank",      logo: "/Clients/image7.png" },
-  { name: "Bridge Bank",      logo: "/Clients/image8.png" },
-  { name: "Bridge Bank",      logo: "/Clients/image9.png" },
-  { name: "Bridge Bank",      logo: "/Clients/image10.png" },
+  { name: "Bridge Bank",      logo: "/Clients/image4.png" },
+  { name: "MTN",              logo: "/Clients/mtn.png" },
+  { name: "SUNU",             logo: "/Clients/sunu.png" },
+  { name: "RTI",              logo: "/Clients/rti.png" },
+  { name: "Client",           logo: "/Clients/image5.png" },
+  { name: "Client",           logo: "/Clients/image6.png" },
+  { name: "Client",           logo: "/Clients/image7.png" },
+  { name: "Client",           logo: "/Clients/image8.png" },
+  { name: "Agilly",           logo: "/Collaborateur/agilly.png" },
 
 ];
 
@@ -415,7 +418,7 @@ export function About() {
         {/* ─ Row 1 : Partenaires technologiques — scroll left ─ */}
         <div className="mb-3">
           <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-taupe/40 mb-5">
-            Partenaires technologiques
+             Nos clients
           </p>
           <div className="relative">
             <div className="absolute left-0 top-0 bottom-0 w-28 bg-gradient-to-r from-cream/30 to-transparent z-10 pointer-events-none" />
@@ -440,7 +443,7 @@ export function About() {
         {/* ─ Row 2 : Clients — scroll right (reverse) ─ */}
         <div className="mt-6">
           <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-taupe/40 mb-5">
-            Nos clients
+             Partenaires technologiques
           </p>
           <div className="relative">
             <div className="absolute left-0 top-0 bottom-0 w-28 bg-gradient-to-r from-cream/30 to-transparent z-10 pointer-events-none" />

@@ -48,7 +48,7 @@ export function Hero() {
   const slide = slides[current];
 
   return (
-    <section className="relative h-screen flex items-center overflow-hidden bg-cream">
+    <section className="relative min-h-[100dvh] min-h-screen flex items-center overflow-hidden bg-cream">
 
       {/* ── Background image ─────────────────────────────────── */}
       <div className="absolute inset-0">
@@ -75,8 +75,8 @@ export function Hero() {
       </div>
 
       {/* ── Content ──────────────────────────────────────────── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-24">
-        <div className="max-w-[560px]">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 sm:pt-24 pb-28 sm:pb-32">
+        <div className="max-w-[560px] w-full">
 
           {/* Eyebrow badge */}
           <AnimatePresence mode="wait">
@@ -103,7 +103,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.55, ease }}
-              className="text-[42px] lg:text-[56px] font-display leading-[1.06] tracking-tight mb-5"
+              className="text-[30px] xs:text-[34px] sm:text-[42px] lg:text-[56px] font-display leading-[1.08] tracking-tight mb-5"
             >
               <span className="text-navy">{slide.h1line1}</span>
               <br />
@@ -131,17 +131,20 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2, ease }}
-            className="flex flex-wrap gap-4 mb-14"
+            className="flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-4 mb-10 sm:mb-14"
           >
             <Button
-              href="/devis"
+              href="/essai"
               iconRight={<ArrowRight className="w-4 h-4" />}
-              className="bg-rouge-ambra hover:bg-[#7a0a0a] text-white shadow-lg shadow-rouge-ambra/20 border-none"
+              className="w-full xs:w-auto justify-center bg-rouge-ambra hover:bg-[#7a0a0a] text-white shadow-lg shadow-rouge-ambra/20 border-none px-6 sm:px-8"
             >
-              Démarrer mon projet
+              Essai gratuit
             </Button>
-            <Button variant="secondary" href="/solutions">
-              Découvrir nos solutions
+            {/* <Button variant="secondary" href="/devis">
+              Démarrer mon projet
+            </Button> */}
+            <Button variant="secondary" href="/solutions" className="w-full xs:w-auto justify-center px-6 sm:px-8">
+              Nos solutions
             </Button>
           </motion.div>
 
@@ -150,16 +153,16 @@ export function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35, ease }}
-            className="flex gap-8 pt-5 border-t border-taupe/15"
+            className="grid grid-cols-3 gap-2 sm:flex sm:gap-8 pt-5 border-t border-taupe/15"
           >
             {[
               { value: "99,9%", label: "SLA garanti" },
               { value: "Tier III", label: "Datacenter" },
               { value: "24/7", label: "Support dédié" },
             ].map((s) => (
-              <div key={s.label}>
-                <p className="text-xl font-display text-primary-light">{s.value}</p>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-taupe/45 mt-0.5">
+              <div key={s.label} className="min-w-0 text-center sm:text-left">
+                <p className="text-base sm:text-xl font-display text-primary-light">{s.value}</p>
+                <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wide sm:tracking-widest text-taupe/45 mt-0.5 leading-tight">
                   {s.label}
                 </p>
               </div>
@@ -201,7 +204,7 @@ export function Hero() {
       </motion.div>
 
       {/* ── Slide indicators ─────────────────────────────────── */}
-      <div className="absolute bottom-8 left-6 lg:left-8 flex items-center gap-3 z-10">
+      <div className="absolute bottom-6 sm:bottom-8 left-4 sm:left-6 lg:left-8 flex items-center gap-3 z-10">
         {slides.map((_, i) => (
           <button
             key={i}
