@@ -53,12 +53,9 @@ export function Navbar() {
           <Image
             src="/logo.png"
             alt="AMBRA Cloud Logo"
-            width={200}
-            height={64}
-            // ✅ CORRECTION : h-9 (36px) remplacé par h-14 (56px)
-            // Les props width/height seules ne suffisent pas avec next/image
-            // C'est toujours la classe Tailwind qui contrôle la taille réelle
-            className="h-10 sm:h-12 lg:h-14 w-auto object-contain max-w-[140px] sm:max-w-none"
+            width={280}
+            height={88}
+            className="h-12 sm:h-14 lg:h-16 xl:h-[4.5rem] w-auto object-contain max-w-[180px] sm:max-w-[220px] lg:max-w-none"
             priority
           />
         </Link>
@@ -202,7 +199,7 @@ export function Navbar() {
             <div className="p-8 h-full flex flex-col">
               <div className="flex items-center justify-between mb-16">
                 {/* ✅ Logo mobile aussi corrigé : h-8 → h-12 */}
-                <Image src="/logo.png" alt="Logo" width={160} height={48} className="h-12 w-auto object-contain" />
+                <Image src="/logo.png" alt="Logo" width={220} height={70} className="h-14 sm:h-16 w-auto object-contain" />
                 <button onClick={() => setMobileOpen(false)} className="p-3 bg-[#FBF4E4] rounded-full text-[#1A0F0A]">
                   <X className="w-6 h-6" />
                 </button>
