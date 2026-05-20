@@ -250,6 +250,8 @@ function SliderField({
   );
 }
 
+
+
 /* ── Stepper field (+ saisie directe) ───────────────────── */
 function StepperField({
   label, value, min, max, step, onChange, color,
