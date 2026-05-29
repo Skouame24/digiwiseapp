@@ -1,8 +1,8 @@
-// File: C:\Users\HP\Documents\Agilly\ambra-cloud\src\app\a-propos\page.tsx
-import * as entry from '../../../../app/a-propos/page.js'
+// File: C:\Users\HP\Documents\Agilly\ambra-cloud\src\app\projets\page.tsx
+import * as entry from '../../../../app/projets/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../app/a-propos/page.js')
+type TEntry = typeof import('../../../../app/projets/page.js')
 
 type SegmentParams<T extends Object = any> = T extends Record<string, any>
   ? { [K in keyof T]: T[K] extends string ? string | string[] | undefined : never }

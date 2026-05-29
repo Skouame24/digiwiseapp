@@ -6,7 +6,7 @@ import { ArrowRight, ChevronDown, CheckCircle2, Search, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
+const ease = [0.25, 1, 0.5, 1] as [number, number, number, number];
 
 const filters = [
   "Tous",
@@ -20,89 +20,166 @@ const filters = [
 
 const projects = [
   {
-    id: "rti",
-    company: "RTI",
-    fullName: "Radiodiffusion Télévision Ivoirienne",
-    industry: "Média & Télécommunications",
+    id: "afma",
+    company: "AFMA",
+    fullName: "AFMA",
+    industry: "Assurances",
     service: "IaaS VPC",
-    shortDesc: "Infrastructure cloud pour la diffusion et l'archivage de contenus audiovisuels.",
+    shortDesc: "Mise en place d'un environnement cloud privé virtuel (VPC) hautement sécurisé.",
     longDesc:
-      "Déploiement d'une infrastructure IaaS VPC complète pour la gestion de la diffusion en direct, l'archivage numérique de plus de 50 ans de contenus, et la distribution multicanale. Haute disponibilité garantie pour les événements en direct.",
-    results: ["99.99% de disponibilité", "Archivage de 500+ TB", "Diffusion multicanale"],
-    image: "/Clients/rti.png",
-    year: "2023",
+      "Mise en place d'un environnement cloud privé virtuel (VPC) hautement sécurisé permettant à AFMA de centraliser ses données métier et d'assurer la continuité opérationnelle grâce à une infrastructure évolutive et managée.",
+    results: ["Haute sécurité", "Continuité opérationnelle", "Infrastructure managée"],
+    image: "/Collaborateur/image.png",
+    year: "2026",
   },
   {
-    id: "sunu",
-    company: "SUNU Assurances",
-    fullName: "SUNU Assurances CI",
-    industry: "Assurance & Finance",
-    service: "Cloud Privé",
-    shortDesc: "Hébergement sécurisé des données clients et applications métier.",
+    id: "cn-itie",
+    company: "CN-ITIE",
+    fullName: "CN-ITIE",
+    industry: "Secteur Public",
+    service: "IaaS VPC",
+    shortDesc: "Déploiement d'un VPC cloud dédié pour la gestion des données d'extractivisme.",
     longDesc:
-      "Mise en place d'un cloud privé dédié pour héberger les applications de souscription, de sinistres et la base de données clients. Conformité avec les réglementations de la CIMA et protection des données personnelles.",
-    results: ["Conformité CIMA", "Données chiffrées", "DRP opérationnel"],
-    image: "/Clients/sunu.png",
-    year: "2022",
-  },
-  // {
-  //   id: "bgfi",
-  //   company: "BGFI Bank",
-  //   fullName: "BGFI Bank Côte d'Ivoire",
-  //   industry: "Banque & Finance",
-  //   service: "Bare Metal",
-  //   shortDesc: "Serveurs physiques dédiés pour les transactions bancaires.",
-  //   longDesc:
-  //     "Fourniture de serveurs Bare Metal haute performance pour le core banking, avec latence <1ms et redondance totale. Infrastructure critique supportant plus de 2 millions de transactions mensuelles.",
-  //   results: ["Latence <1ms", "2M+ transactions/mois", "Résilience 99.95%"],
-  //   image: "/Clients/image (3).png",
-  //   year: "2023",
-  // },
-  {
-    id: "bridge",
-    company: "Bridge Bank",
-    fullName: "Bridge Bank Group CI",
-    industry: "Banque & Finance",
-    service: "Sauvegarde Managée & PRA",
-    shortDesc: "Solution de backup automatisée avec plan de reprise d'activité.",
-    longDesc:
-      "Implémentation d'une stratégie de sauvegarde managée 3-2-1 avec réplication asynchrone vers un site secondaire. Plan de reprise d'activité testé trimestriellement avec un RTO de 4 heures.",
-    results: ["RTO 4h", "Tests trimestriels", "Rétention 7 ans"],
-    image: "/Clients/image (3).png",
-    year: "2024",
+      "Déploiement d'un VPC cloud dédié pour la gestion et la publication des données d'extractivisme. L'infrastructure garantit la confidentialité des informations sensibles tout en permettant un accès multi-utilisateurs sécurisé.",
+    results: ["Confidentialité", "Accès sécurisé", "Gestion multi-utilisateurs"],
+    image: "/Collaborateur/cn-itie.png",
+    year: "2026",
   },
   {
-    id: "sodeci",
-    company: "SODECI",
-    fullName: "Société de Distribution d'Eau",
-    industry: "Services Publics",
-    service: "Data Center Virtuel",
-    shortDesc: "Virtualisation complète de l'infrastructure IT.",
-    longDesc:
-      "Migration complète de l'infrastructure legacy vers un data center virtuel, incluant la virtualisation des serveurs, du stockage SAN et du réseau SDN. Réduction de 40% des coûts d'exploitation IT.",
-    results: ["-40% coûts IT", "Migration 0 downtime", "150+ VMs"],
-    image: "/Clients/image (2).png",
-    year: "2021",
-  },
-  {
-    id: "mtn",
-    company: "Mtn company ",
-    fullName: "",
+    id: "neoledge",
+    company: "NEOLEDGE",
+    fullName: "Neoledge",
     industry: "Technologie & IT",
-    service: "Colocation",
-    shortDesc: "Hébergement de serveurs dans notre datacenter Tier III.",
+    service: "IaaS VPC",
+    shortDesc: "Hébergement des solutions de gestion documentaire sur infrastructure IaaS VPC.",
     longDesc:
-      "Colocation de 12 baies dans notre datacenter avec bande passante dédiée 10Gbps, accès sécurisé 24/7 et monitoring environnemental. Extension progressive de l'infrastructure selon la croissance du groupe.",
-    results: ["12 baies actives", "10Gbps dédié", "Croissance +30%/an"],
-    image: "/Clients/mtn.png",
-    year: "2022",
+      "Hébergement des solutions de gestion documentaire de NeoLedge sur une infrastructure IaaS VPC robuste. La solution offre haute disponibilité, sauvegarde automatisée et performances optimales pour la gestion électronique de documents.",
+    results: ["Haute disponibilité", "Sauvegarde automatisée", "Performances optimales"],
+    image: "/Collaborateur/neoledge.png",
+    year: "2026",
   },
-
+  {
+    id: "kaydan",
+    company: "KAYDAN TECHNOLOGY",
+    fullName: "Kaydan Technology",
+    industry: "Technologie & IT",
+    service: "IaaS VPC",
+    shortDesc: "Environnement cloud VPC flexible pour l'hébergement d'applications.",
+    longDesc:
+      "Fourniture d'un environnement cloud VPC flexible permettant à KAYDAN TECHNOLOGY d'héberger ses applications technologiques avec une garantie de performance, une isolation réseau complète et une montée en charge rapide selon les besoins.",
+    results: ["Garantie de performance", "Isolation réseau complète", "Montée en charge rapide"],
+    image: "/Collaborateur/image6.png",
+    year: "2026",
+  },
+  {
+    id: "tralco",
+    company: "TRALCO",
+    fullName: "Tralco",
+    industry: "Logistique",
+    service: "IaaS VPC",
+    shortDesc: "Infrastructure IaaS cloud VPC pour le stockage des données logistiques.",
+    longDesc:
+      "Mise à disposition d'une infrastructure IaaS cloud VPC pour le stockage sécurisé des données logistiques et la gestion des systèmes d'information de TRALCO, avec une connexion réseau à faible latence et haute résilience.",
+    results: ["Stockage sécurisé", "Faible latence", "Haute résilience"],
+    image: "/Collaborateur/image10.png",
+    year: "2026",
+  },
+  {
+    id: "ama",
+    company: "AMA",
+    fullName: "Africa Medical Appointment",
+    industry: "Santé",
+    service: "IaaS VPC",
+    shortDesc: "Infrastructure cloud VPC conforme aux exigences sanitaires.",
+    longDesc:
+      "Déploiement d'une infrastructure cloud VPC conforme aux exigences sanitaires pour la plateforme AMA. L'environnement garantit la confidentialité des données patients, la disponibilité 24h/24 et la scalabilité du service de prise de rendez-vous médicaux en ligne.",
+    results: ["Disponibilité 24h/24", "Confidentialité des données", "Scalabilité du service"],
+    image: "/Collaborateur/ama.png",
+    year: "2026",
+  },
+  {
+    id: "mde",
+    company: "MDE Business School",
+    fullName: "MDE Business School",
+    industry: "Éducation",
+    service: "IaaS VPC",
+    shortDesc: "VPC cloud dédié à l'hébergement de la plateforme pédagogique.",
+    longDesc:
+      "Mise à disposition d'un VPC cloud dédié à l'hébergement de la plateforme pédagogique de MDE Business School. L'infrastructure permet une expérience d'apprentissage en ligne fluide, sécurisée et accessible à l'ensemble des apprenants et formateurs.",
+    results: ["Apprentissage fluide", "Accès sécurisé", "Haute accessibilité"],
+    image: "/Collaborateur/mdeschool.png",
+    year: "2026",
+  },
+  {
+    id: "vatico",
+    company: "VATICO",
+    fullName: "Vatico",
+    industry: "Services",
+    service: "IaaS VPC",
+    shortDesc: "Infrastructure IaaS VPC sur mesure pour l'hébergement des systèmes d'exploitation.",
+    longDesc:
+      "Déploiement d'une infrastructure IaaS VPC sur mesure pour VATICO, assurant l'hébergement de ses systèmes d'exploitation avec isolation réseau, supervision proactive et garanties de service adaptées à ses exigences opérationnelles.",
+    results: ["Isolation réseau", "Supervision proactive", "Garanties de service (SLA)"],
+    image: "/Collaborateur/image11.png",
+    year: "2026",
+  },
+  {
+    id: "gs2e",
+    company: "GS2E",
+    fullName: "GS2E",
+    industry: "Énergie & Services",
+    service: "IaaS VPC",
+    shortDesc: "Cloud privé virtuel pour centraliser l'exploitation des outils informatiques.",
+    longDesc:
+      "Fourniture d'un cloud privé virtuel permettant à GS2E de centraliser l'exploitation de ses outils informatiques. L'environnement offre flexibilité d'administration, sécurité renforcée et accès distant sécurisé pour les équipes.",
+    results: ["Flexibilité d'administration", "Sécurité renforcée", "Accès distant sécurisé"],
+    image: "/Collaborateur/image14.png",
+    year: "2026",
+  },
+  {
+    id: "opisms",
+    company: "OPISMS",
+    fullName: "OPISMS",
+    industry: "Télécommunications",
+    service: "IaaS VPC",
+    shortDesc: "Infrastructure cloud VPC performante pour des solutions de messagerie.",
+    longDesc:
+      "Mise à disposition d'une infrastructure cloud VPC performante pour OPISMS, supportant ses solutions de messagerie et de communication professionnelle avec une haute disponibilité du service et une architecture résiliente.",
+    results: ["Haute disponibilité", "Architecture résiliente", "Performances optimales"],
+    image: "/Collaborateur/opisms.png",
+    year: "2026",
+  },
+  {
+    id: "hes",
+    company: "HES FINANCES",
+    fullName: "HES Finances",
+    industry: "Finance",
+    service: "IaaS VPC",
+    shortDesc: "Hébergement des applications financières dans un environnement ultra-sécurisé.",
+    longDesc:
+      "Hébergement des applications financières de HES FINANCES dans un environnement IaaS VPC ultra-sécurisé. La solution garantit l'intégrité et la confidentialité des données financières sensibles, avec chiffrement end-to-end et sauvegardes automatisées.",
+    results: ["Chiffrement end-to-end", "Sauvegardes automatisées", "Intégrité des données"],
+    image: "/Collaborateur/image4.png",
+    year: "2026",
+  },
+  {
+    id: "kerry",
+    company: "KERRY PAYMENT SA",
+    fullName: "Kerry Payment SA",
+    industry: "Finance & Paiement",
+    service: "IaaS VPC",
+    shortDesc: "Infrastructure IaaS VPC dédiée aux opérations de paiement.",
+    longDesc:
+      "Déploiement d'une infrastructure IaaS VPC dédiée aux opérations de paiement de KERRY PAYMENT SA. L'environnement cloud assure conformité aux normes de sécurité financière, redondance des données et disponibilité continue des services de transaction.",
+    results: ["Conformité financière", "Redondance des données", "Disponibilité continue"],
+    image: "/Collaborateur/kerrypay.png",
+    year: "2026",
+  },
 ];
 
 export function Projects() {
   const [activeFilter, setActiveFilter] = useState("Tous");
-  const [openId, setOpenId] = useState<string | null>(null);
+  const [openId, setOpenId] = useState<string | null>(projects[0]?.id || null);
   const [query, setQuery] = useState("");
 
   const filtered = projects
@@ -111,9 +188,9 @@ export function Projects() {
       query.trim() === ""
         ? true
         : p.company.toLowerCase().includes(query.toLowerCase()) ||
-          p.industry.toLowerCase().includes(query.toLowerCase()) ||
-          p.service.toLowerCase().includes(query.toLowerCase()) ||
-          p.shortDesc.toLowerCase().includes(query.toLowerCase())
+        p.industry.toLowerCase().includes(query.toLowerCase()) ||
+        p.service.toLowerCase().includes(query.toLowerCase()) ||
+        p.shortDesc.toLowerCase().includes(query.toLowerCase())
     );
 
   return (
@@ -124,7 +201,7 @@ export function Projects() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease }}
+          transition={{ duration: 0.6, ease }}
           className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8"
         >
           {filters.map((f) => (
@@ -152,7 +229,7 @@ export function Projects() {
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1, ease }}
+          transition={{ duration: 0.6, delay: 0.1, ease }}
           className="relative max-w-md mx-auto mb-8"
         >
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-taupe/35 pointer-events-none" />
@@ -209,7 +286,7 @@ export function Projects() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
-                  transition={{ duration: 0.4, delay: index * 0.06, ease }}
+                  transition={{ duration: 0.6, delay: index * 0.06, ease }}
                   className="border-b border-taupe/15"
                 >
                   {/* Row header – toujours visible */}
@@ -246,7 +323,7 @@ export function Projects() {
                     {/* Chevron */}
                     <motion.span
                       animate={{ rotate: isOpen ? 180 : 0 }}
-                      transition={{ duration: 0.3, ease }}
+                      transition={{ duration: 0.5, ease }}
                       className={cn(
                         "shrink-0 ml-auto w-8 h-8 flex items-center justify-center border transition-colors duration-300",
                         isOpen
@@ -266,15 +343,15 @@ export function Projects() {
                         initial={{ opacity: 0, x: -16 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 16 }}
-                        transition={{ duration: 0.5, delay: 0.15, ease }}
+                        transition={{ duration: 0.6, delay: 0.15, ease }}
                         className="overflow-hidden"
                       >
                         <div className="pb-10 grid md:grid-cols-2 gap-8 lg:gap-14">
                           {/* Image */}
-                         <motion.div
+                          <motion.div
                             initial={{ opacity: 0, x: -16 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: 0.1, ease }}
+                            transition={{ duration: 0.6, delay: 0.1, ease }}
                             className="relative w-full max-w-xs h-40 rounded-lg overflow-hidden bg-white border border-black/5"
                           >
                             <img
@@ -295,7 +372,7 @@ export function Projects() {
                           <motion.div
                             initial={{ opacity: 0, x: 16 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: 0.15, ease }}
+                            transition={{ duration: 0.6, delay: 0.15, ease }}
                             className="flex flex-col justify-between py-2"
                           >
                             {/* Company Full Name */}
