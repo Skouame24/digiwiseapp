@@ -8,6 +8,7 @@ import Link from "next/link";
 
 const ease = [0.25, 1, 0.5, 1] as [number, number, number, number];
 
+// Liste des filtres disponibles
 const filters = [
   "Tous",
   "IaaS VPC",
@@ -18,6 +19,7 @@ const filters = [
   "Colocation",
 ];
 
+// Liste des projets avec leurs informations
 const projects = [
   {
     id: "afma",
@@ -63,7 +65,7 @@ const projects = [
     company: "KAYDAN TECHNOLOGY",
     fullName: "Kaydan Technology",
     industry: "Technologie & IT",
-    service: "IaaS VPC",
+    service: "Colocation",
     shortDesc: "Environnement cloud VPC flexible pour l'hébergement d'applications.",
     longDesc:
       "Fourniture d'un environnement cloud VPC flexible permettant à KAYDAN TECHNOLOGY d'héberger ses applications technologiques avec une garantie de performance, une isolation réseau complète et une montée en charge rapide selon les besoins.",
@@ -175,15 +177,46 @@ const projects = [
     image: "/Collaborateur/kerrypay.png",
     year: "2026",
   },
+  {
+    id: "kerales",
+    company: "KERALES FINANCES",
+    fullName: "Kerales Finances",
+    industry: "Finance",
+    service: "Colocation",
+    shortDesc: "Hébergement physique des équipements serveurs dans des racks certifiés.",
+    longDesc:
+      "Hébergement physique des équipements serveurs de KERALES FINANCES dans les racks certifiés d'AGILLY au sein du datacentre RAXIO. La solution garantit la protection des équipements, une connectivité internet haut débit et une supervision permanente de l’infrastructure.",
+    results: ["Protection des équipements", "Connectivité haut débit", "Supervision continue"],
+    image: "/Collaborateur/image7.png",
+    year: "2026",
+  },
+  {
+    id: "mcapital",
+    company: "MCAPITAL (Mansa Capital)",
+    fullName: "Mansa Capital",
+    industry: "Finances",
+    service: "Colocation",
+    shortDesc: "Colocation des infrastructures de Mansa Capital dans les racks d'AGILLY.",
+    longDesc:
+      "Colocation des infrastructures de MANSA CAPITAL dans les racks d'AGILLY au datacentre RAXIO. Le dispositif offre une connectivité à très haut débit, une disponibilité de 99,9%, une surveillance physique et logique continue ainsi qu'une gestion câblage optimisée.",
+    results: ["Connectivité haut débit", "Disponibilité 99,9%", "Surveillance continue"],
+    image: "/Collaborateur/image8.png",
+    year: "2026",
+  },
 ];
 
 export function Projects() {
+  // Gestion des états
   const [activeFilter, setActiveFilter] = useState("Tous");
   const [openId, setOpenId] = useState<string | null>(projects[0]?.id || null);
   const [query, setQuery] = useState("");
 
+  // Filtrage des projets (on ne filtre pas selon le service si c’est "Colocation")
   const filtered = projects
-    .filter((p) => activeFilter === "Tous" || p.service === activeFilter)
+    .filter((p) =>
+      activeFilter === "Tous" ||
+      (activeFilter === "Colocation" ? p.service === "Colocation" : p.service === activeFilter)
+    )
     .filter((p) =>
       query.trim() === ""
         ? true
@@ -196,7 +229,7 @@ export function Projects() {
   return (
     <section className="py-16 bg-cream relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 sm:px-8 md:px-10">
-        {/* Filters */}
+        {/* Partie des filtres */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -224,7 +257,7 @@ export function Projects() {
           ))}
         </motion.div>
 
-        {/* Search bar */}
+        {/* Barre de recherche */}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -253,6 +286,7 @@ export function Projects() {
           )}
         </motion.div>
 
+        {/* Liste des projets */}
         <div className="border-t border-taupe/15">
           <AnimatePresence initial={false}>
             {filtered.length === 0 && (
@@ -270,7 +304,7 @@ export function Projects() {
                     setQuery("");
                     setActiveFilter("Tous");
                   }}
-                  className="mt-4 text-[11px] font-bold uppercase tracking-widest text-rouge-ambra hover:text-navy transition-colors duration-200"
+                  className="mt-4 text-[11px] font-bold uppercase tracking-widest text-rouge-ambra hover:text-navy transition-colors duration-200 group"
                 >
                   Réinitialiser
                 </button>
@@ -289,12 +323,12 @@ export function Projects() {
                   transition={{ duration: 0.6, delay: index * 0.06, ease }}
                   className="border-b border-taupe/15"
                 >
-                  {/* Row header – toujours visible */}
+                  {/* En-tête du projet */}
                   <button
                     onClick={() => setOpenId(isOpen ? null : project.id)}
                     className="w-full text-left py-7 flex items-center gap-6 group"
                   >
-                    {/* Year */}
+                    {/* Année */}
                     <span className={cn(
                       "shrink-0 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 transition-colors duration-300",
                       isOpen ? "bg-rouge-ambra/10 text-rouge-ambra" : "bg-white/80 text-taupe/50"
@@ -302,7 +336,7 @@ export function Projects() {
                       {project.year}
                     </span>
 
-                    {/* Company Name */}
+                    {/* Nom de l'entreprise */}
                     <span className={cn(
                       "text-xl lg:text-2xl font-display font-black leading-tight transition-colors duration-300",
                       isOpen ? "text-rouge-ambra" : "text-navy group-hover:text-rouge-ambra"
@@ -310,17 +344,17 @@ export function Projects() {
                       {project.company}
                     </span>
 
-                    {/* Industry */}
-                    <span className="hidden md:block text-[10px] font-bold uppercase tracking-[0.3em] text-taupe/40 shrink-0">
+                    {/* Secteur d'activité */}
+                    <span className="hidden md:block text-[10px] font-bold uppercase tracking-[0.3em] text-rouge-ambra shrink-0">
                       {project.industry}
                     </span>
 
-                    {/* Short description */}
-                    <span className="hidden lg:block flex-1 text-[13px] text-taupe/55 leading-relaxed truncate group-hover:text-rouge-ambra transition-colors duration-300">
+                    {/* Description courte */}
+                    <span className="hidden lg:block flex-1 text-[13px] text-taupe/55 leading-[1.85] truncate group-hover:text-rouge-ambra transition-colors duration-300">
                       {project.shortDesc}
                     </span>
 
-                    {/* Chevron */}
+                    {/* Flèche de déroulement */}
                     <motion.span
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={{ duration: 0.5, ease }}
@@ -335,7 +369,7 @@ export function Projects() {
                     </motion.span>
                   </button>
 
-                  {/* Expanded content */}
+                  {/* Contenu détaillé */}
                   <AnimatePresence initial={false}>
                     {isOpen && (
                       <motion.div
@@ -343,10 +377,10 @@ export function Projects() {
                         initial={{ opacity: 0, x: -16 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 16 }}
-                        transition={{ duration: 0.6, delay: 0.15, ease }}
+                        transition={{ duration: 0.6, delay: 0.1, ease }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-10 grid md:grid-cols-2 gap-8 lg:gap-14">
+                        <div className="pb-8 grid md:grid-cols-2 gap-8 lg:gap-14">
                           {/* Image */}
                           <motion.div
                             initial={{ opacity: 0, x: -16 }}
@@ -360,7 +394,7 @@ export function Projects() {
                               className="w-full h-full object-contain p-6"
                             />
 
-                            {/* Service tag */}
+                            {/* Étiquette du service */}
                             <div className="absolute bottom-4 left-4">
                               <span className="inline-block px-3 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-bold uppercase tracking-widest text-primary-light">
                                 {project.service}
@@ -368,14 +402,14 @@ export function Projects() {
                             </div>
                           </motion.div>
 
-                          {/* Project details */}
+                          {/* Informations détaillées */}
                           <motion.div
                             initial={{ opacity: 0, x: 16 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6, delay: 0.15, ease }}
                             className="flex flex-col justify-between py-2"
                           >
-                            {/* Company Full Name */}
+                            {/* Nom complet */}
                             <div className="mb-6">
                               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-rouge-ambra mb-1">
                                 {project.industry}
@@ -385,12 +419,12 @@ export function Projects() {
                               </h3>
                             </div>
 
-                            {/* Long description */}
+                            {/* Description longue */}
                             <p className="text-[14px] text-taupe/70 leading-[1.85] mb-8 flex-1">
                               {project.longDesc}
                             </p>
 
-                            {/* Results */}
+                            {/* Résultats clés */}
                             <div className="mb-8">
                               <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-taupe/40 mb-4">
                                 Résultats clés
@@ -405,7 +439,7 @@ export function Projects() {
                               </div>
                             </div>
 
-                            {/* Call to Action */}
+                            {/* Appel à l'action */}
                             <div className="pt-6 border-t border-taupe/10">
                               <p className="text-[11px] text-taupe/40 mb-3">
                                 Vous avez un projet similaire ?
