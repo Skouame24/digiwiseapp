@@ -185,7 +185,7 @@ const projects = [
     service: "Colocation",
     shortDesc: "Hébergement physique des équipements serveurs dans des racks certifiés.",
     longDesc:
-      "Hébergement physique des équipements serveurs de KERALES FINANCES dans les racks certifiés d'AGILLY au sein du datacentre RAXIO. La solution garantit la protection des équipements, une connectivité internet haut débit et une supervision permanente de l’infrastructure.",
+      "Hébergement physique des équipements serveurs de KERALES FINANCES dans les racks certifiés d'Ambra Cloud au sein du datacentre RAXIO. La solution garantit la protection des équipements, une connectivité internet haut débit et une supervision permanente de l’infrastructure.",
     results: ["Protection des équipements", "Connectivité haut débit", "Supervision continue"],
     image: "/Collaborateur/image7.png",
     year: "2026",
@@ -196,11 +196,24 @@ const projects = [
     fullName: "Mansa Capital",
     industry: "Finances",
     service: "Colocation",
-    shortDesc: "Colocation des infrastructures de Mansa Capital dans les racks d'AGILLY.",
+    shortDesc: "Colocation des infrastructures de Mansa Capital dans les racks d'Ambra Cloud.",
     longDesc:
-      "Colocation des infrastructures de MANSA CAPITAL dans les racks d'AGILLY au datacentre RAXIO. Le dispositif offre une connectivité à très haut débit, une disponibilité de 99,9%, une surveillance physique et logique continue ainsi qu'une gestion câblage optimisée.",
+      "Colocation des infrastructures de MANSA CAPITAL dans les racks d'Ambra Cloud au datacentre RAXIO. Le dispositif offre une connectivité à très haut débit, une disponibilité de 99,9%, une surveillance physique et logique continue ainsi qu'une gestion câblage optimisée.",
     results: ["Connectivité haut débit", "Disponibilité 99,9%", "Surveillance continue"],
     image: "/Collaborateur/image8.png",
+    year: "2026",
+  },
+  {
+    id: "gek",
+    company: "GEK (Gek Capital)",
+    fullName: "Gek Capital",
+    industry: "Finances",
+    service: "Colocation",
+    shortDesc: "Solution de colocation sécurisée avec sauvegarde NAS automatisée.",
+    longDesc:
+      "Mise en œuvre d'une solution de colocation hautement sécurisée pour GEK Capital au datacentre RAXIO. L'infrastructure bénéficie d'une connectivité redondante et d'un système de sauvegarde automatisée vers NAS, garantissant la protection et la restauration rapide des données critiques.",
+    results: ["Sauvegarde NAS automatisée", "Haute disponibilité", "Restauration rapide"],
+    image: "/Collaborateur/image12.png",
     year: "2026",
   },
 ];
