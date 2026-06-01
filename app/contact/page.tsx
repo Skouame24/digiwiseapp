@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Mail, Phone, MapPin, ArrowRight, Clock, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight, Clock, CheckCircle, Linkedin, Facebook } from "lucide-react";
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
@@ -134,6 +134,32 @@ export default function ContactPage() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              <div className="pt-8 border-t border-taupe/15 space-y-4">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-taupe/40">
+                  Retrouvez-nous sur les réseaux
+                </p>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://www.linkedin.com/company/ambra-cloud"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-primary-light/10 text-primary-light flex items-center justify-center rounded-full hover:bg-primary-light hover:text-white transition-all duration-300"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://web.facebook.com/people/AMBRA-Cloud/61589426378437/?sk=directory_links&_rdc=1&_rdr#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-primary-light/10 text-primary-light flex items-center justify-center rounded-full hover:bg-primary-light hover:text-white transition-all duration-300"
+                    aria-label="Facebook"
+                  >
+                    <Facebook className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </motion.div>
 

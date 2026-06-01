@@ -138,7 +138,7 @@ export function Hero() {
               iconRight={<ArrowRight className="w-4 h-4" />}
               className="w-full xs:w-auto justify-center bg-rouge-ambra hover:bg-[#7a0a0a] text-white shadow-lg shadow-rouge-ambra/20 border-none px-6 sm:px-8"
             >
-              Essai gratuit
+              Demarrer mon projet
             </Button>
             {/* <Button variant="secondary" href="/devis">
               Démarrer mon projet

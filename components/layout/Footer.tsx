@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Linkedin, Twitter, Mail, Youtube, Github } from "lucide-react";
+import { Linkedin, Mail, Facebook } from "lucide-react";
 
 const legalLinks = [
   { label: "Mentions légales", href: "#" },
@@ -12,10 +12,9 @@ const legalLinks = [
 ];
 
 const socials = [
-  { icon: <Twitter className="w-4 h-4" />, href: "#", label: "Twitter / X" },
-  { icon: <Linkedin className="w-4 h-4" />, href: "#", label: "LinkedIn" },
-  { icon: <Youtube className="w-4 h-4" />, href: "#", label: "YouTube" },
-  { icon: <Mail className="w-4 h-4" />, href: "mailto:contact@ambra.ci", label: "Email" },
+  { icon: <Linkedin className="w-4 h-4" />, href: "https://www.linkedin.com/company/ambra-cloud", label: "LinkedIn" },
+  { icon: <Facebook className="w-4 h-4" />, href: "https://web.facebook.com/people/AMBRA-Cloud/61589426378437/?sk=directory_links&_rdc=1&_rdr#", label: "Facebook" },
+  { icon: <Mail className="w-4 h-4" />, href: "mailto:infos@ambracloud.net", label: "Email" },
 ];
 
 export function Footer() {
@@ -59,6 +58,8 @@ export function Footer() {
               <a
                 key={s.label}
                 href={s.href}
+                target={s.href.startsWith("http") ? "_blank" : undefined}
+                rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 aria-label={s.label}
                 className="text-white/30 hover:text-white/80 transition-colors duration-200"
               >
