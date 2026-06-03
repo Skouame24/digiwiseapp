@@ -7,20 +7,20 @@ import { cn } from "@/lib/utils";
 
 const offers = [
   {
-    title: "Cloud Résident & Hybride",
-    description: "Infrastructure IaaS, Kubernetes et VPC hébergée à Abidjan. Indépendance des données, élasticité à la demande.",
-    icon: <Cloud className="w-6 h-6" />,
-    features: ["IaaS VPC & Kubernetes", "Indépendance locale", "Haute disponibilité"],
-    cta: "Voir les offres",
-    href: "/solutions",
-    featured: false
-  },
-  {
     title: "Cloud Privé Dédié",
     description: "Isolation totale de vos ressources critiques sur du matériel Bare Metal. Contrôle total, performance maximale.",
     icon: <ShieldCheck className="w-6 h-6" />,
     features: ["Bare Metal dédié", "Colocation Tier III", "Cloud privé managé"],
     cta: "Découvrir",
+    href: "/solutions",
+    featured: false
+  },
+  {
+    title: "Cloud Résident & Hybride",
+    description: "Infrastructure IaaS, Kubernetes et VPC hébergée à Abidjan. Indépendance des données, élasticité à la demande.",
+    icon: <Cloud className="w-6 h-6" />,
+    features: ["IaaS VPC & Kubernetes", "Indépendance locale", "Haute disponibilité"],
+    cta: "Voir les offres",
     href: "/solutions",
     featured: true
   },
