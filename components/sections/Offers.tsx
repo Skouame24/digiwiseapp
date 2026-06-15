@@ -40,7 +40,7 @@ export function Offers() {
     <section className="py-16 md:py-24 lg:py-32 bg-[#FBF4E4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -48,7 +48,7 @@ export function Offers() {
           >
             Nos Solutions
           </motion.p>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -72,8 +72,8 @@ export function Offers() {
             >
               <div className={cn(
                 "relative h-full p-6 sm:p-8 lg:p-10 transition-all duration-500 flex flex-col group",
-                offer.featured 
-                  ? "bg-[#1A0F0A] rounded-2xl lg:rounded-[40px] text-white shadow-2xl" 
+                offer.featured
+                  ? "bg-[#1A0F0A] rounded-2xl lg:rounded-[40px] text-white shadow-2xl"
                   : "bg-white rounded-2xl lg:rounded-[32px] border border-[#5C4A3E]/10"
               )}>
                 {offer.featured && (
@@ -116,8 +116,8 @@ export function Offers() {
                   href={offer.href}
                   className={cn(
                     "w-full py-6 rounded-2xl font-bold uppercase tracking-[0.2em] text-[10px] border-none",
-                    offer.featured 
-                      ? "bg-[#D86C24] text-white hover:bg-white hover:text-[#1A0F0A]" 
+                    offer.featured
+                      ? "bg-[#D86C24] text-white hover:bg-white hover:text-[#1A0F0A]"
                       : "bg-[#1A0F0A] text-white hover:bg-[#D86C24]"
                   )}
                 >

@@ -689,8 +689,8 @@
   .h-px {
     height: 1px;
   }
-  .max-h-8 {
-    max-height: calc(var(--spacing) * 8);
+  .max-h-12 {
+    max-height: calc(var(--spacing) * 12);
   }
   .max-h-\[40vh\] {
     max-height: 40vh;
@@ -770,11 +770,11 @@
   .w-40 {
     width: calc(var(--spacing) * 40);
   }
-  .w-44 {
-    width: calc(var(--spacing) * 44);
-  }
   .w-48 {
     width: calc(var(--spacing) * 48);
+  }
+  .w-52 {
+    width: calc(var(--spacing) * 52);
   }
   .w-56 {
     width: calc(var(--spacing) * 56);
