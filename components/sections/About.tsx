@@ -10,6 +10,7 @@ import { DataCenter } from "@/components/sections/DataCenter";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
+import raxiologo from "../../public/Clients/image7.png";
 /* ── Partner data (local images from /Collaborateur) ──── */
 const partners = [
   { name: "Acronis", logo: "/Collaborateur/image1.png" },
@@ -528,7 +529,7 @@ export function About() {
 
             {/* Raxio Logo */}
             <div className="bg-white/5 border border-white/10 backdrop-blur-sm p-4 md:p-5 rounded-xl">
-              <img src="/Clients/image7.png" alt="Raxio Group" className="h-8 md:h-10 object-contain brightness-0 invert" />
+              <Image src={raxiologo} alt="Raxio Group" className="h-8 md:h-10 w-auto object-contain brightness-0 invert" />
             </div>
           </motion.div>
 
