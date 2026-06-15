@@ -434,6 +434,7 @@ export function About() {
                   <img src={p.logo} alt={p.name} className="max-h-12 max-w-full object-contain" />
                 </div>
               ))}
+
             </motion.div>
           </div>
         </div>
