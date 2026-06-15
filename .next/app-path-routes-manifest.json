@@ -1,18 +1,18 @@
 {
   "/_not-found/page": "/_not-found",
   "/icon.png/route": "/icon.png",
+  "/cart/page": "/cart",
   "/about/page": "/about",
   "/blog/[id]/page": "/blog/[id]",
+  "/blog/page": "/blog",
   "/contact/page": "/contact",
-  "/devis/page": "/devis",
-  "/cart/page": "/cart",
+  "/page": "/",
   "/panier/page": "/panier",
   "/essai/page": "/essai",
-  "/blog/page": "/blog",
-  "/page": "/",
+  "/devis/page": "/devis",
   "/a-propos/page": "/a-propos",
   "/projets/page": "/projets",
-  "/services-manages/page": "/services-manages",
   "/solutions/page": "/solutions",
+  "/services-manages/page": "/services-manages",
   "/ressources/references/page": "/ressources/references"
 }

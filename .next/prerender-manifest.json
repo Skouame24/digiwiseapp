@@ -103,6 +103,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/essai": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/essai",
+      "dataRoute": "/essai.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/panier": {
       "experimentalBypassFor": [
         {
@@ -127,30 +151,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/contact": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/contact",
-      "dataRoute": "/contact.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/": {
       "experimentalBypassFor": [
         {
@@ -166,30 +166,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/",
       "dataRoute": "/index.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/a-propos": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/a-propos",
-      "dataRoute": "/a-propos.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -247,7 +223,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/devis": {
+    "/services-manages": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -260,8 +236,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/devis",
-      "dataRoute": "/devis.rsc",
+      "srcRoute": "/services-manages",
+      "dataRoute": "/services-manages.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -295,7 +271,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/services-manages": {
+    "/contact": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -308,8 +284,32 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/services-manages",
-      "dataRoute": "/services-manages.rsc",
+      "srcRoute": "/contact",
+      "dataRoute": "/contact.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/a-propos": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/a-propos",
+      "dataRoute": "/a-propos.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -343,7 +343,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/essai": {
+    "/devis": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -356,8 +356,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/essai",
-      "dataRoute": "/essai.rsc",
+      "srcRoute": "/devis",
+      "dataRoute": "/devis.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",

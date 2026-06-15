@@ -8,6 +8,7 @@ import {
 import { CtaFinal } from "@/components/sections/CtaFinal";
 import { DataCenter } from "@/components/sections/DataCenter";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 /* ── Partner data (local images from /Collaborateur) ──── */
 const partners = [
@@ -434,7 +435,6 @@ export function About() {
                   <img src={p.logo} alt={p.name} className="max-h-12 max-w-full object-contain" />
                 </div>
               ))}
-
             </motion.div>
           </div>
         </div>
@@ -465,7 +465,108 @@ export function About() {
         </div>
       </section>
 
-      {/* ── 7. CERTIFICATIONS ────────────────────────────────────────── */}
+      {/* ── 8. PARTENAIRE STRATÉGIQUE — RAXIO GROUP ──────────────────── */}
+      <section className="py-24 md:py-32 bg-navy relative overflow-hidden">
+        {/* Ambient glows */}
+        <div className="absolute top-0 left-1/4 w-48 h-48 bg-primary-light/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/3 w-40 h-40 bg-primary-light/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Subtle grid */}
+        <div
+          className="absolute inset-0 opacity-[0.02] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(#F09C3C 1px, transparent 1px), linear-gradient(90deg, #F09C3C 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-light/10 border border-primary-light/20 text-primary-light text-[10px] font-bold uppercase tracking-wider mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary-light animate-pulse" />
+              Partenaire Stratégique
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-[48px] font-display text-white leading-[1.1] tracking-tight max-w-2xl mx-auto">
+              Vos données hébergées dans la{" "}
+              <span className="italic text-primary-light">forteresse</span>{" "}
+              la plus sûre d&apos;Afrique de l&apos;Ouest
+            </h2>
+          </motion.div>
+
+          {/* Connected Logos */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="flex items-center justify-center gap-6 md:gap-10 mb-16"
+          >
+            {/* AMBRA Logo */}
+            <div className="bg-white/5 border border-white/10 backdrop-blur-sm p-4 md:p-5 rounded-xl">
+              <img src="/logo.png" alt="AMBRA Cloud" className="h-8 md:h-10 object-contain" />
+            </div>
+
+            {/* Animated Connection Line */}
+            <div className="relative w-20 md:w-32 h-px bg-primary-light/20">
+              <motion.div
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary-light shadow-lg shadow-primary-light/50"
+                animate={{ left: ["0%", "100%", "0%"] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <div className="absolute left-1/2 -translate-x-1/2 -top-3 text-[8px] font-bold text-primary-light/50 uppercase tracking-widest whitespace-nowrap">
+                Fibre directe
+              </div>
+            </div>
+
+            {/* Raxio Logo */}
+            <div className="bg-white/5 border border-white/10 backdrop-blur-sm p-4 md:p-5 rounded-xl">
+              <img src="/Clients/image7.png" alt="Raxio Group" className="h-8 md:h-10 object-contain brightness-0 invert" />
+            </div>
+          </motion.div>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-[14px] md:text-[15px] text-white/50 leading-[1.85] max-w-2xl mx-auto text-center mb-16"
+          >
+            Raxio Group est le partenaire stratégique d&apos;AMBRA Cloud pour l&apos;hébergement
+            physique de son infrastructure.
+          </motion.p>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center"
+          >
+            <a
+              href="https://www.raxiogroup.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-primary-light text-navy text-[11px] font-bold uppercase tracking-wider hover:bg-white transition-all duration-300 shadow-lg shadow-primary-light/20"
+            >
+              Découvrir Raxio Group
+              <span className="text-[16px] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5">↗</span>
+            </a>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* ── 9. CERTIFICATIONS ────────────────────────────────────────── */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
