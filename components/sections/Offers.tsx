@@ -19,16 +19,16 @@ const offers = [
     title: "Cloud Résident & Hybride",
     description: "Infrastructure IaaS, Kubernetes et VPC hébergée à Abidjan. Indépendance des données, élasticité à la demande.",
     icon: <Cloud className="w-6 h-6" />,
-    features: ["IaaS VPC & Kubernetes", "Indépendance locale", "Haute disponibilité"],
+    features: ["IaaS (VPC)", "PaaS (Kubernetes)", "Datacenter Virtuel", "Sauvegarde & PRA", "Architecture Hybride"],
     cta: "Voir les offres",
-    href: "/solutions",
+    href: "/solutions/resident",
     featured: true
   },
   {
-    title: "Services Managés",
-    description: "Sauvegarde, supervision 24/7 et sécurité avancée. Nos experts pilotent votre infrastructure, vous vous concentrez sur votre métier.",
+    title: "Services Managés Inclus",
+    description: "Supervision 24/7, sécurité native Zero Trust et sauvegarde. Nos experts pilotent intégralement votre infrastructure.",
     icon: <Settings2 className="w-6 h-6" />,
-    features: ["Supervision & monitoring", "Sécurité managée", "Sauvegarde & PRA"],
+    features: ["Supervision 24/7 & SLA 99,9%", "Sécurité Zero Trust (ZTNA)", "Sauvegarde Automatisée", "Reporting Transparent"],
     cta: "En savoir plus",
     href: "/services-manages",
     featured: false
@@ -115,7 +115,7 @@ export function Offers() {
                 <Button
                   href={offer.href}
                   className={cn(
-                    "w-full py-6 rounded-2xl font-bold uppercase tracking-[0.2em] text-[10px] border-none",
+                    "w-full py-6 rounded-2xl font-bold uppercase tracking-[0.2em] text-[10px] border-none mt-auto",
                     offer.featured
                       ? "bg-[#D86C24] text-white hover:bg-white hover:text-[#1A0F0A]"
                       : "bg-[#1A0F0A] text-white hover:bg-[#D86C24]"

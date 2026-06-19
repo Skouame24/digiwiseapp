@@ -95,62 +95,62 @@ export function ManagedServices() {
                 </motion.div>
 
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                {/* Image */}
-                <div className={cn("relative", index % 2 === 1 ? "lg:order-2" : "")}>
-                  <div className="relative rounded-[32px] overflow-hidden shadow-xl aspect-[4/3]">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent" />
-                  </div>
-                  <div className={cn(
-                    "absolute -bottom-4 px-5 py-2 rounded-full shadow-lg text-[10px] font-bold uppercase tracking-widest text-white bg-primary-light",
-                    index % 2 === 1 ? "-left-4 lg:left-auto lg:-right-4" : "-right-4"
-                  )}>
-                    {service.tagline}
-                  </div>
-                </div>
-
-              <div className={cn(index % 2 === 1 ? "lg:order-1" : "")}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-light/10 text-primary-light flex items-center justify-center">
-                      {service.icon}
+                  {/* Image */}
+                  <div className={cn("relative", index % 2 === 1 ? "lg:order-2" : "")}>
+                    <div className="relative rounded-[32px] overflow-hidden shadow-xl aspect-[4/3]">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent" />
                     </div>
-                    <div className="h-px flex-1 bg-taupe/10" />
+                    <div className={cn(
+                      "absolute -bottom-4 px-5 py-2 rounded-full shadow-lg text-[10px] font-bold uppercase tracking-widest text-white bg-primary-light",
+                      index % 2 === 1 ? "-left-4 lg:left-auto lg:-right-4" : "-right-4"
+                    )}>
+                      {service.tagline}
+                    </div>
                   </div>
 
-                  <h3 className="text-2xl md:text-3xl font-display text-navy mb-4 group-hover:text-primary-light transition-colors duration-300">
-                    {service.title}
-                  </h3>
+                  <div className={cn(index % 2 === 1 ? "lg:order-1" : "")}>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-2xl bg-primary-light/10 text-primary-light flex items-center justify-center">
+                        {service.icon}
+                      </div>
+                      <div className="h-px flex-1 bg-taupe/10" />
+                    </div>
 
-                  <p className="text-[15px] text-taupe/70 leading-relaxed mb-6">
-                    {service.description}
-                  </p>
+                    <h3 className="text-2xl md:text-3xl font-display text-navy mb-4 group-hover:text-primary-light transition-colors duration-300">
+                      {service.title}
+                    </h3>
 
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feat) => (
-                      <li key={feat} className="flex items-center gap-3">
-                        <CheckCircle2 className="w-4 h-4 text-primary-light shrink-0" />
-                        <span className="text-[14px] text-navy font-medium">{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    <p className="text-[15px] text-taupe/70 leading-relaxed mb-6">
+                      {service.description}
+                    </p>
 
-                  <Button
-                    href="/devis"
-                    iconRight={<ArrowRight className="w-4 h-4" />}
-                    className="bg-primary-light text-white hover:bg-ambre-signature"
-                  >
-                    Demander un devis
-                  </Button>                 
+                    <ul className="space-y-3 mb-8">
+                      {service.features.map((feat) => (
+                        <li key={feat} className="flex items-center gap-3">
+                          <CheckCircle2 className="w-4 h-4 text-primary-light shrink-0" />
+                          <span className="text-[14px] text-navy font-medium">{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button
+                      href="/devis"
+                      iconRight={<ArrowRight className="w-4 h-4" />}
+                      className="bg-primary-light text-white hover:bg-ambre-signature"
+                    >
+                      Demander un devis
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
       </div>
     </section>
   );
