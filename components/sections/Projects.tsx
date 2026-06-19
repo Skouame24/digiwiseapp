@@ -19,6 +19,8 @@ const filters = [
   "Colocation",
 ];
 
+
+
 // Liste des projets avec leurs informations
 const projects = [
   // {
