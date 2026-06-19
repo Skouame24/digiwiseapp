@@ -6,29 +6,46 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const offers = [
+
   {
-    title: "Cloud Privé Dédié",
-    description: "Isolation totale de vos ressources critiques sur du matériel Bare Metal. Contrôle total, performance maximale.",
+    title: "Cloud Privé & Dédié",
+    description: "Des infrastructures sur-mesure pour vos exigences spécifiques de confidentialité, de conformité ou de très haute performance.",
     icon: <ShieldCheck className="w-6 h-6" />,
-    features: ["Bare Metal dédié", "Colocation Tier III", "Cloud privé managé"],
+    features: [
+      "Bare Metal – Serveurs Dédiés",
+      "Turnkey Private Cloud",
+      "Colocation en Datacenter",
+      "Private Cloud as a Service"
+    ],
     cta: "Découvrir",
-    href: "/solutions",
+    href: "/solutions/prive",
     featured: false
   },
   {
     title: "Cloud Résident & Hybride",
-    description: "Infrastructure IaaS, Kubernetes et VPC hébergée à Abidjan. Indépendance des données, élasticité à la demande.",
+    description: "Hébergez vos applications critiques dans un cloud de proximité, conforme et souverain, avec la flexibilité d'architectures multi-cloud.",
     icon: <Cloud className="w-6 h-6" />,
-    features: ["IaaS (VPC)", "PaaS (Kubernetes)", "Datacenter Virtuel", "Sauvegarde & PRA", "Architecture Hybride"],
+    features: [
+      "Cloud IaaS – VPC",
+      "Cloud PaaS – Kubernetes",
+      "Datacenter Virtuel – Proxmox VE",
+      "Sauvegarde & PRA",
+      "Architecture Hybride"
+    ],
     cta: "Voir les offres",
     href: "/solutions/resident",
     featured: true
   },
   {
     title: "Services Managés Inclus",
-    description: "Supervision 24/7, sécurité native Zero Trust et sauvegarde. Nos experts pilotent intégralement votre infrastructure.",
+    description: "Nous prenons en charge la gestion de votre infrastructure pour que vous puissiez vous concentrer sur votre cœur de métier.",
     icon: <Settings2 className="w-6 h-6" />,
-    features: ["Supervision 24/7 & SLA 99,9%", "Sécurité Zero Trust (ZTNA)", "Sauvegarde Automatisée", "Reporting Transparent"],
+    features: [
+      "Supervision 24/7",
+      "Sécurité Native (Zero Trust)",
+      "Sauvegarde Automatisée",
+      "Reporting Transparent"
+    ],
     cta: "En savoir plus",
     href: "/services-manages",
     featured: false
