@@ -21,19 +21,19 @@ const filters = [
 
 // Liste des projets avec leurs informations
 const projects = [
-  {
-    id: "afma",
-    company: "AFMA",
-    fullName: "AFMA",
-    industry: "Assurances",
-    service: "IaaS VPC",
-    shortDesc: "Mise en place d'un environnement cloud privé virtuel (VPC) hautement sécurisé.",
-    longDesc:
-      "Mise en place d'un environnement cloud privé virtuel (VPC) hautement sécurisé permettant à AFMA de centraliser ses données métier et d'assurer la continuité opérationnelle grâce à une infrastructure évolutive et managée.",
-    results: ["Haute sécurité", "Continuité opérationnelle", "Infrastructure managée"],
-    image: "/Collaborateur/acr-afma.png.png",
-    year: "2026",
-  },
+  // {
+  //   id: "afma",
+  //   company: "AFMA",
+  //   fullName: "AFMA",
+  //   industry: "Assurances",
+  //   service: "IaaS VPC",
+  //   shortDesc: "Mise en place d'un environnement cloud privé virtuel (VPC) hautement sécurisé.",
+  //   longDesc:
+  //     "Mise en place d'un environnement cloud privé virtuel (VPC) hautement sécurisé permettant à AFMA de centraliser ses données métier et d'assurer la continuité opérationnelle grâce à une infrastructure évolutive et managée.",
+  //   results: ["Haute sécurité", "Continuité opérationnelle", "Infrastructure managée"],
+  //   image: "/Collaborateur/acr-afma.png.png",
+  //   year: "2026",
+  // },
   {
     id: "cn-itie",
     company: "CN-ITIE",

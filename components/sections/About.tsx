@@ -34,9 +34,11 @@ const partners = [
 const clients = [
   { name: "Société Générale", logo: "/Clients/image1.png" },
   { name: "Snedai Groupe", logo: "/Clients/image2.png" },
-  { name: "SODECI", logo: "/Clients/image3.png" },
+  // { name: "SODECI", logo: "/Clients/image3.png" },
   { name: "Bridge Bank", logo: "/Clients/image4.png" },
   { name: "MTN", logo: "/Clients/mtn.png" },
+  { name: "opeular", logo: "/Clients/opeular.jpeg" },
+
   { name: "Client", logo: "/Clients/image5.png" },
   { name: "Client", logo: "/Clients/image6.png" },
   { name: "Client", logo: "/Clients/image7.png" },
