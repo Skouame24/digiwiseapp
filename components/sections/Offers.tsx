@@ -35,6 +35,7 @@ const offers = [
     cta: "Voir les offres",
     href: "/solutions/resident",
     featured: true
+
   },
   {
     title: "Services Managés Inclus",
