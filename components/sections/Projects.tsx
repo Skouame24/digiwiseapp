@@ -31,7 +31,7 @@ const projects = [
     longDesc:
       "Mise en place d'un environnement cloud privé virtuel (VPC) hautement sécurisé permettant à AFMA de centraliser ses données métier et d'assurer la continuité opérationnelle grâce à une infrastructure évolutive et managée.",
     results: ["Haute sécurité", "Continuité opérationnelle", "Infrastructure managée"],
-    image: "/Collaborateur/image.png",
+    image: "/Collaborateur/acr-afma.png.png",
     year: "2026",
   },
   {
