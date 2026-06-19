@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "AMBRA Cloud",
     images: [
       {
-        url: "/logo.png",
+        url: "https://ambracloud.net/public/logo.png",
         width: 669,
         height: 357,
         alt: "AMBRA Cloud Logo",

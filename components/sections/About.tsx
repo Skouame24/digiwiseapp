@@ -27,7 +27,6 @@ const partners = [
   { name: "Synology", logo: "/Collaborateur/image12.png" },
   { name: "Synology", logo: "/Collaborateur/image13.png" },
   { name: "Synology", logo: "/Collaborateur/image14.png" },
-  { name: "cloudispire", logo: "/Collaborateur/cloudispire.png" },
 
 ];
 
@@ -43,6 +42,7 @@ const clients = [
   { name: "Client", logo: "/Clients/image7.png" },
   { name: "Client", logo: "/Clients/image8.png" },
   { name: "Agilly", logo: "/Collaborateur/agilly.png" },
+  { name: "cloudispire", logo: "/Clients/cloudispire.png" },
 
 ];
 
