@@ -19,9 +19,34 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ambracloud.net"),
   title: "AMBRA Cloud | Cloud résident en Côte d’Ivoire",
   description:
     "Le cloud résident fiable, sécurisé et performant. AMBRA Cloud déploie des solutions d'infrastructure robustes pour les environnements critiques.",
+  openGraph: {
+    title: "AMBRA Cloud | Cloud résident en Côte d’Ivoire",
+    description:
+      "Le cloud résident fiable, sécurisé et performant. AMBRA Cloud déploie des solutions d'infrastructure robustes pour les environnements critiques.",
+    url: "https://ambracloud.net",
+    siteName: "AMBRA Cloud",
+    images: [
+      {
+        url: "/logo.png",
+        width: 669,
+        height: 357,
+        alt: "AMBRA Cloud Logo",
+      },
+    ],
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AMBRA Cloud | Cloud résident en Côte d’Ivoire",
+    description:
+      "Le cloud résident fiable, sécurisé et performant. AMBRA Cloud déploie des solutions d'infrastructure robustes pour les environnements critiques.",
+    images: ["/logo.png"],
+  },
 };
 
 export default function RootLayout({

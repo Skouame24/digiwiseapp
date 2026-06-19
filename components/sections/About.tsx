@@ -27,6 +27,8 @@ const partners = [
   { name: "Synology", logo: "/Collaborateur/image12.png" },
   { name: "Synology", logo: "/Collaborateur/image13.png" },
   { name: "Synology", logo: "/Collaborateur/image14.png" },
+  { name: "cloudispire", logo: "/Collaborateur/cloudispire.png" },
+
 ];
 
 /* ── Client data (local images from /Clients) ──────── */
