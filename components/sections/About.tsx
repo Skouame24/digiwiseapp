@@ -43,7 +43,6 @@ const clients = [
   { name: "Client", logo: "/Clients/image8.png" },
   { name: "Agilly", logo: "/Collaborateur/agilly.png" },
   { name: "cloudispire", logo: "/Clients/cloudispire.png" },
-
 ];
 
 const certifications = [
