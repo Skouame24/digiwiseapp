@@ -16,46 +16,90 @@ const categories = [
     accent: "primary-light" as const,
     services: [
       {
-        title: "IaaS (VPC)",
+        title: "Cloud IaaS – Virtual Private Cloud (VPC)",
         tagline: "Infrastructure as a Service",
-        description: "Déployez vos machines virtuelles, réseaux et stockage dans un Virtual Private Cloud totalement isolé. Vous gardez le contrôle total de votre infrastructure tout en bénéficiant de la flexibilité du cloud.",
-        features: ["VMs dédiées & scalables", "Réseau SDN privé", "Stockage bloc haute performance", "API & CLI complets"],
+        description: "Des environnements isolés, sécurisés et dimensionnés à vos besoins. Créez et gérez vos instances en toute autonomie, sur une infrastructure que nous supervisons 24h/24.",
+        features: [
+          "Machines virtuelles dédiées et dimensionnées selon les besoins",
+          "Gestion complète des instances",
+          "Infrastructure supervisée 24h/24 et 7j/7"
+        ],
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
         fields: ["designation", "vcpu", "ram", "storage", "duration"] as const,
       },
       {
-        title: "PaaS (Kubernetes)",
+        title: "Cloud PaaS – Kubernetes as a Service",
         tagline: "Orchestration de conteneurs",
-        description: "Accélérez vos déploiements avec un cluster Kubernetes managé. Nous gérons le plan de contrôle, vous vous concentrez sur vos applications.",
-        features: ["Cluster managé & haute dispo", "Auto-scaling horizontal", "Ingress & Load Balancer", "Intégration CI/CD"],
+        description: "Déployez, orchestrez et faites évoluer vos applications conteneurisées sans vous soucier de la complexité infrastructurelle. Nous gérons la plateforme, vous gérez vos services.",
+        features: [
+          "Déploiement et orchestration d'applications conteneurisées",
+          "Gestion complète de la plateforme Kubernetes",
+          "Administration de l'infrastructure sous-jacente"
+        ],
         image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
         fields: ["designation", "vcpu", "ram", "duration"] as const,
       },
       {
-        title: "Sauvegarde",
-        tagline: "Protection des données",
-        description: "Solutions de sauvegarde automatisées avec réplication géographique entre nos sites. Récupérez vos données en quelques clics grâce à des politiques de rétention flexibles.",
-        features: ["Snapshots automatisés", "Réplication inter-site", "Restauration granulaire", "Conformité RGPD/SNS"],
+        title: "Datacenter Virtuel – Hyperviseur Proxmox VE",
+        tagline: "Virtualisation Open Source",
+        description: "Un environnement virtualisé ouvert, basé sur des fondations Open Source robustes. Maîtrise totale de votre infrastructure, flexibilité maximale, sans dépendance propriétaire.",
+        features: [
+          "Environnement virtualisé basé sur des technologies Open Source",
+          "Maîtrise complète de l'infrastructure",
+          "Flexibilité maximale et absence de dépendance propriétaire"
+        ],
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
+        configurable: true,
+        fields: ["designation", "vcpu", "ram", "storage", "duration"] as const,
+      },
+      {
+        title: "Sauvegarde & Plan de Reprise d’Activité (PRA)",
+        tagline: "Protection & Continuité",
+        description: "Sauvegarde automatisée des données et plan de reprise d'activité opérationnel, testé et documenté pour assurer la protection intégrale de vos données critiques.",
+        features: [
+          "Sauvegarde automatisée des données",
+          "Plan de reprise d’activité opérationnel",
+          "Tests et documentation du PRA",
+          "Protection des données critiques"
+        ],
         image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
         fields: ["storage", "duration"] as const,
+      },
+      {
+        title: "Architecture Hybride",
+        tagline: "Intégration Multi-Cloud",
+        description: "Intégrez en toute simplicité votre cloud résident, vos clouds publics et vos infrastructures physiques on-premise au sein d'une architecture unifiée avec un point de gestion unique.",
+        features: [
+          "Intégration cloud résident, cloud public et on-premise",
+          "Architecture unifiée et pilotage depuis un point de gestion unique",
+          "Flexibilité et résilience maximales"
+        ],
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+        configurable: false,
+        fields: [] as const,
       }
     ]
   },
   {
     id: "private",
-    title: "Cloud Privé",
+    title: "Cloud Privé & Infrastructures Dédiées",
     subtitle: "Performance & contrôle",
     icon: <Lock className="w-6 h-6" />,
     accent: "navy" as const,
     services: [
       {
-        title: "Bare Metal",
+        title: "Bare Metal – Serveurs Dédiés Haute Performance",
         tagline: "Serveurs physiques dédiés",
-        description: "Serveurs physiques haute performance sans couche de virtualisation. Idéal pour les bases de données exigeantes, le calcul intensif ou les charges nécessitant un accès direct au matériel.",
-        features: ["CPU & RAM dédiés", "Disques NVMe locaux", "Accès IPMI/KVM", "Déploiement en 2h"],
+        description: "Serveurs physiques dédiés pour vos charges les plus exigeantes : performances brutes, aucun partage, aucun voisin.",
+        features: [
+          "CPU & RAM dédiés",
+          "Disques NVMe locaux",
+          "Accès IPMI/KVM",
+          "Performances brutes et aucun partage"
+        ],
         image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
         fields: ["designation", "vcpu", "ram", "storage", "duration"] as const,
@@ -63,18 +107,42 @@ const categories = [
       {
         title: "Colocation",
         tagline: "Hébergement de votre matériel",
-        description: "Installez vos serveurs dans notre datacenter Tier III certifié. Vous conservez la propriété de votre hardware tout en profitant de notre infrastructure électrique, réseau et climatisation de niveau entreprise.",
-        features: ["Baies sécurisées 24/7", "Alimentation redondante", "Bande passante dédiée", "Accès sur rendez-vous"],
+        description: "Hébergez vos équipements dans notre datacenter Raxio Tier III. Vous gardez le matériel, nous assurons l'environnement.",
+        features: [
+          "Baies sécurisées dans notre datacenter Tier III",
+          "Alimentation électrique et climatisation redondées",
+          "Sécurité physique stricte 24h/24 et 7j/7",
+          "Vous gardez le matériel, nous assurons l'environnement"
+        ],
         image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
         fields: ["designation", "storage", "duration"] as const,
       },
       {
-        title: "Cloud privé managé",
-        tagline: "Infrastructure dédiée & gérée",
-        description: "Un environnement cloud entièrement dédié à votre organisation, managé par nos experts. Vous bénéficiez de l'isolation d'une infrastructure dédiée avec la simplicité d'un service managé.",
-        features: ["VMware / OpenStack", "Migration assistée", "SLA 99,95%", "Support technique dédié"],
+        title: "Turnkey Private Cloud - Clé en main",
+        tagline: "Nuage privé géré clé en main",
+        description: "Nous concevons, déployons et opérons votre cloud privé clé en main. Une alternative économique aux solutions hyperconvergées.",
+        features: [
+          "Conception, déploiement et opération clé en main",
+          "Alternative économique aux solutions hyperconvergées",
+          "Supervision proactive et monitoring 24h/24",
+          "Support d'experts de bout en bout"
+        ],
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+        configurable: true,
+        fields: ["designation", "vcpu", "ram", "storage", "duration"] as const,
+      },
+      {
+        title: "Private Cloud as a service",
+        tagline: "Infogérance On-Premise",
+        description: "Transformez votre infrastructure existante en cloud privé performant. Vos serveurs restent on-premise, nous infogérons le contrôleur.",
+        features: [
+          "Transformation de votre infrastructure physique existante",
+          "Vos serveurs physiques restent on-premise",
+          "Nous infogérons complètement le contrôleur",
+          "Supervision, monitoring et alerting 24h/24"
+        ],
+        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
         fields: ["designation", "vcpu", "ram", "storage", "duration"] as const,
       }
