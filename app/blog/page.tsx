@@ -9,56 +9,7 @@ import Link from "next/link";
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-const blogPosts = [
-  {
-    id: "independance-numerique-afrique",
-    title: "Indépendance numérique : pourquoi le cloud résident est vital pour l'Afrique",
-    excerpt: "Découvrez les enjeux de la localisation des données et comment AMBRA Cloud sécurise l'infrastructure numérique de la sous-région.",
-    category: "Indépendance",
-    date: "15 Mai 2024",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop",
-  },
-  {
-    id: "securite-cloud-hybride",
-    title: "Stratégies de sécurité avancées pour les environnements de cloud hybride",
-    excerpt: "Comment protéger vos charges de travail critiques dans un environnement multi-cloud sans compromettre la performance.",
-    category: "Sécurité",
-    date: "10 Mai 2024",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop",
-  },
-  {
-    id: "kubernetes-iaas-performance",
-    title: "Optimiser Kubernetes sur une infrastructure Bare Metal",
-    excerpt: "Une analyse technique approfondie sur le déploiement de clusters K8s pour des performances maximales.",
-    category: "Infrastructure",
-    date: "05 Mai 2024",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop",
-  },
-  {
-    id: "managed-services-efficiency",
-    title: "Services Managés : libérez vos équipes IT pour l'innovation",
-    excerpt: "Déléguez l'exploitation de votre cloud à nos experts et concentrez-vous sur votre cœur de métier.",
-    category: "Expertise",
-    date: "28 Avril 2024",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop",
-  },
-  {
-    id: "fintech-cloud-compliance",
-    title: "Cloud & Fintech : Répondre aux exigences de conformité en Côte d'Ivoire",
-    excerpt: "Guide pratique pour les institutions financières souhaitant migrer vers le cloud en respectant les régulations locales.",
-    category: "Secteurs",
-    date: "20 Avril 2024",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000&auto=format&fit=crop",
-  },
-  {
-    id: "disaster-recovery-plan",
-    title: "Plan de Reprise d'Activité (PRA) : Les piliers d'une résilience absolue",
-    excerpt: "Pourquoi la sauvegarde géographique ne suffit plus et comment concevoir un PRA cloud performant.",
-    category: "Sécurité",
-    date: "12 Avril 2024",
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1000&auto=format&fit=crop",
-  },
-];
+import { blogPosts } from "@/lib/blogData";
 
 export default function BlogPage() {
   const featuredPost = blogPosts[0];
