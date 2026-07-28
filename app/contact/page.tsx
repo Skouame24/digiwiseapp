@@ -44,11 +44,45 @@ const subjects = [
 
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    message: "",
+  });
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSent(true);
+    setLoading(true);
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          subject: selectedSubject,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Une erreur s'est produite lors de l'envoi.");
+      }
+
+      setSent(true);
+    } catch (err: any) {
+      setErrorMessage(err.message || "Impossible d'envoyer le message pour le moment.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -183,7 +217,11 @@ export default function ContactPage() {
                     Merci pour votre message. Notre équipe vous répondra dans les 24h ouvrées.
                   </p>
                   <button
-                    onClick={() => setSent(false)}
+                    onClick={() => {
+                      setSent(false);
+                      setFormData({ name: "", email: "", company: "", phone: "", message: "" });
+                      setSelectedSubject("");
+                    }}
                     className="mt-8 text-[12px] font-bold uppercase tracking-widest text-primary-light border-b border-primary-light/30 hover:border-primary-light transition-colors"
                   >
                     Envoyer un autre message
@@ -191,6 +229,12 @@ export default function ContactPage() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {errorMessage && (
+                    <div className="p-4 bg-red-50 border border-red-200 text-red-700 text-xs font-semibold rounded">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-[11px] font-bold uppercase tracking-[0.2em] text-taupe/50">
@@ -199,6 +243,8 @@ export default function ContactPage() {
                       <input
                         required
                         type="text"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="Jean Kouassi"
                         className="w-full px-4 py-3.5 bg-cream/30 border border-taupe/15 text-navy text-[14px] placeholder:text-taupe/30 focus:border-primary-light focus:bg-white outline-none transition-all duration-300"
                       />
@@ -210,6 +256,8 @@ export default function ContactPage() {
                       <input
                         required
                         type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="jean@entreprise.ci"
                         className="w-full px-4 py-3.5 bg-cream/30 border border-taupe/15 text-navy text-[14px] placeholder:text-taupe/30 focus:border-primary-light focus:bg-white outline-none transition-all duration-300"
                       />
@@ -223,6 +271,8 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         placeholder="Nom de votre organisation"
                         className="w-full px-4 py-3.5 bg-cream/30 border border-taupe/15 text-navy text-[14px] placeholder:text-taupe/30 focus:border-primary-light focus:bg-white outline-none transition-all duration-300"
                       />
@@ -233,6 +283,8 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+225 07 xx xx xx xx"
                         className="w-full px-4 py-3.5 bg-cream/30 border border-taupe/15 text-navy text-[14px] placeholder:text-taupe/30 focus:border-primary-light focus:bg-white outline-none transition-all duration-300"
                       />
@@ -269,6 +321,8 @@ export default function ContactPage() {
                     <textarea
                       required
                       rows={6}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Décrivez votre projet, vos besoins ou vos questions…"
                       className="w-full px-4 py-3.5 bg-cream/30 border border-taupe/15 text-navy text-[14px] placeholder:text-taupe/30 focus:border-primary-light focus:bg-white outline-none transition-all duration-300 resize-none"
                     />
@@ -276,9 +330,10 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="group w-full flex items-center justify-center gap-3 bg-primary-light text-white text-[12px] font-black uppercase tracking-[0.2em] py-5 hover:bg-ambre-signature transition-all duration-300"
+                    disabled={loading}
+                    className="group w-full flex items-center justify-center gap-3 bg-primary-light text-white text-[12px] font-black uppercase tracking-[0.2em] py-5 hover:bg-ambre-signature transition-all duration-300 disabled:opacity-50"
                   >
-                    <span>Envoyer le message</span>
+                    <span>{loading ? "Envoi en cours..." : "Envoyer le message"}</span>
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
 

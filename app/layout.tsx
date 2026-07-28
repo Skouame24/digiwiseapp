@@ -4,7 +4,6 @@ import "@/styles/globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Providers } from "@/components/layout/Providers";
-import { GateWrapper } from "@/components/layout/GateWrapper";
 
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
@@ -59,11 +58,9 @@ export default function RootLayout({
     <html lang="fr" className={`${dmSerif.variable} ${dmSans.variable} overflow-x-clip`}>
       <body className="overflow-x-clip">
         <Providers>
-          <GateWrapper>
-            <Navbar />
-            <main className="bg-white">{children}</main>
-            <Footer />
-          </GateWrapper>
+          <Navbar />
+          <main className="bg-white">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>
