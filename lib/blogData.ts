@@ -11,11 +11,117 @@ export interface BlogPost {
     avatar: string;
   };
   image: string;
+  hideHeroImage?: boolean;
   content: string;
   tags: string[];
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    id: "conformite-bceao-cloud-resident",
+    title: "Conformité BCEAO et cloud résident : ce que votre entreprise doit savoir",
+    excerpt: "La digitalisation des services financiers en Afrique de l’Ouest s'accélère. Découvrez les exigences réglementaires de la BCEAO (Instruction n°008-05-2015, n°001-01-2024) et comment le cloud résident assure la conformité de votre entreprise.",
+    category: "Conformité",
+    date: "05 Août 2026",
+    readTime: "7 min de lecture",
+    author: {
+      name: "Evelyne Boko",
+      role: "Directrice Générale d'AMBRA Cloud",
+      avatar: "/dgamra.png",
+    },
+    image: "/raxio_datacenter_abidjan.png",
+    hideHeroImage: true,
+    content: `
+      <p><strong>La digitalisation des services financiers en Afrique de l’Ouest avance vite.</strong> Paiements mobiles, monnaie électronique, plateformes fintech : l’écosystème s’est considérablement élargi ces dix dernières années, et la Banque Centrale des États de l’Afrique de l’Ouest (BCEAO) a fait évoluer son cadre réglementaire en conséquence, avec une attention croissante portée à la sécurité des systèmes d’information.</p>
+      
+      <p>Pour toute entreprise qui opère dans ou autour de cet écosystème, comprendre ce cadre n’est plus un sujet réservé aux juristes. Le choix de son infrastructure cloud en fait directement partie.</p>
+
+      <h2>Un cadre réglementaire construit progressivement depuis 2006</h2>
+      <p>La surveillance des systèmes de paiement par la BCEAO ne date pas d’hier. Elle repose sur une <strong>« Politique de surveillance des systèmes de paiement de l’UEMOA »</strong> adoptée par les autorités dès novembre 2006, puis précisée par l’Instruction n°127-07-08 du 9 juillet 2008. L’objectif affiché depuis l’origine : contribuer à la stabilité financière de l’Union en promouvant l’efficience, la fiabilité et la sécurité des systèmes de paiement.</p>
+      <p>Ce dispositif couvre un périmètre large : les systèmes gérés directement par la BCEAO (comme <strong>STAR-UEMOA</strong> ou <strong>SICA-UEMOA</strong>), les systèmes gérés par les banques, ceux gérés par les établissements de monnaie électronique, ainsi que les autres acteurs privés du paiement.</p>
+      <p>Depuis, ce socle a été enrichi par plusieurs textes plus spécifiques, à mesure que les usages digitaux se sont développés.</p>
+
+      <h2>Ce que les textes BCEAO exigent concrètement</h2>
+      
+      <h3>La sécurité des infrastructures pour la monnaie électronique</h3>
+      <p>L’<strong>Instruction n°008-05-2015</strong>, qui encadre les établissements de monnaie électronique (EME) dans l’UMOA, repose sur trois piliers : l’auto-discipline des émetteurs, la discipline de marché, et les exigences réglementaires proprement dites.</p>
+      <p>Ce dernier pilier est le plus directement technique. Le texte précise noir sur blanc que les exigences réglementaires portent notamment sur <em>« la sécurité des infrastructures techniques déployées pour l’offre de services de paiement adossés à la monnaie électronique, qui couvrent la disponibilité, l’intégrité, la confidentialité et la traçabilité des opérations »</em>. Quatre critères qui ressemblent, presque mot pour mot, à ce qu’on attend d’une infrastructure cloud sérieuse.</p>
+
+      <h3>La sécurité des systèmes d’information pour les établissements de paiement</h3>
+      <p>Plus récemment, l’<strong>Instruction n°001-01-2024 du 23 janvier 2024</strong>, relative aux services de paiement dans l’UMOA, est venue actualiser et élargir le cadre applicable aux établissements de paiement. Elle exige explicitement la mise en place de « dispositifs de contrôle interne et de gestion des risques, qui permettent notamment d’assurer la sécurité des systèmes d’information et des services de paiement ainsi que la protection des données des utilisateurs de services de paiement ».</p>
+      <p>Le texte précise que ces dispositifs doivent être adaptés à la taille de l’établissement et à la complexité des services fournis, ce qui signifie concrètement qu’une jeune fintech n’est pas tenue aux mêmes moyens qu’une grande banque, mais qu’aucun acteur n’est dispensé de l’obligation de sécuriser ses systèmes et les données de ses utilisateurs.</p>
+      <p>Le détail des textes en vigueur est consultable sur les pages officielles de <a href="https://www.bceao.int/fr/reglementations/reglementation-des-systemes-de-paiement" target="_blank" rel="noopener noreferrer">réglementation des systèmes de paiement</a> et de <a href="https://www.bceao.int/fr/reglementations/reglementation-bancaire" target="_blank" rel="noopener noreferrer">réglementation bancaire</a> de la BCEAO.</p>
+
+      <h3>La gouvernance de la sécurité et la continuité d’activité</h3>
+      <p>Au-delà des textes spécifiques aux moyens de paiement, la supervision bancaire de la BCEAO attend des établissements qu’ils démontrent une gouvernance de la sécurité formalisée : une politique de sécurité des systèmes d’information (PSSI) validée par l’organe de direction, une fonction de responsable de la sécurité (RSSI) clairement identifiée, une cartographie des risques informatiques tenue à jour et articulée avec la gestion globale des risques opérationnels. Ce point est détaillé dans l’analyse du cabinet Optima Advisory sur les <a href="https://optimaadvisory.net/blog/bceao-cybersecurite-banques-uemoa/" target="_blank" rel="noopener noreferrer">exigences de cybersécurité BCEAO</a>, publiée en mai 2026.</p>
+      <p>La continuité d’activité fait également partie des attentes concrètes de la supervision : un plan de continuité (PCA) et de reprise après sinistre (PRA) ne suffit pas s’il reste théorique. Il doit être testé périodiquement, en conditions réelles, sur les services considérés comme critiques.</p>
+
+      <h3>La maîtrise des prestataires externes</h3>
+      <p>C’est sans doute le point le plus directement lié au choix d’un fournisseur cloud. Les établissements supervisés doivent exercer une véritable maîtrise sur leurs activités externalisées : due diligence documentée sur leurs prestataires, clauses contractuelles permettant un droit d’audit, et clauses de réversibilité garantissant la capacité de reprendre le contrôle de ses données et systèmes en cas de rupture de la relation contractuelle.</p>
+
+      <h3>La notification des incidents</h3>
+      <p>Enfin, les incidents significatifs doivent pouvoir être déclarés rapidement aux autorités de supervision, avec la capacité de produire, a posteriori, des éléments d’investigation précis et exploitables.</p>
+
+      <blockquote>
+        Une politique de sécurité n'a de valeur que si elle est déclinée en procédures opérationnelles contrôlables et testées régulièrement en conditions réelles.
+      </blockquote>
+
+      <h2>Les écarts les plus fréquemment observés</h2>
+      <p>Dans la pratique, les mêmes lacunes reviennent régulièrement lors des audits de conformité menés auprès des établissements de la zone UEMOA, comme le souligne également l’analyse d’Optima Advisory. Une politique de sécurité existe souvent sur le papier, mais n’est pas déclinée en procédures opérationnelles concrètes ni en contrôles mesurables. Un plan de reprise après sinistre a été rédigé, mais n’a jamais été testé en conditions réelles, ce qui revient à ignorer s’il fonctionnerait réellement le jour où l’on en aurait besoin. Et la supervision de sécurité reste souvent limitée aux heures de bureau, alors que les tentatives de fraude sur les canaux digitaux se concentrent précisément la nuit et le week-end.</p>
+      <p>Ces écarts ne relèvent pas d’un manque de bonne volonté. Ils tiennent souvent au fait que l’infrastructure et les processus n’ont pas été pensés, dès le départ, pour répondre à ces exigences.</p>
+
+      <h2>Pourquoi le choix de l’infrastructure cloud change la donne</h2>
+      <p>C’est ici que la question du <strong>cloud résident</strong> prend tout son sens. Une infrastructure hébergée localement, gérée par une équipe accessible et auditable sur place, répond structurellement mieux à plusieurs des exigences décrites plus haut qu’une infrastructure hébergée à distance, chez un fournisseur difficile à auditer directement.</p>
+
+      <figure>
+        <img src="/raxio_datacenter_abidjan.png" alt="Datacenter Raxio Tier III Abidjan" />
+        <figcaption className="text-center text-xs text-taupe/60 mt-3 italic">Datacenter Raxio certifié Tier III à Abidjan : hébergement local sécurisé et supervisé 24/7</figcaption>
+      </figure>
+
+      <ul>
+        <li><strong>Sur la maîtrise des prestataires externes :</strong> Un fournisseur local permet une due diligence réelle et concrète (visite physique du datacenter, rencontre directe avec les équipes techniques, clauses contractuelles adaptées au droit local, et une réversibilité opérationnelle démontrable).</li>
+        <li><strong>Sur la continuité d’activité :</strong> Un plan de reprise après sinistre est plus simple à tester et à documenter lorsque l’infrastructure est gérée par une équipe joignable, avec qui l’on peut planifier des exercices réguliers.</li>
+        <li><strong>Sur la disponibilité, l’intégrité, la confidentialité et la traçabilité :</strong> Ce sont précisément les quatre critères cités par l’Instruction n°008-05-2015 sur la monnaie électronique. Une infrastructure hébergée dans un datacenter certifié, avec une supervision continue et des journaux d’activité consultables localement, permet de démontrer concrètement le respect de ces critères lors d’un contrôle.</li>
+        <li><strong>Sur la notification et l’investigation des incidents :</strong> Une supervision assurée localement, 24 heures sur 24, permet de détecter et documenter un incident plus rapidement, avec des interlocuteurs capables de fournir les éléments d’investigation attendus par les autorités sans délai de communication international.</li>
+      </ul>
+
+      <h2>Ce qu’il faut vérifier avec votre fournisseur actuel</h2>
+      <p>Quelques questions simples permettent de mesurer votre niveau réel de préparation, que vous soyez déjà hébergé localement ou encore chez un fournisseur international :</p>
+      <ul>
+        <li>Pouvez-vous auditer physiquement l’infrastructure qui héberge vos données ?</li>
+        <li>Votre plan de reprise après sinistre a-t-il été testé en conditions réelles au cours des douze derniers mois ?</li>
+        <li>Votre contrat prévoit-il une clause de réversibilité claire et applicable ?</li>
+        <li>Vos systèmes sont-ils surveillés 24 heures sur 24 par une équipe capable de documenter un incident dans les délais attendus ?</li>
+        <li>Pouvez-vous démontrer, avec des preuves concrètes, la disponibilité, l’intégrité, la confidentialité et la traçabilité de vos opérations ?</li>
+      </ul>
+      <p>Si une seule de ces réponses vous met mal à l’aise, c’est le bon moment pour évaluer une alternative.</p>
+
+      <h2>Une infrastructure pensée pour ces exigences</h2>
+      <p>C’est exactement dans cette logique qu’<strong>AMBRA Cloud</strong> a été conçu : une infrastructure hébergée à Abidjan, dans le datacenter Raxio certifié Tier III, avec une supervision 24 heures sur 24, une équipe locale joignable pour toute démarche d’audit ou de due diligence, et une architecture pensée pour faciliter, et non compliquer, votre mise en conformité.</p>
+      <p>Le cadre réglementaire continuera d’évoluer avec la digitalisation du secteur. Le meilleur moment pour s’y préparer, c’est avant qu’il ne devienne une contrainte urgente.</p>
+
+      <h2>Sources</h2>
+      <p>Cet article s’appuie sur les textes et publications suivants :</p>
+      <ol>
+        <li><strong>BCEAO — Surveillance des Systèmes de Paiement</strong> (page officielle, présentation du dispositif de surveillance et du cadre de la monnaie électronique) : <a href="https://www.bceao.int/fr/content/surveillance-des-systemes-de-paiement" target="_blank" rel="noopener noreferrer">bceao.int/surveillance-des-systemes-de-paiement</a></li>
+        <li><strong>BCEAO — Instruction n°008-05-2015</strong> régissant les conditions et modalités d’exercice des activités des émetteurs de monnaie électronique dans les États membres de l’UMOA (septembre 2015)</li>
+        <li><strong>BCEAO — Instruction n°001-01-2024 du 23 janvier 2024</strong> relative aux services de paiement dans l’Union Monétaire Ouest Africaine : <a href="https://www.bceao.int/fr/reglementations/instruction-ndeg001-01-2024-du-23-janvier-2024-relative-aux-services-de-paiement" target="_blank" rel="noopener noreferrer">bceao.int/instruction-ndeg001-01-2024</a></li>
+        <li><strong>BCEAO — Réglementation des Systèmes de Paiement</strong> (liste des textes en vigueur) : <a href="https://www.bceao.int/fr/reglementations/reglementation-des-systemes-de-paiement" target="_blank" rel="noopener noreferrer">bceao.int/reglementation-des-systemes-de-paiement</a></li>
+        <li><strong>BCEAO — Réglementation bancaire</strong> (liste des textes en vigueur) : <a href="https://www.bceao.int/fr/reglementations/reglementation-bancaire" target="_blank" rel="noopener noreferrer">bceao.int/reglementation-bancaire</a></li>
+        <li><strong>Optima Advisory — « BCEAO : les exigences de cybersécurité qui s’imposent aux banques de l’UEMOA »</strong>, publié le 26 mai 2026 : <a href="https://optimaadvisory.net/blog/bceao-cybersecurite-banques-uemoa/" target="_blank" rel="noopener noreferrer">optimaadvisory.net/bceao-cybersecurite-banques-uemoa</a></li>
+      </ol>
+
+      <hr className="my-8 border-taupe/10" />
+
+      <div className="bg-cream/60 p-6 rounded-2xl border border-taupe/10 text-sm leading-relaxed">
+        <p className="font-bold text-navy mb-2">AMBRA Cloud — Solution de Cloud Résident & Managé</p>
+        <p className="mb-3">AMBRA Cloud est une solution de cloud résident, managé et sécurisé, conçue pour accompagner les entreprises africaines dans leur transformation digitale, en toute conformité.</p>
+        <p className="text-xs text-taupe/70 italic">Avertissement : Cet article présente un panorama des textes et attentes réglementaires en matière de sécurité des systèmes d’information dans l’espace UEMOA, à partir de sources publiques. Il ne constitue pas un conseil juridique. Pour une analyse précise de votre situation, rapprochez-vous d’un cabinet spécialisé en conformité réglementaire ou consultez directement les textes cités sur bceao.int.</p>
+        <p className="mt-3 font-semibold text-primary-light">Contact : <a href="mailto:infos@ambracloud.net">infos@ambracloud.net</a> | <a href="https://www.ambracloud.net" target="_blank" rel="noopener noreferrer">www.ambracloud.net</a></p>
+      </div>
+    `,
+    tags: ["BCEAO", "Cloud résident", "Conformité", "UEMOA", "Sécurité SI", "Monnaie électronique", "AMBRA Cloud"],
+  },
   {
     id: "evelyne-boko-souverainete-numerique",
     title: "Evelyne Boko (DG d’AMBRA Cloud) : « Héberger ses données en Côte d’Ivoire est un premier pas vers la souveraineté numérique »",

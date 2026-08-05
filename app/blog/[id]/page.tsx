@@ -98,23 +98,25 @@ export default function BlogPost() {
         </section>
 
         {/* ── IMAGE HERO ─────────────────────────────────────────── */}
-        <section className="px-6 -mt-10 max-w-6xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease }}
-            className="relative w-full aspect-[21/9] md:aspect-[21/9] bg-cream shadow-2xl"
-          >
-            <Image 
-              src={post.image} 
-              alt={post.title} 
-              fill 
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-navy/10" />
-          </motion.div>
-        </section>
+        {post.image && post.image.trim() !== "" && !post.hideHeroImage && (
+          <section className="px-6 -mt-10 max-w-6xl mx-auto relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease }}
+              className="relative w-full aspect-[21/9] md:aspect-[21/9] bg-cream shadow-2xl overflow-hidden"
+            >
+              <Image 
+                src={post.image} 
+                alt={post.title} 
+                fill 
+                className={post.image.includes('logo') ? "object-contain p-6 md:p-10" : "object-cover"}
+                priority
+              />
+              {!post.image.includes('logo') && <div className="absolute inset-0 bg-navy/10" />}
+            </motion.div>
+          </section>
+        )}
 
         {/* ── CONTENT ────────────────────────────────────────────── */}
         <section className="pt-20 px-6 max-w-4xl mx-auto flex flex-col lg:flex-row gap-16 relative">
@@ -145,11 +147,16 @@ export default function BlogPost() {
           <div className="flex-1 order-1 lg:order-2">
             <div 
               className="max-w-none
-                [&_h2]:font-display [&_h2]:text-navy [&_h2]:text-3xl [&_h2]:mt-14 [&_h2]:mb-6
+                [&_h2]:font-display [&_h2]:text-navy [&_h2]:text-2xl [&_h2]:md:text-3xl [&_h2]:mt-12 [&_h2]:mb-6
+                [&_h3]:font-display [&_h3]:text-navy [&_h3]:text-xl [&_h3]:mt-8 [&_h3]:mb-4
                 [&_p]:text-taupe/80 [&_p]:leading-relaxed [&_p]:text-[17px] [&_p]:mb-6
                 [&_strong]:text-navy [&_strong]:font-bold
+                [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-3 [&_ul]:mb-6 [&_ul]:text-taupe/80 [&_ul]:text-[17px]
+                [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-3 [&_ol]:mb-6 [&_ol]:text-taupe/80 [&_ol]:text-[17px]
+                [&_li]:leading-relaxed
                 [&_blockquote]:border-l-4 [&_blockquote]:border-primary-light [&_blockquote]:bg-cream/50 [&_blockquote]:py-6 [&_blockquote]:px-8 [&_blockquote]:text-xl [&_blockquote]:font-display [&_blockquote]:italic [&_blockquote]:text-navy [&_blockquote]:my-10 [&_blockquote]:shadow-sm
-                [&_a]:text-primary-light hover:[&_a]:text-rouge-ambra [&_a]:transition-colors"
+                [&_a]:text-primary-light hover:[&_a]:text-rouge-ambra [&_a]:transition-colors [&_a]:underline [&_a]:underline-offset-4
+                [&_figure]:my-10 [&_img]:rounded-2xl [&_img]:shadow-lg [&_img]:border [&_img]:border-taupe/10 [&_img]:w-full"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 

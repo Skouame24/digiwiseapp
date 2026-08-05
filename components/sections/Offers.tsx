@@ -18,7 +18,7 @@ const offers = [
       "Private Cloud as a Service"
     ],
     cta: "Découvrir",
-    href: "/solutions/prive",
+    href: "/solutions#private",
     featured: false
   },
   {
@@ -33,7 +33,7 @@ const offers = [
       "Architecture Hybride"
     ],
     cta: "Voir les offres",
-    href: "/solutions/resident",
+    href: "/solutions#resident",
     featured: true
 
   },

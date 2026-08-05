@@ -305,7 +305,7 @@ function ServiceCard({
 
 function CategorySection({ category, categoryIndex }: { category: typeof categories[0]; categoryIndex: number }) {
   return (
-    <div className="relative">
+    <div className="relative scroll-mt-28" id={category.id}>
       {/* Section header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
