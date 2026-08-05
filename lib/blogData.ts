@@ -103,18 +103,18 @@ export const blogPosts: BlogPost[] = [
       <h2>Sources</h2>
       <p>Cet article s’appuie sur les textes et publications suivants :</p>
       <ol>
-        <li><strong>BCEAO — Surveillance des Systèmes de Paiement</strong> (page officielle, présentation du dispositif de surveillance et du cadre de la monnaie électronique) : <a href="https://www.bceao.int/fr/content/surveillance-des-systemes-de-paiement" target="_blank" rel="noopener noreferrer">bceao.int/surveillance-des-systemes-de-paiement</a></li>
-        <li><strong>BCEAO — Instruction n°008-05-2015</strong> régissant les conditions et modalités d’exercice des activités des émetteurs de monnaie électronique dans les États membres de l’UMOA (septembre 2015)</li>
-        <li><strong>BCEAO — Instruction n°001-01-2024 du 23 janvier 2024</strong> relative aux services de paiement dans l’Union Monétaire Ouest Africaine : <a href="https://www.bceao.int/fr/reglementations/instruction-ndeg001-01-2024-du-23-janvier-2024-relative-aux-services-de-paiement" target="_blank" rel="noopener noreferrer">bceao.int/instruction-ndeg001-01-2024</a></li>
-        <li><strong>BCEAO — Réglementation des Systèmes de Paiement</strong> (liste des textes en vigueur) : <a href="https://www.bceao.int/fr/reglementations/reglementation-des-systemes-de-paiement" target="_blank" rel="noopener noreferrer">bceao.int/reglementation-des-systemes-de-paiement</a></li>
-        <li><strong>BCEAO — Réglementation bancaire</strong> (liste des textes en vigueur) : <a href="https://www.bceao.int/fr/reglementations/reglementation-bancaire" target="_blank" rel="noopener noreferrer">bceao.int/reglementation-bancaire</a></li>
-        <li><strong>Optima Advisory — « BCEAO : les exigences de cybersécurité qui s’imposent aux banques de l’UEMOA »</strong>, publié le 26 mai 2026 : <a href="https://optimaadvisory.net/blog/bceao-cybersecurite-banques-uemoa/" target="_blank" rel="noopener noreferrer">optimaadvisory.net/bceao-cybersecurite-banques-uemoa</a></li>
+        <li><strong>BCEAO : Surveillance des Systèmes de Paiement</strong> (page officielle, présentation du dispositif de surveillance et du cadre de la monnaie électronique) : <a href="https://www.bceao.int/fr/content/surveillance-des-systemes-de-paiement" target="_blank" rel="noopener noreferrer">bceao.int/surveillance-des-systemes-de-paiement</a></li>
+        <li><strong>BCEAO : Instruction n°008-05-2015</strong> régissant les conditions et modalités d’exercice des activités des émetteurs de monnaie électronique dans les États membres de l’UMOA (septembre 2015)</li>
+        <li><strong>BCEAO : Instruction n°001-01-2024 du 23 janvier 2024</strong> relative aux services de paiement dans l’Union Monétaire Ouest Africaine : <a href="https://www.bceao.int/fr/reglementations/instruction-ndeg001-01-2024-du-23-janvier-2024-relative-aux-services-de-paiement" target="_blank" rel="noopener noreferrer">bceao.int/instruction-ndeg001-01-2024</a></li>
+        <li><strong>BCEAO : Réglementation des Systèmes de Paiement</strong> (liste des textes en vigueur) : <a href="https://www.bceao.int/fr/reglementations/reglementation-des-systemes-de-paiement" target="_blank" rel="noopener noreferrer">bceao.int/reglementation-des-systemes-de-paiement</a></li>
+        <li><strong>BCEAO : Réglementation bancaire</strong> (liste des textes en vigueur) : <a href="https://www.bceao.int/fr/reglementations/reglementation-bancaire" target="_blank" rel="noopener noreferrer">bceao.int/reglementation-bancaire</a></li>
+        <li><strong>Optima Advisory : « BCEAO : les exigences de cybersécurité qui s’imposent aux banques de l’UEMOA »</strong>, publié le 26 mai 2026 : <a href="https://optimaadvisory.net/blog/bceao-cybersecurite-banques-uemoa/" target="_blank" rel="noopener noreferrer">optimaadvisory.net/bceao-cybersecurite-banques-uemoa</a></li>
       </ol>
 
       <hr className="my-8 border-taupe/10" />
 
       <div className="bg-cream/60 p-6 rounded-2xl border border-taupe/10 text-sm leading-relaxed">
-        <p className="font-bold text-navy mb-2">AMBRA Cloud — Solution de Cloud Résident & Managé</p>
+        <p className="font-bold text-navy mb-2">AMBRA Cloud : Solution de Cloud Résident & Managé</p>
         <p className="mb-3">AMBRA Cloud est une solution de cloud résident, managé et sécurisé, conçue pour accompagner les entreprises africaines dans leur transformation digitale, en toute conformité.</p>
         <p className="text-xs text-taupe/70 italic">Avertissement : Cet article présente un panorama des textes et attentes réglementaires en matière de sécurité des systèmes d’information dans l’espace UEMOA, à partir de sources publiques. Il ne constitue pas un conseil juridique. Pour une analyse précise de votre situation, rapprochez-vous d’un cabinet spécialisé en conformité réglementaire ou consultez directement les textes cités sur bceao.int.</p>
         <p className="mt-3 font-semibold text-primary-light">Contact : <a href="mailto:infos@ambracloud.net">infos@ambracloud.net</a> | <a href="https://www.ambracloud.net" target="_blank" rel="noopener noreferrer">www.ambracloud.net</a></p>
