@@ -4,14 +4,24 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, ArrowRight, ChevronDown, ShoppingBag, Trash2 } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown, FileText, Trash2, ShieldCheck, Database, Cpu, Cloud } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
+import { formatPriceFCFA } from "@/lib/pricing";
 
-const navLinks: { label: string; href: string; dropdown?: { label: string; href: string }[] }[] = [
+const navLinks: { label: string; href: string; dropdown?: { label: string; href: string; icon?: React.ReactNode }[] }[] = [
   { label: "Accueil", href: "/" },
-  { label: "Solutions", href: "/solutions" },
+  {
+    label: "Solutions",
+    href: "/solutions",
+    dropdown: [
+      { label: "Cloud Résident & Hybride", href: "/solutions#resident" },
+      { label: "Stockage d'Objet S3", href: "/solutions#object-storage" },
+      { label: "Processeurs GPU & IA", href: "/solutions#gpu" },
+      { label: "Cloud Privé & Dédié", href: "/solutions#private" },
+    ]
+  },
   { label: "Services Managés", href: "/services-manages" },
   { label: "Blog", href: "/blog" },
   { label: "Projets", href: "/projets" },
@@ -26,7 +36,7 @@ export function Navbar() {
   const [cartOpen, setCartOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const { items, removeItem, count } = useCart();
+  const { items, removeItem, count, getTotalMonthlyPrice } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -35,6 +45,8 @@ export function Navbar() {
   }, []);
 
   useEffect(() => { setCartOpen(false); }, [pathname]);
+
+  const totalMonthly = getTotalMonthlyPrice();
 
   return (
     <>
@@ -74,7 +86,8 @@ export function Navbar() {
                   onMouseEnter={() => setActiveDropdown(link.label)}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <button
+                  <Link
+                    href={link.href}
                     className={cn(
                       "flex items-center gap-1 px-4 text-[13px] font-bold uppercase tracking-wider transition-all duration-300",
                       activeDropdown === link.label ? "text-[#900C0C]" : "text-[#5C4A3E]"
@@ -82,7 +95,7 @@ export function Navbar() {
                   >
                     {link.label}
                     <ChevronDown className={cn("w-4 h-4 transition-transform duration-500", activeDropdown === link.label && "rotate-180")} />
-                  </button>
+                  </Link>
 
                   <AnimatePresence>
                     {activeDropdown === link.label && (
@@ -90,8 +103,8 @@ export function Navbar() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute top-[100%] left-0 w-56 pt-2"
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-[100%] left-0 w-64 pt-2 z-50"
                       >
                         <div className="bg-white border border-[#FBF4E4] shadow-2xl rounded-2xl overflow-hidden py-2">
                           {link.dropdown?.map((item) => (
@@ -133,35 +146,11 @@ export function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
-          {/* Cart icon + badge */}
-          <button
-            onClick={() => setCartOpen(true)}
-            className="relative p-2.5 text-[#5C4A3E] hover:text-[#900C0C] transition-colors duration-300 cursor-pointer flex items-center gap-2"
-            aria-label="Panier"
-          >
-            <ShoppingBag className="w-5 h-5" />
-            <AnimatePresence>
-              {count > 0 && (
-                <motion.span
-                  key="badge"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0 }}
-                  className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#900C0C] text-white text-[9px] font-black rounded-full flex items-center justify-center"
-                >
-                  {count}
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </button>
-
-          
-
           <Link
-            href="/essai"
-            className="group relative inline-flex items-center gap-2 bg-[#900C0C] text-white text-[11px] font-black uppercase tracking-[0.2em] px-8 py-3.5 rounded-full overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-[#900C0C]/20 active:scale-95 shadow-lg shadow-[#900C0C]/10"
+            href="/devis"
+            className="group relative inline-flex items-center gap-2 bg-[#900C0C] text-white text-[11px] font-black uppercase tracking-[0.2em] px-7 py-3.5 rounded-full overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-[#900C0C]/20 active:scale-95 shadow-lg shadow-[#900C0C]/10"
           >
-            <span className="relative z-10">Essai gratuit</span>
+            <span className="relative z-10">Demander un devis</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1.5" />
             <div className="absolute inset-0 bg-[#7a0a0a] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
           </Link>
@@ -169,14 +158,6 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <div className="lg:hidden flex items-center gap-2">
-          <button onClick={() => setCartOpen(true)} className="relative p-2 text-[#5C4A3E]" aria-label="Panier">
-            <ShoppingBag className="w-5 h-5" />
-            {count > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#900C0C] text-white text-[9px] font-black rounded-full flex items-center justify-center">
-                {count}
-              </span>
-            )}
-          </button>
           <button
             className="p-2 text-[#5C4A3E] hover:bg-[#FBF4E4] rounded-full transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -197,8 +178,7 @@ export function Navbar() {
             className="fixed inset-0 min-h-[100dvh] w-full max-w-full bg-white z-[60] lg:hidden overflow-y-auto"
           >
             <div className="p-8 h-full flex flex-col">
-              <div className="flex items-center justify-between mb-16">
-                {/* ✅ Logo mobile aussi corrigé : h-8 → h-12 */}
+              <div className="flex items-center justify-between mb-12">
                 <Image src="/logo.png" alt="Logo" width={220} height={70} className="h-14 sm:h-16 w-auto object-contain" />
                 <button onClick={() => setMobileOpen(false)} className="p-3 bg-[#FBF4E4] rounded-full text-[#1A0F0A]">
                   <X className="w-6 h-6" />
@@ -207,11 +187,11 @@ export function Navbar() {
 
               <div className="space-y-4 flex-grow overflow-y-auto">
                 {navLinks.map((link) => (
-                  <div key={link.label} className="space-y-4">
+                  <div key={link.label} className="space-y-3">
                     <Link
                       href={link.href}
                       className={cn(
-                        "block text-3xl font-display font-bold transition-all",
+                        "block text-2xl font-display font-bold transition-all",
                         pathname === link.href ? "text-[#900C0C]" : "text-[#1A0F0A]"
                       )}
                       onClick={() => !link.dropdown && setMobileOpen(false)}
@@ -219,9 +199,9 @@ export function Navbar() {
                       {link.label}
                     </Link>
                     {link.dropdown && (
-                      <div className="pl-6 space-y-4 border-l-2 border-[#FBF4E4]">
+                      <div className="pl-4 space-y-2 border-l-2 border-[#FBF4E4]">
                         {link.dropdown.map(sub => (
-                          <Link key={sub.label} href={sub.href} className="block text-lg font-medium text-[#5C4A3E]" onClick={() => setMobileOpen(false)}>
+                          <Link key={sub.label} href={sub.href} className="block text-base font-medium text-[#5C4A3E]" onClick={() => setMobileOpen(false)}>
                             {sub.label}
                           </Link>
                         ))}
@@ -231,14 +211,13 @@ export function Navbar() {
                 ))}
               </div>
 
-              <div className="pt-8 border-t border-[#FBF4E4] mt-auto space-y-3">
-                
+              <div className="pt-6 border-t border-[#FBF4E4] mt-auto space-y-3">
                 <Link
                   href="/devis"
-                  className="flex items-center justify-center gap-3 w-full bg-[#900C0C] text-white text-sm font-black uppercase tracking-widest py-6 rounded-2xl shadow-xl shadow-[#900C0C]/20"
+                  className="flex items-center justify-center gap-3 w-full bg-[#900C0C] text-white text-sm font-black uppercase tracking-widest py-5 rounded-2xl shadow-xl shadow-[#900C0C]/20"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Démarrer mon essaie gratuit
+                  Demander un devis
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
@@ -247,115 +226,6 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </motion.nav>
-
-    {/* ── Cart Drawer ──────────────────────────────────────── */}
-      <AnimatePresence>
-        {cartOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              onClick={() => setCartOpen(false)}
-              className="fixed inset-0 bg-navy/40 backdrop-blur-sm z-[70]"
-            />
-            <motion.div
-              initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 28, stiffness: 260 }}
-              className="fixed right-0 top-0 h-full w-full max-w-md bg-white z-[80] shadow-2xl flex flex-col"
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between px-6 py-5 border-b border-taupe/10">
-                <div className="flex items-center gap-3">
-                  <ShoppingBag className="w-5 h-5 text-primary-light" />
-                  <h2 className="text-[14px] font-black uppercase tracking-[0.2em] text-navy">Ma sélection</h2>
-                  {count > 0 && (
-                    <span className="bg-primary-light/10 text-primary-light text-[11px] font-bold px-2 py-0.5 rounded-full">
-                      {count} service{count > 1 ? "s" : ""}
-                    </span>
-                  )}
-                </div>
-                <button onClick={() => setCartOpen(false)} className="p-2 hover:bg-cream rounded-full transition-colors">
-                  <X className="w-5 h-5 text-taupe" />
-                </button>
-              </div>
-
-              {/* Items */}
-              <div className="flex-1 overflow-y-auto px-6 py-4 space-y-3">
-                <AnimatePresence mode="popLayout">
-                  {items.length === 0 ? (
-                    <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                      className="flex flex-col items-center justify-center h-full pt-24 text-center">
-                      <ShoppingBag className="w-12 h-12 text-taupe/20 mb-4" />
-                      <p className="text-[13px] font-bold text-taupe/40 uppercase tracking-widest">Aucun service sélectionné</p>
-                      <p className="text-[12px] text-taupe/30 mt-2">Parcourez nos offres et ajoutez ce qui vous intéresse.</p>
-                    </motion.div>
-                  ) : (
-                    items.map((item) => (
-                      <motion.div key={item.id} layout
-                        initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}
-                        transition={{ duration: 0.25 }}
-                        className="flex items-start justify-between gap-3 p-4 bg-cream/40 border border-taupe/10"
-                      >
-                        <div className="flex-1 min-w-0">
-                          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-light mb-0.5">{item.category}</p>
-                          <p className="text-[14px] font-bold text-navy leading-snug">{item.name}</p>
-                          {item.config ? (
-                            <div className="mt-1 space-y-0.5">
-                              {item.config.designation && (
-                                <p className="text-[12px] italic text-taupe/60">&ldquo;{item.config.designation}&rdquo;</p>
-                              )}
-                              <div className="flex flex-wrap gap-x-2 text-[11px] text-taupe/50">
-                                {item.config.vcpu !== undefined && <span>{item.config.vcpu} vCPU</span>}
-                                {item.config.ram !== undefined && <span>{item.config.ram} Go RAM</span>}
-                                {item.config.storage !== undefined && <span>{item.config.storage} Go</span>}
-                                {item.config.duration !== undefined && <span>{item.config.duration} mois</span>}
-                              </div>
-                              {item.config.addons.length > 0 && (
-                                <p className="text-[11px] text-primary-light/70">
-                                  + {item.config.addons.length} service{item.config.addons.length > 1 ? "s" : ""} additionnel{item.config.addons.length > 1 ? "s" : ""}
-                                </p>
-                              )}
-                            </div>
-                          ) : (
-                            <p className="text-[12px] text-taupe/60 mt-1 line-clamp-2">{item.description}</p>
-                          )}
-                        </div>
-                        <button onClick={() => removeItem(item.id)}
-                          className="shrink-0 p-1.5 text-taupe/30 hover:text-rouge-ambra transition-colors duration-200 mt-0.5">
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </motion.div>
-                    ))
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Footer */}
-              <div className="px-6 py-5 border-t border-taupe/10 space-y-3">
-                {items.length > 0 ? (
-                  <>
-                    <button
-                      onClick={() => { setCartOpen(false); router.push("/devis"); }}
-                      className="w-full flex items-center justify-center gap-2 bg-[#900C0C] text-white text-[12px] font-black uppercase tracking-[0.2em] py-4 hover:bg-[#7a0a0a] transition-colors duration-300"
-                    >
-                      Démarrer mon essaie gratuit <ArrowRight className="w-4 h-4" />
-                    </button>
-                    <button onClick={() => setCartOpen(false)}
-                      className="w-full text-[11px] font-bold uppercase tracking-widest text-taupe/50 hover:text-navy py-2 transition-colors duration-200">
-                      Continuer la navigation
-                    </button>
-                  </>
-                ) : (
-                  <button
-                    onClick={() => { setCartOpen(false); router.push("/solutions"); }}
-                    className="w-full flex items-center justify-center gap-2 bg-primary-light text-white text-[12px] font-black uppercase tracking-[0.2em] py-4 hover:bg-ambre-signature transition-colors duration-300">
-                    Voir nos offres <ArrowRight className="w-4 h-4" />
-                  </button>
-                )}
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
     </>
   );
 }

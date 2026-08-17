@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useContext, useReducer, ReactNode } from "react";
+import { createContext, useContext, useReducer, useEffect, ReactNode } from "react";
+import { calculateConfigPrice, formatPriceFCFA } from "@/lib/pricing";
 
 /* ── Types ─────────────────────────────────────────────── */
 export type ServiceConfig = {
@@ -9,7 +10,11 @@ export type ServiceConfig = {
   ram?: number;
   storage?: number;
   duration?: number;
+  gpuType?: string;
+  gpuCount?: number;
+  isObjectStorage?: boolean;
   addons: string[]; // ids of selected managed services
+  monthlyPrice?: number;
 };
 
 export type CartItem = {
@@ -17,6 +22,7 @@ export type CartItem = {
   name: string;
   description: string;
   category: string;
+  basePrice?: number;
   config?: ServiceConfig;
 };
 
@@ -25,6 +31,7 @@ type CartState = {
 };
 
 type CartAction =
+  | { type: "SET_ITEMS"; items: CartItem[] }
   | { type: "ADD_ITEM"; item: CartItem }
   | { type: "REMOVE_ITEM"; id: string }
   | { type: "UPDATE_CONFIG"; id: string; config: ServiceConfig }
@@ -33,6 +40,8 @@ type CartAction =
 /* ── Reducer ────────────────────────────────────────────── */
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
+    case "SET_ITEMS":
+      return { items: action.items };
     case "ADD_ITEM":
       if (state.items.find((i) => i.id === action.item.id)) return state;
       return { items: [...state.items, action.item] };
@@ -60,20 +69,79 @@ type CartContextType = {
   clearCart: () => void;
   isInCart: (id: string) => boolean;
   count: number;
+  getTotalMonthlyPrice: () => number;
+  getFormattedTotalPrice: () => string;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
+
+const STORAGE_KEY = "ambra_cloud_devis_cart_v1";
 
 /* ── Provider ───────────────────────────────────────────── */
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [] });
 
-  const addItem = (item: CartItem) => dispatch({ type: "ADD_ITEM", item });
+  // Load from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          dispatch({ type: "SET_ITEMS", items: parsed });
+        }
+      }
+    } catch {
+      // fallback silent
+    }
+  }, []);
+
+  // Save to localStorage on state change
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.items));
+    } catch {
+      // fallback silent
+    }
+  }, [state.items]);
+
+  const addItem = (item: CartItem) => {
+    const computedPrice = item.config
+      ? calculateConfigPrice(item.config, item.basePrice ?? 0)
+      : (item.basePrice ?? 0);
+    const enrichedItem = item.config
+      ? { ...item, config: { ...item.config, monthlyPrice: computedPrice } }
+      : item;
+    dispatch({ type: "ADD_ITEM", item: enrichedItem });
+  };
+
   const removeItem = (id: string) => dispatch({ type: "REMOVE_ITEM", id });
-  const updateConfig = (id: string, config: ServiceConfig) =>
-    dispatch({ type: "UPDATE_CONFIG", id, config });
+
+  const updateConfig = (id: string, config: ServiceConfig) => {
+    const existing = state.items.find((i) => i.id === id);
+    const computedPrice = calculateConfigPrice(config, existing?.basePrice ?? 0);
+    dispatch({
+      type: "UPDATE_CONFIG",
+      id,
+      config: { ...config, monthlyPrice: computedPrice },
+    });
+  };
+
   const clearCart = () => dispatch({ type: "CLEAR_CART" });
   const isInCart = (id: string) => !!state.items.find((i) => i.id === id);
+
+  const getTotalMonthlyPrice = () => {
+    return state.items.reduce((total, item) => {
+      if (item.config) {
+        return total + (calculateConfigPrice(item.config, item.basePrice ?? 0));
+      }
+      return total + (item.basePrice ?? 0);
+    }, 0);
+  };
+
+  const getFormattedTotalPrice = () => {
+    return formatPriceFCFA(getTotalMonthlyPrice());
+  };
 
   return (
     <CartContext.Provider
@@ -85,6 +153,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         clearCart,
         isInCart,
         count: state.items.length,
+        getTotalMonthlyPrice,
+        getFormattedTotalPrice,
       }}
     >
       {children}

@@ -28,9 +28,10 @@ const contactInfo = [
   {
     icon: <Clock className="w-5 h-5" />,
     label: "Disponibilité",
-    value: "Support 24h/7j\nLun – Ven : 8h – 18h",
+    value: "Support 24h/24 & 7j/7",
     href: null,
-  },
+  }
+
 ];
 
 const subjects = [
@@ -302,11 +303,10 @@ export default function ContactPage() {
                           key={s}
                           type="button"
                           onClick={() => setSelectedSubject(s === selectedSubject ? "" : s)}
-                          className={`px-4 py-2 text-[11px] font-bold uppercase tracking-wider border transition-all duration-300 ${
-                            selectedSubject === s
-                              ? "bg-primary-light border-primary-light text-white"
-                              : "bg-transparent border-taupe/15 text-taupe/60 hover:border-primary-light/50 hover:text-navy"
-                          }`}
+                          className={`px-4 py-2 text-[11px] font-bold uppercase tracking-wider border transition-all duration-300 ${selectedSubject === s
+                            ? "bg-primary-light border-primary-light text-white"
+                            : "bg-transparent border-taupe/15 text-taupe/60 hover:border-primary-light/50 hover:text-navy"
+                            }`}
                         >
                           {s}
                         </button>

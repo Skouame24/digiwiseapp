@@ -2,16 +2,17 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Cloud, Lock, CheckCircle2, ShoppingBag, Check, Pencil } from "lucide-react";
+import { Cloud, Lock, CheckCircle2, FileText, Check, Pencil, Database, Cpu, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCart, ServiceConfig } from "@/context/CartContext";
 import { ServiceConfigModal } from "@/components/sections/ServiceConfigModal";
+import { formatPriceFCFA } from "@/lib/pricing";
 
 const categories = [
   {
     id: "resident",
     title: "Cloud Résident & Hybride",
-    subtitle: "Hébergement & déploiement",
+    subtitle: "Hébergement & déploiement souverain",
     icon: <Cloud className="w-6 h-6" />,
     accent: "primary-light" as const,
     services: [
@@ -26,6 +27,7 @@ const categories = [
         ],
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
+        basePrice: 65000,
         fields: ["designation", "vcpu", "ram", "storage", "duration"] as const,
       },
       {
@@ -39,6 +41,7 @@ const categories = [
         ],
         image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
+        basePrice: 95000,
         fields: ["designation", "vcpu", "ram", "duration"] as const,
       },
       {
@@ -52,6 +55,7 @@ const categories = [
         ],
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
+        basePrice: 120000,
         fields: ["designation", "vcpu", "ram", "storage", "duration"] as const,
       },
       {
@@ -66,6 +70,7 @@ const categories = [
         ],
         image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
+        basePrice: 45000,
         fields: ["storage", "duration"] as const,
       },
       {
@@ -79,14 +84,64 @@ const categories = [
         ],
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
         configurable: false,
+        basePrice: 150000,
         fields: [] as const,
+      }
+    ]
+  },
+  {
+    id: "object-storage",
+    title: "Stockage d'Objet (S3-Compatible)",
+    subtitle: "Stockage massif scalabilité illimitée",
+    icon: <Database className="w-6 h-6" />,
+    accent: "primary-light" as const,
+    services: [
+      {
+        title: "Stockage d'Objet S3 Souverain",
+        tagline: "High Availability & Standard S3",
+        description: "Stockez vos fichiers, sauvegardes, médias et jeux de données IA sur notre infrastructure de stockage d'objet haute performance compatible avec l'API Amazon S3. Zéro frais de transfert sortant (Ingress/Egress inclus).",
+        features: [
+          "Compatibilité 100% API S3 (AWS SDK, MinIO, Rclone)",
+          "Durabilité des données garantie 99.999999999% (11 nines)",
+          "Chiffrement AES-256 natif au repos et au transit",
+          "Multi-réplication inter-datacenters en Côte d'Ivoire",
+          "Aucun frais caché d'Egress / Ingress"
+        ],
+        image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1200&auto=format&fit=crop",
+        configurable: true,
+        basePrice: 15,
+        fields: ["designation", "storage", "duration"] as const,
+      }
+    ]
+  },
+  {
+    id: "gpu",
+    title: "Processeurs & Serveurs GPU (IA & Calcul HPC)",
+    subtitle: "Puissance brute pour IA et 3D",
+    icon: <Cpu className="w-6 h-6" />,
+    accent: "navy" as const,
+    services: [
+      {
+        title: "Instances & Serveurs GPU Dédiés IA",
+        tagline: "NVIDIA RTX 4090 / L40S / H100",
+        description: "Accélérez vos entraînements de modèles IA/LLM, le rendu 3D temps réel, la vision par ordinateur et les calculs scientifiques grâce à nos nœuds équipés de cartes NVIDIA de dernière génération.",
+        features: [
+          "NVIDIA H100 SXM5 (80 Go VRAM) & L40S (48 Go VRAM)",
+          "Accélération Tensor Cores pour LLM, Deep Learning et GenAI",
+          "Stockage NVMe très haut débit directement attaché",
+          "Environnements pré-configurés PyTorch, TensorFlow, CUDA"
+        ],
+        image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=1200&auto=format&fit=crop",
+        configurable: true,
+        basePrice: 165000,
+        fields: ["designation", "gpu_type", "gpu_count", "vcpu", "ram", "storage", "duration"] as const,
       }
     ]
   },
   {
     id: "private",
     title: "Cloud Privé & Infrastructures Dédiées",
-    subtitle: "Performance & contrôle",
+    subtitle: "Performance & contrôle absolu",
     icon: <Lock className="w-6 h-6" />,
     accent: "navy" as const,
     services: [
@@ -102,10 +157,11 @@ const categories = [
         ],
         image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
+        basePrice: 180000,
         fields: ["designation", "vcpu", "ram", "storage", "duration"] as const,
       },
       {
-        title: "Colocation",
+        title: "Colocation Datacenter Tier III",
         tagline: "Hébergement de votre matériel",
         description: "Hébergez vos équipements dans notre datacenter Raxio Tier III. Vous gardez le matériel, nous assurons l'environnement.",
         features: [
@@ -116,6 +172,7 @@ const categories = [
         ],
         image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
+        basePrice: 250000,
         fields: ["designation", "storage", "duration"] as const,
       },
       {
@@ -130,10 +187,11 @@ const categories = [
         ],
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
+        basePrice: 350000,
         fields: ["designation", "vcpu", "ram", "storage", "duration"] as const,
       },
       {
-        title: "Private Cloud as a service",
+        title: "Private Cloud as a Service",
         tagline: "Infogérance On-Premise",
         description: "Transformez votre infrastructure existante en cloud privé performant. Vos serveurs restent on-premise, nous infogérons le contrôleur.",
         features: [
@@ -144,6 +202,7 @@ const categories = [
         ],
         image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop",
         configurable: true,
+        basePrice: 300000,
         fields: ["designation", "vcpu", "ram", "storage", "duration"] as const,
       }
     ]
@@ -166,16 +225,18 @@ function ServiceCard({
   const { addItem, removeItem, updateConfig, isInCart, items } = useCart();
   const itemId = `${categoryId}-${service.title.toLowerCase().replace(/\s+/g, "-")}`;
   const inCart = isInCart(itemId);
-  const existingConfig = items.find((i) => i.id === itemId)?.config;
+  const existingCartItem = items.find((i) => i.id === itemId);
+  const existingConfig = existingCartItem?.config;
   const [modalOpen, setModalOpen] = useState(false);
+
+  const currentPrice = existingConfig?.monthlyPrice ?? service.basePrice;
 
   const handleCartClick = () => {
     if (service.configurable) {
-      // always open configurator (add or edit)
       setModalOpen(true);
     } else {
       if (inCart) removeItem(itemId);
-      else addItem({ id: itemId, name: service.title, description: service.tagline, category: categoryTitle });
+      else addItem({ id: itemId, name: service.title, description: service.tagline, category: categoryTitle, basePrice: service.basePrice });
     }
   };
 
@@ -184,9 +245,10 @@ function ServiceCard({
     if (inCart) {
       updateConfig(itemId, config);
     } else {
-      addItem({ id: itemId, name: service.title, description: service.tagline, category: categoryTitle, config });
+      addItem({ id: itemId, name: service.title, description: service.tagline, category: categoryTitle, basePrice: service.basePrice, config });
     }
   };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -196,7 +258,7 @@ function ServiceCard({
       className="group"
     >
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-        {/* Image side — alternates based on index */}
+        {/* Image side */}
         <div className={cn("relative", index % 2 === 1 ? "lg:order-2" : "")}>
           <div className="relative rounded-[32px] overflow-hidden shadow-xl aspect-[4/3]">
             <img
@@ -204,11 +266,11 @@ function ServiceCard({
               alt={service.title}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
           </div>
           {/* Floating tag */}
           <div className={cn(
-            "absolute -bottom-4 px-5 py-2 rounded-full shadow-lg text-[10px] font-bold uppercase tracking-widest text-white",
+            "absolute -bottom-4 px-5 py-2 rounded-full shadow-lg text-[10px] font-bold uppercase tracking-widest text-white flex items-center gap-2",
             index % 2 === 1 ? "-left-4 lg:left-auto lg:-right-4" : "-right-4",
             accent === "navy" ? "bg-navy" : "bg-primary-light"
           )}>
@@ -226,6 +288,9 @@ function ServiceCard({
               <span className="text-sm font-display font-bold">{index + 1}</span>
             </div>
             <div className="h-px flex-1 bg-taupe/10" />
+            <span className="text-[12px] font-bold text-rouge-ambra bg-rouge-ambra/5 border border-rouge-ambra/20 px-3 py-1 rounded-full">
+              À partir de {formatPriceFCFA(service.basePrice, true)}/mo
+            </span>
           </div>
 
           <h4 className="text-2xl md:text-3xl font-display text-navy mb-4 group-hover:text-primary-light transition-colors duration-300">
@@ -248,23 +313,23 @@ function ServiceCard({
             ))}
           </ul>
 
-          {/* Single CTA: Add to cart */}
+          {/* CTA: Add to devis */}
           <div className="flex items-center gap-3 flex-wrap">
             <button
               onClick={handleCartClick}
               className={cn(
-                "inline-flex items-center gap-2 px-6 py-3.5 text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300",
+                "inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 shadow-sm",
                 inCart
-                  ? "bg-primary-light/10 text-primary-light"
+                  ? "bg-primary-light/15 text-primary-light border border-primary-light/30"
                   : accent === "navy"
                     ? "bg-navy text-white hover:bg-primary-light"
                     : "bg-primary-light text-white hover:bg-ambre-signature"
               )}
             >
               {inCart ? (
-                <><Check className="w-4 h-4" /> Ajouté au panier</>
+                <><Check className="w-4 h-4" /> Ajouté au devis</>
               ) : (
-                <><ShoppingBag className="w-4 h-4" /> Ajouter au panier</>
+                <><FileText className="w-4 h-4" /> Ajouter au devis</>
               )}
             </button>
 
@@ -272,24 +337,27 @@ function ServiceCard({
             {inCart && service.configurable && (
               <button
                 onClick={() => setModalOpen(true)}
-                className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-taupe/40 hover:text-navy transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-3 border border-taupe/20 rounded-xl text-[11px] font-bold uppercase tracking-widest text-taupe/60 hover:text-navy hover:border-navy transition-colors"
               >
-                <Pencil className="w-3.5 h-3.5" /> Modifier
+                <Pencil className="w-3.5 h-3.5" /> Personnaliser
               </button>
             )}
           </div>
 
-          {/* Show designation if configured */}
-          {inCart && existingConfig?.designation && (
-            <p className="mt-2 text-[12px] text-taupe/50 italic">
-              &ldquo;{existingConfig.designation}&rdquo;
-            </p>
+          {/* Show active custom config summary */}
+          {inCart && (
+            <div className="mt-3 p-3 bg-cream/70 rounded-xl border border-taupe/15 text-[12px] text-navy">
+              <span className="font-bold text-rouge-ambra">Total configuré : {formatPriceFCFA(currentPrice, true)}/mo</span>
+              {existingConfig?.designation && (
+                <span className="block text-taupe/60 italic mt-0.5">&ldquo;{existingConfig.designation}&rdquo;</span>
+              )}
+            </div>
           )}
 
           {/* Configurator modal */}
           {modalOpen && (
             <ServiceConfigModal
-              service={{ id: itemId, name: service.title, category: categoryTitle }}
+              service={{ id: itemId, name: service.title, category: categoryTitle, basePrice: service.basePrice }}
               fields={service.fields ?? []}
               initial={existingConfig}
               accent={accent}
@@ -317,7 +385,7 @@ function CategorySection({ category, categoryIndex }: { category: typeof categor
         <div className="inline-flex items-center gap-3 mb-6">
           <div className={cn(
             "w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg",
-            category.accent === "navy" ? "bg-navy text-gold" : "bg-primary-light text-white"
+            category.accent === "navy" ? "bg-navy text-white" : "bg-primary-light text-white"
           )}>
             {category.icon}
           </div>
@@ -332,7 +400,7 @@ function CategorySection({ category, categoryIndex }: { category: typeof categor
         </div>
       </motion.div>
 
-      {/* Services — straight timeline feel */}
+      {/* Services */}
       <div className="relative">
         {/* Vertical line */}
         <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-light/40 via-taupe/20 to-transparent hidden md:block" />
@@ -361,7 +429,7 @@ function CategorySection({ category, categoryIndex }: { category: typeof categor
       </div>
 
       {/* Separator */}
-      {categoryIndex === 0 && (
+      {categoryIndex < categories.length - 1 && (
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
@@ -378,9 +446,6 @@ export function SolutionsDetail() {
   return (
     <section className="py-24 md:py-32 bg-cream/30 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-       
-
-        {/* Categories */}
         <div className="space-y-24 md:space-y-32">
           {categories.map((category, index) => (
             <CategorySection key={category.id} category={category} categoryIndex={index} />
