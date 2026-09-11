@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { upsertBiginContact } from "@/lib/zohoBigin";
 
 export async function POST(req: Request) {
   try {
@@ -11,6 +12,13 @@ export async function POST(req: Request) {
         { error: "Les champs Nom, Email et Message sont obligatoires." },
         { status: 400 }
       );
+    }
+
+    // Synchronisation automatique vers Zoho Bigin CRM (non-bloquante si indisponible)
+    try {
+      await upsertBiginContact({ name, email, company, phone, subject, message });
+    } catch (zohoErr) {
+      console.error("Erreur lors de la synchronisation Zoho Bigin:", zohoErr);
     }
 
     const smtpHost = process.env.SMTP_HOST;

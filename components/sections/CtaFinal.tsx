@@ -41,13 +41,21 @@ export function CtaFinal() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button 
+              href="/devis"
+              className="w-full sm:w-auto bg-rouge-ambra text-white px-8 py-4 text-xs sm:text-sm font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl group/btn border-none"
+            >
+              <span>Demander un devis sur-mesure</span>
+              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover/btn:translate-x-1" />
+            </Button>
+            <Button 
               href="/contact"
-              className="bg-navy text-white px-10 py-5 text-sm font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl group/btn border-none"
+              variant="secondary"
+              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border-white/20 px-8 py-4 text-xs sm:text-sm font-bold uppercase tracking-widest hover:scale-105 transition-all"
             >
               <span>Contacter un Expert</span>
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover/btn:translate-x-1" />
             </Button>
           </motion.div>
         </div>

@@ -304,31 +304,47 @@ export default function DevisPage() {
                         </div>
                       </div>
 
+                      {/* Notice if no item selected */}
+                      {items.length === 0 && (
+                        <div className="p-3.5 bg-primary-light/10 border border-primary-light/20 rounded-xl text-[12px] text-navy font-medium flex items-center gap-2.5">
+                          <span className="text-base">💡</span>
+                          <span>Vous pouvez cocher des services ci-dessus ou simplement remplir vos coordonnées : un architecte élaborera votre devis sur-mesure.</span>
+                        </div>
+                      )}
+
                       <div className="pt-2 space-y-3">
-                        <button type="submit" disabled={loading || items.length === 0}
-                          className="w-full flex items-center justify-center gap-2 bg-[#900C0C] text-white text-[12px] font-black uppercase tracking-[0.2em] py-4 rounded-xl hover:bg-[#7a0a0a] transition-colors duration-300 disabled:opacity-50 shadow-md">
+                        <button type="submit" disabled={loading}
+                          className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-rouge-ambra via-[#900C0C] to-[#7a0a0a] text-white text-xs sm:text-sm font-black uppercase tracking-[0.2em] py-4 sm:py-5 px-6 rounded-xl hover:shadow-xl hover:shadow-rouge-ambra/30 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 disabled:opacity-50 shadow-lg cursor-pointer group">
                           {loading ? (
                             <span className="flex items-center gap-2">
-                              <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                              <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                               Transmission en cours…
                             </span>
                           ) : (
-                            <><span>Envoyer ma demande de devis</span><ArrowRight className="w-4 h-4" /></>
+                            <>
+                              <span className="relative z-10">Envoyer ma demande de devis</span>
+                              <ArrowRight className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1.5" />
+                            </>
                           )}
                         </button>
 
                         {items.length > 0 && (
                           <button type="button" onClick={handlePrintQuote}
-                            className="w-full flex items-center justify-center gap-2 bg-navy text-white text-[12px] font-black uppercase tracking-[0.18em] py-4 rounded-xl hover:bg-primary-light transition-colors duration-300 shadow-md">
+                            className="w-full flex items-center justify-center gap-2 bg-navy text-white text-[12px] font-black uppercase tracking-[0.18em] py-3.5 rounded-xl hover:bg-primary-light transition-colors duration-300 shadow-md">
                             <Download className="w-4 h-4 text-white" />
                             <span>Télécharger / Imprimer mon devis (PDF)</span>
                           </button>
                         )}
                       </div>
 
-                      <p className="text-center text-[11px] text-taupe/50 pt-1">
-                        Aucun paiement requis — validation par nos architectes sous 24h ouvrées.
-                      </p>
+                      <div className="text-center space-y-1 pt-1">
+                        <p className="text-[12px] font-bold text-navy">
+                          🔒 Étude & devis 100% gratuit — Sans engagement
+                        </p>
+                        <p className="text-[11px] text-taupe/60">
+                          Validation et chiffrage personnalisé transmis par nos architectes sous 24h ouvrées.
+                        </p>
+                      </div>
                     </form>
                   </div>
                 </div>

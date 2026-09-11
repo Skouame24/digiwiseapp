@@ -144,14 +144,14 @@ export function Offers() {
                 <Button
                   href={offer.href}
                   className={cn(
-                    "w-full py-4 rounded-xl font-bold uppercase tracking-[0.15em] text-[10px] border-none mt-auto",
+                    "w-full h-[52px] !px-2 rounded-xl font-bold uppercase tracking-wider !text-[10.5px] whitespace-nowrap border-none mt-auto",
                     offer.featured
                       ? "bg-[#D86C24] text-white hover:bg-white hover:text-[#1A0F0A]"
                       : "bg-[#1A0F0A] text-white hover:bg-[#D86C24]"
                   )}
                 >
                   <span>{offer.cta}</span>
-                  <ArrowRight className="w-3.5 h-3.5 ml-2" />
+                  <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                 </Button>
               </div>
             </motion.div>

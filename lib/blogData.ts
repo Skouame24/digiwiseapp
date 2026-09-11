@@ -18,6 +18,103 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "banques-fintech-assurances-cloud-resident",
+    title: "Banques, fintech, assurances : ce que le cloud résident change concrètement pour chacun",
+    excerpt: "On parle souvent du cloud résident comme d'un sujet unique, avec des arguments valables pour tout le monde. C'est une erreur d'approche. Ce que change réellement une infrastructure hébergée localement dépend entièrement du métier.",
+    category: "Secteurs",
+    date: "10 Septembre 2026",
+    readTime: "5 min de lecture",
+    author: {
+      name: "Evelyne Boko",
+      role: "Directrice Générale d'AMBRA Cloud",
+      avatar: "/dgamra.png",
+    },
+    image: "/blog/banking.png",
+    content: `
+      <p>On parle souvent du cloud résident comme d'un sujet unique, avec des arguments valables pour tout le monde. C'est une erreur d'approche.</p>
+      <p>Ce que change réellement une infrastructure hébergée localement dépend entièrement du métier de celui qui pose la question. Une banque commerciale, une fintech de paiement et une compagnie d'assurance ne partagent ni les mêmes contraintes réglementaires, ni les mêmes cycles de vie de données, ni les mêmes urgences.</p>
+      <p>Cet article examine ces trois réalités séparément, parce que c'est ainsi qu'elles se vivent sur le terrain.</p>
+      
+      <h2>Pour une banque : l'enjeu est la démonstration</h2>
+      <figure>
+        <img src="/blog/banking.png" alt="Banque" />
+      </figure>
+      <p>Une banque ne manque généralement pas de politique de sécurité. Elle en a une, souvent bien rédigée, validée par sa direction. Le problème se situe ailleurs.</p>
+      <p>Votre superviseur ne vous demande pas si vous êtes conforme. Il vous demande de le prouver.</p>
+      <p>Et c'est précisément là que la distance devient un handicap opérationnel.</p>
+      
+      <h3>Ce que la proximité rend possible</h3>
+      <ul>
+        <li><strong>L'audit physique.</strong> Pouvoir faire visiter l'infrastructure qui héberge vos données clients à un auditeur, à un membre de votre comité des risques ou à un représentant de l'autorité de supervision. Cette capacité, banale en apparence, est impossible avec un hébergeur international.</li>
+        <li><strong>La traçabilité exploitable.</strong> Produire, sur demande et dans un délai raisonnable, les journaux d'accès permettant de reconstituer qui a consulté quoi, quand et depuis où. La différence entre disposer de logs et pouvoir les exploiter rapidement se mesure au moment d'un incident.</li>
+        <li><strong>Le test réel de continuité.</strong> La supervision bancaire n'attend pas seulement l'existence d'un plan de reprise après sinistre. Elle attend qu'il ait été éprouvé. Organiser un exercice de bascule en conditions réelles est un projet raisonnable avec une équipe joignable localement. C'est un casse-tête organisationnel avec un centre de support situé sur un autre continent.</li>
+        <li><strong>La réversibilité applicable.</strong> Une clause contractuelle prévoyant la restitution de vos données n'a de valeur que si elle est opposable dans un cadre juridique que vous maîtrisez, et exécutable dans un délai compatible avec votre activité.</li>
+      </ul>
+      
+      <h3>En pratique</h3>
+      <p>Pour une banque, le cloud résident ne change pas fondamentalement la nature des contrôles. Il change la capacité à y répondre sans improviser.</p>
+
+      <h2>Pour une fintech : l'enjeu est la crédibilité</h2>
+      <figure>
+        <img src="/blog/fintech.png" alt="Fintech" />
+      </figure>
+      <p>Une fintech vit de la confiance qu'elle inspire. À ses utilisateurs, mais aussi et surtout à ses partenaires bancaires et à ses investisseurs.</p>
+      
+      <h3>La due diligence a changé de nature</h3>
+      <p>Il y a quelques années, une levée de fonds portait essentiellement sur la traction commerciale et la qualité de l'équipe. Aujourd'hui, la gouvernance des données fait partie intégrante de l'examen.</p>
+      <p>Où sont stockées vos données KYC ? Vos historiques de transactions ? Votre scoring de crédit ? Sous quelle juridiction ? Que se passe-t-il si votre fournisseur suspend son service ?</p>
+      <p>Une fintech capable de répondre précisément à ces questions ne présente pas le même profil de risque qu'une autre. Ce n'est pas un détail de conformité, c'est un facteur de valorisation.</p>
+      
+      <h3>La réalité budgétaire du taux de change</h3>
+      <p>Il existe un second enjeu, moins souvent évoqué mais tout aussi structurant.</p>
+      <p>Vos revenus sont en francs CFA. Votre facture cloud est en dollars ou en euros. Entre les deux, un risque de change permanent que vous ne contrôlez pas et que vous ne pouvez pas répercuter sur vos clients.</p>
+      <p>Pour une entreprise en phase de croissance, dont chaque poste de coût est scruté, cette exposition complique la prévision budgétaire d'une année sur l'autre, même à consommation strictement constante.</p>
+      <p>À cela s'ajoutent les frais de sortie de données, généralement invisibles au moment de la signature, et qui se révèlent au moment précis où l'on souhaite migrer.</p>
+      
+      <h3>La question de l'élasticité</h3>
+      <p>Une objection revient souvent : le cloud local peut-il absorber une croissance rapide ?</p>
+      <p>C'est une question légitime, et la réponse tient dans l'architecture retenue. Une infrastructure conçue dès le départ pour combiner ressources locales et capacité de déport vers d'autres régions répond à ce besoin sans sacrifier la localisation des données sensibles.</p>
+      
+      <h2>Pour une assurance : l'enjeu est la durée</h2>
+      <figure>
+        <img src="/blog/insurance.png" alt="Assurance" />
+      </figure>
+      <p>Le secteur de l'assurance présente une particularité que l'on retrouve peu ailleurs : l'horizon temporel de conservation des données.</p>
+      
+      <h3>Des données qui vivent des décennies</h3>
+      <p>Un dossier de sinistre, un contrat, un historique de souscription doivent être conservés pendant des années, parfois plusieurs décennies selon la nature du risque couvert. Cette contrainte change complètement l'équation économique.</p>
+      <p>Le volume s'accumule mécaniquement. Contrairement à une application transactionnelle où les données anciennes peuvent être purgées, l'assurance accumule sans jamais vraiment alléger.</p>
+      <p>Le coût de sortie croît avec le temps. Plus le volume archivé est important, plus une migration future devient longue, coûteuse et risquée. Ce qui représente un chantier gérable aujourd'hui deviendra un projet lourd dans cinq ans.</p>
+      <p>La lisibilité à long terme devient critique. Pouvoir garantir qu'une donnée archivée il y a douze ans reste accessible, exploitable et conforme suppose une maîtrise de la chaîne de conservation que la distance complique.</p>
+      
+      <h3>Le sujet de l'archivage à froid</h3>
+      <p>Pour ce secteur, la question n'est pas seulement de savoir où vivent les données actives, mais aussi où reposent les archives. Une stratégie de stockage à deux vitesses, avec des données courantes hautement disponibles et des archives à coût maîtrisé, prend ici tout son sens.</p>
+      
+      <h2>Ce que ces trois secteurs ont en commun !</h2>
+      <p>Malgré des enjeux distincts, ces métiers partagent une caractéristique décisive.</p>
+      <p>Ils manipulent des données dont la mauvaise gestion ne se paie pas en désagrément technique, mais en sanction réglementaire, en perte de confiance ou en contentieux.</p>
+      <p>Pour une entreprise de commerce en ligne, une indisponibilité de quelques heures représente un manque à gagner. Pour une banque, une fintech ou un assureur, une compromission de données peut remettre en cause l'agrément, la relation avec les partenaires, voire la viabilité de l'activité.</p>
+      <p>C'est ce qui explique que dans ces trois secteurs, la localisation des données ait cessé d'être une décision d'infrastructure pour devenir une décision de direction générale.</p>
+      
+      <h2>Par où commencer ?</h2>
+      <p>Quel que soit votre secteur, la démarche suit la même logique.</p>
+      <ul>
+        <li><strong>Cartographier.</strong> Identifier précisément quelles données vous détenez, où elles résident physiquement, et lesquelles sont soumises à une contrainte réglementaire de localisation.</li>
+        <li><strong>Prioriser.</strong> Toutes les données n'ont pas la même sensibilité. Commencer par ce qui est le plus exposé permet de traiter l'essentiel sans lancer un chantier global.</li>
+        <li><strong>Tester avant de généraliser.</strong> Un environnement de test ou une application secondaire constitue un excellent terrain d'apprentissage avant d'engager la production.</li>
+        <li><strong>S'appuyer sur un accompagnement local.</strong> La proximité réduit considérablement le risque d'une migration, précisément parce qu'elle permet d'ajuster en temps réel.</li>
+      </ul>
+      
+      <hr className="my-8 border-taupe/10" />
+      
+      <div className="bg-cream/60 p-6 rounded-2xl border border-taupe/10 text-sm leading-relaxed">
+        <p className="mb-3">Nos équipes accompagnent les acteurs des secteurs financiers, de l'assurance et de la santé dans la maîtrise de leur infrastructure et de leurs données.</p>
+        <p className="mt-3 font-semibold text-primary-light">Contact : <a href="mailto:infos@ambracloud.net">infos@ambracloud.net</a> | +225 07 16 74 73 87 | <a href="https://www.ambracloud.net" target="_blank" rel="noopener noreferrer">www.ambracloud.net</a></p>
+      </div>
+    `,
+    tags: ["Banque", "Fintech", "Assurance", "Cloud résident", "Conformité"],
+  },
+  {
     id: "conformite-bceao-cloud-resident",
     title: "Conformité BCEAO et cloud résident : ce que votre entreprise doit savoir",
     excerpt: "La digitalisation des services financiers en Afrique de l’Ouest s'accélère. Découvrez les exigences réglementaires de la BCEAO (Instruction n°008-05-2015, n°001-01-2024) et comment le cloud résident assure la conformité de votre entreprise.",

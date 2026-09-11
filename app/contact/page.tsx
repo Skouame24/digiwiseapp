@@ -348,6 +348,31 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* ── BANNER CALL TO ACTION PARTENAIRES ─────────────────────── */}
+      <section className="py-12 bg-navy relative overflow-hidden border-t border-taupe/15">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#F09C3C_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-light">
+              🤝 Programme Partenaires, ESN & Intégrateurs
+            </span>
+            <h3 className="text-2xl md:text-3xl font-display text-white">
+              Vous êtes partenaire ? Déclarer une opportunité
+            </h3>
+            <p className="text-[14px] text-white/75 max-w-2xl leading-relaxed">
+              Enregistrez vos projets clients (Deal Registration), protégez vos affaires et obtenez l&apos;appui technique gratuit de nos architectes cloud AMBRA.
+            </p>
+          </div>
+          <a
+            href="/partenaires"
+            className="inline-flex items-center gap-3 bg-rouge-ambra text-white text-xs font-black uppercase tracking-[0.2em] px-8 py-4 rounded-xl hover:bg-[#900C0C] hover:scale-105 active:scale-95 transition-all shadow-xl shadow-rouge-ambra/20 shrink-0"
+          >
+            <span>Espace Partenaire & Deal Registration</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </section>
+
       {/* ── MAP — full-width large section ───────────────────────── */}
       <section className="relative w-full h-[480px] md:h-[580px]">
         {/* Top bar overlay */}
