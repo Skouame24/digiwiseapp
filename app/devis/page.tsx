@@ -216,11 +216,10 @@ export default function DevisPage() {
                         return (
                           <div
                             key={catItem.id}
-                            className={`p-4 rounded-2xl border transition-all duration-200 bg-white ${
-                              active
+                            className={`p-4 rounded-2xl border transition-all duration-200 bg-white ${active
                                 ? "border-rouge-ambra shadow-md ring-1 ring-rouge-ambra/30"
                                 : "border-taupe/15 hover:border-taupe/30"
-                            }`}
+                              }`}
                           >
                             <div className="flex items-start justify-between gap-3">
                               <button
@@ -229,9 +228,8 @@ export default function DevisPage() {
                                 className="flex items-start gap-3 text-left flex-1 min-w-0"
                               >
                                 <span
-                                  className={`mt-0.5 w-5 h-5 shrink-0 border-2 rounded-md flex items-center justify-center transition-colors ${
-                                    active ? "border-rouge-ambra bg-rouge-ambra" : "border-taupe/30 bg-white"
-                                  }`}
+                                  className={`mt-0.5 w-5 h-5 shrink-0 border-2 rounded-md flex items-center justify-center transition-colors ${active ? "border-rouge-ambra bg-rouge-ambra" : "border-taupe/30 bg-white"
+                                    }`}
                                 >
                                   {active && <Check className="w-3.5 h-3.5 text-white stroke-[3]" />}
                                 </span>

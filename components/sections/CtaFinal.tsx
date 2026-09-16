@@ -45,15 +45,15 @@ export function CtaFinal() {
           >
             <Button 
               href="/devis"
-              className="w-full sm:w-auto bg-rouge-ambra text-white px-8 py-4 text-xs sm:text-sm font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl group/btn border-none"
+              className="w-full sm:w-auto bg-rouge-ambra text-white px-6 py-3 text-[11px] sm:text-xs font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl group/btn border-none"
             >
               <span>Demander un devis sur-mesure</span>
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover/btn:translate-x-1" />
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
             </Button>
             <Button 
               href="/contact"
               variant="secondary"
-              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border-white/20 px-8 py-4 text-xs sm:text-sm font-bold uppercase tracking-widest hover:scale-105 transition-all"
+              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border-white/20 px-6 py-3 text-[11px] sm:text-xs font-bold uppercase tracking-widest hover:scale-105 transition-all"
             >
               <span>Contacter un Expert</span>
             </Button>

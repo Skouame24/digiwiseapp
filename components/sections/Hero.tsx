@@ -134,11 +134,11 @@ export function Hero() {
             className="flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-4 mb-10 sm:mb-14"
           >
             <Button
-              href="/devis"
+              href="/essai-gratuit"
               iconRight={<ArrowRight className="w-4 h-4" />}
               className="w-full xs:w-auto justify-center bg-rouge-ambra hover:bg-[#7a0a0a] text-white shadow-lg shadow-rouge-ambra/20 border-none px-6 sm:px-8"
             >
-              Demander un devis
+              Essai gratuit
             </Button>
             <Button variant="secondary" href="/solutions" className="w-full xs:w-auto justify-center px-6 sm:px-8">
               Nos solutions

@@ -327,9 +327,9 @@ function ServiceCard({
               )}
             >
               {inCart ? (
-                <><Check className="w-4 h-4" /> Ajouté au devis</>
+                <><Check className="w-4 h-4" /> Ajouté au panier</>
               ) : (
-                <><FileText className="w-4 h-4" /> Ajouter au devis</>
+                <><FileText className="w-4 h-4" /> Ajouter au panier</>
               )}
             </button>
 

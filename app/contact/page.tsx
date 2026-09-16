@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Mail, Phone, MapPin, ArrowRight, Clock, CheckCircle, Linkedin, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight, Clock, CheckCircle, Linkedin, Facebook, Coins, ShieldCheck, TrendingUp } from "lucide-react";
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
@@ -118,6 +118,44 @@ export default function ContactPage() {
             Notre équipe d&apos;architectes cloud est à votre écoute pour concevoir
             l&apos;infrastructure adaptée à vos enjeux métier.
           </motion.p>
+        </div>
+      </section>
+
+      {/* ── CALL TO ACTION PARTENAIRES SOFT (AU-DESSUS) ─────────────── */}
+      <section className="bg-cream/50 border-b border-taupe/15 py-6 sm:py-8 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-primary-light/30 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div className="space-y-2.5 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-light/10 border border-primary-light/20 rounded-full text-rouge-ambra text-[11px] font-black uppercase tracking-wider">
+                <Coins className="w-3.5 h-3.5 text-primary-light" />
+                <span>Programme Apporteurs d&apos;Affaires & ESN</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-rouge-ambra animate-pulse" />
+                <span className="text-primary-light font-bold">Jusqu&apos;à 20% de commissions</span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-display text-navy leading-snug">
+                Vous avez un client avec un projet Cloud ou Datacenter ?{" "}
+                <span className="text-rouge-ambra italic">Monétisez vos affaires.</span>
+              </h2>
+              <p className="text-[13px] sm:text-[14px] text-taupe/75 leading-relaxed">
+                Gagnez jusqu&apos;à <strong className="text-navy">20% de commissions récurrentes</strong> ou une prime immédiate dès la signature sur chaque projet d&apos;hébergement et cloud privé recommandé.
+                Nos architectes cloud gèrent 100% de la technique et du déploiement : vous encaissez vos sous sans effort technique.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row lg:flex-col shrink-0 gap-2.5 w-full sm:w-auto">
+              <a
+                href="/partenaires"
+                className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-rouge-ambra via-[#900C0C] to-[#7a0a0a] text-white text-xs font-black uppercase tracking-[0.18em] px-7 py-4 rounded-xl hover:shadow-lg hover:shadow-rouge-ambra/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group"
+              >
+                <span>Déclarer une affaire</span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+              <span className="text-[11px] text-taupe/60 text-center flex items-center justify-center gap-1.5 font-medium">
+                <ShieldCheck className="w-3.5 h-3.5 text-primary-light" />
+                Protection de votre dossier · Rémunération contractuelle garantie
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -345,31 +383,6 @@ export default function ContactPage() {
               )}
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* ── BANNER CALL TO ACTION PARTENAIRES ─────────────────────── */}
-      <section className="py-12 bg-navy relative overflow-hidden border-t border-taupe/15">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#F09C3C_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 text-center md:text-left">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-light">
-              🤝 Programme Partenaires, ESN & Intégrateurs
-            </span>
-            <h3 className="text-2xl md:text-3xl font-display text-white">
-              Vous êtes partenaire ? Déclarer une opportunité
-            </h3>
-            <p className="text-[14px] text-white/75 max-w-2xl leading-relaxed">
-              Enregistrez vos projets clients (Deal Registration), protégez vos affaires et obtenez l&apos;appui technique gratuit de nos architectes cloud AMBRA.
-            </p>
-          </div>
-          <a
-            href="/partenaires"
-            className="inline-flex items-center gap-3 bg-rouge-ambra text-white text-xs font-black uppercase tracking-[0.2em] px-8 py-4 rounded-xl hover:bg-[#900C0C] hover:scale-105 active:scale-95 transition-all shadow-xl shadow-rouge-ambra/20 shrink-0"
-          >
-            <span>Espace Partenaire & Deal Registration</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
         </div>
       </section>
 
