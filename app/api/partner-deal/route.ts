@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { upsertBiginContact } from "@/lib/zohoBigin";
 
 export async function POST(req: Request) {
   try {
@@ -7,7 +8,7 @@ export async function POST(req: Request) {
     const partnerEmail = body.partnerEmail || body.emailPartenaire;
     const partnerPhone = body.partnerPhone || body.telephonePartenaire;
     const partnerContactName = body.partnerContactName || body.nomContactPartenaire || partnerCompany;
-    const partnerType = body.partnerType || "Apporteur d'Affaires / ESN";
+    const partnerType = body.partnerType || "Apporteur d'Affaires";
 
     const clientName = body.clientName || body.entreprise;
     const clientSector = body.clientSector || "Non spécifié";
@@ -38,7 +39,32 @@ export async function POST(req: Request) {
     });
 
     // Traitement sécurisé
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    const messageDetails = `=== DÉCLARATION D'OPPORTUNITÉ ===
+Client Final: ${clientName}
+Secteur: ${clientSector}
+Contact Client: ${clientContact || "Non précisé"} (${clientCoordonnees || "Non précisé"})
+
+--- Détails du Projet ---
+Solutions: ${projectScope}
+Budget Mensuel Estimé: ${estimatedMonthlyBudget}
+Délai: ${closingTimeline}
+
+Commentaires:
+${comments}`.trim();
+
+    // Envoi vers Zoho Bigin
+    const zohoResult = await upsertBiginContact({
+      name: partnerContactName,
+      email: partnerEmail,
+      phone: partnerPhone,
+      company: partnerCompany,
+      subject: `Opportunité Partenaire: ${clientName}`,
+      message: messageDetails,
+    });
+
+    if (!zohoResult.success) {
+      console.warn("L'opportunité a été reçue mais la synchronisation CRM Zoho a échoué.");
+    }
 
     return NextResponse.json({
       success: true,

@@ -115,7 +115,7 @@ export default function PartenairesPage() {
           >
             <Coins className="w-4 h-4 text-rouge-ambra" />
             <span className="text-[10px] font-black uppercase tracking-[0.25em] text-navy">
-              PROGRAMME APPORTEURS D&apos;AFFAIRES & ESN
+              PROGRAMME APPORTEURS D&apos;AFFAIRES
             </span>
           </motion.div>
 
@@ -265,7 +265,7 @@ export default function PartenairesPage() {
                         <Wallet className="w-5 h-5" />
                       </div>
                       <div>
-                        <h2 className="text-lg font-bold text-navy">1. Vos informations (Apporteur d&apos;affaires / ESN)</h2>
+                        <h2 className="text-lg font-bold text-navy">1. Vos informations (Apporteur d&apos;affaires)</h2>
                         <p className="text-[12px] text-taupe/70 mt-0.5">Ces coordonnées serviront à lier l&apos;opportunité à votre nom et vous verser vos commissions.</p>
                       </div>
                     </div>
