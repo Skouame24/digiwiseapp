@@ -130,15 +130,14 @@ export default function ContactPage() {
                 <Coins className="w-3.5 h-3.5 text-primary-light" />
                 <span>Programme Apporteurs d&apos;Affaires & ESN</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-rouge-ambra animate-pulse" />
-                <span className="text-primary-light font-bold">Jusqu&apos;à 20% de commissions</span>
+                <span className="text-primary-light font-bold">Partenariat professionnel</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-display text-navy leading-snug">
                 Vous avez un client avec un projet Cloud ou Datacenter ?{" "}
                 <span className="text-rouge-ambra italic">Monétisez vos affaires.</span>
               </h2>
               <p className="text-[13px] sm:text-[14px] text-taupe/75 leading-relaxed">
-                Gagnez jusqu&apos;à <strong className="text-navy">20% de commissions récurrentes</strong> ou une prime immédiate dès la signature sur chaque projet d&apos;hébergement et cloud privé recommandé.
-                Nos architectes cloud gèrent 100% de la technique et du déploiement : vous encaissez vos sous sans effort technique.
+                Présentez-nous vos projets d&apos;hébergement et de cloud privé. Nos architectes cloud étudient chaque besoin et prennent en charge la technique ainsi que le déploiement.
               </p>
             </div>
 

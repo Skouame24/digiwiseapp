@@ -10,7 +10,6 @@ import {
   Sparkles,
   Lock,
   Coins,
-  TrendingUp,
   Wallet,
   Zap,
   BadgeCheck,
@@ -125,8 +124,8 @@ export default function PartenairesPage() {
             transition={{ duration: 0.7, delay: 0.1, ease }}
             className="text-4xl md:text-5xl lg:text-6xl font-display text-navy leading-[1.15] mb-5 max-w-4xl"
           >
-            Monétisez vos affaires —{" "}
-            <span className="italic text-rouge-ambra">Gagnez jusqu&apos;à 20% de commissions</span>
+            Déclarez une opportunité{" "}
+            <span className="italic text-rouge-ambra">avec AMBRA Cloud</span>
           </motion.h1>
 
           <motion.p
@@ -135,8 +134,8 @@ export default function PartenairesPage() {
             transition={{ duration: 0.7, delay: 0.2, ease }}
             className="text-[16px] text-taupe/80 max-w-3xl leading-relaxed"
           >
-            Recommandez AMBRA Cloud à vos clients et contacts professionnels. Touchez des commissions directes ou récurrentes sur chaque contrat d&apos;hébergement et cloud déployé.
-            <strong className="text-navy font-bold"> Vous nous apportez l&apos;affaire, nos ingénieurs gèrent toute la technique, vous encaissez vos sous.</strong>
+            Recommandez AMBRA Cloud à vos clients et contacts professionnels. Nos architectes cloud étudient chaque opportunité et vous accompagnent dans son suivi.
+            <strong className="text-navy font-bold"> Vous nous présentez le projet, nos ingénieurs prennent en charge la technique et le déploiement.</strong>
           </motion.p>
 
           {/* Badges de réassurance */}
@@ -147,8 +146,8 @@ export default function PartenairesPage() {
             className="flex flex-wrap gap-4 mt-8 pt-6 border-t border-taupe/15 text-[12px] font-bold text-navy"
           >
             <div className="flex items-center gap-2 bg-white/90 px-4 py-2.5 rounded-xl border border-primary-light/25 shadow-sm">
-              <TrendingUp className="w-4 h-4 text-rouge-ambra" />
-              <span>Jusqu&apos;à 20% de commissions récurrentes</span>
+              <Briefcase className="w-4 h-4 text-rouge-ambra" />
+              <span>Suivi dédié de votre opportunité</span>
             </div>
             <div className="flex items-center gap-2 bg-white/90 px-4 py-2.5 rounded-xl border border-taupe/15 shadow-sm">
               <Lock className="w-4 h-4 text-rouge-ambra" />
@@ -190,10 +189,10 @@ export default function PartenairesPage() {
                   {dealId}
                 </span>
                 <h2 className="text-3xl font-display text-navy mt-4 mb-3">
-                  Opportunité Enregistrée & Commissions Verrouillées !
+                  Opportunité enregistrée
                 </h2>
                 <p className="text-[14px] text-taupe/70 leading-relaxed mb-8">
-                  Votre déclaration d&apos;affaire pour l&apos;entreprise <strong className="text-navy">{formData.entreprise}</strong> a été enregistrée avec succès dans le programme Partenaires AMBRA Cloud. Vos commissions sont réservées à votre nom.
+                  Votre déclaration d&apos;affaire pour l&apos;entreprise <strong className="text-navy">{formData.entreprise}</strong> a été transmise à l&apos;équipe AMBRA Cloud.
                 </p>
 
                 <div className="bg-cream/40 p-6 rounded-2xl border border-taupe/15 text-left text-[13px] space-y-3 mb-8 shadow-sm">
@@ -215,7 +214,7 @@ export default function PartenairesPage() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-taupe/60 font-semibold">Statut du Deal :</span>
-                    <span className="font-bold text-emerald-600">✓ Actif & Protégé (Commissions réservées)</span>
+                    <span className="font-bold text-emerald-600">✓ Opportunité enregistrée</span>
                   </div>
                 </div>
 
@@ -258,7 +257,7 @@ export default function PartenairesPage() {
                     </div>
                   )}
 
-                  {/* 1. VOS COORDONNÉES (POUR TOUCHER VOS COMMISSIONS) */}
+                  {/* 1. VOS COORDONNÉES */}
                   <div className="bg-white p-6 sm:p-8 rounded-3xl border border-taupe/15 shadow-sm space-y-6">
                     <div className="flex items-center gap-3 border-b border-taupe/15 pb-4">
                       <div className="w-10 h-10 bg-rouge-ambra/10 rounded-xl flex items-center justify-center text-rouge-ambra">
@@ -266,7 +265,7 @@ export default function PartenairesPage() {
                       </div>
                       <div>
                         <h2 className="text-lg font-bold text-navy">1. Vos informations (Apporteur d&apos;affaires)</h2>
-                        <p className="text-[12px] text-taupe/70 mt-0.5">Ces coordonnées serviront à lier l&apos;opportunité à votre nom et vous verser vos commissions.</p>
+                        <p className="text-[12px] text-taupe/70 mt-0.5">Ces coordonnées permettront à notre équipe de vous recontacter au sujet de l&apos;opportunité.</p>
                       </div>
                     </div>
 
@@ -454,7 +453,7 @@ export default function PartenairesPage() {
                         </span>
                       ) : (
                         <>
-                          <span className="relative z-10">Soumettre & Verrouiller mes commissions</span>
+                          <span className="relative z-10">Soumettre mon opportunité</span>
                           <ArrowRight className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1.5" />
                         </>
                       )}

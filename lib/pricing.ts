@@ -19,7 +19,7 @@ export const GPU_MODELS = [
 ];
 
 export const UNIT_RATES = {
-  vcpu: 10000,        // 1 vCPU = 10,000 FCFA / mo (~15 €)
+  vcpu: 11000,        // 1 vCPU = 10,000 FCFA / mo (~15 €)
   ram: 2000,          // 1 GB RAM = 2,000 FCFA / mo (~3 €)
   storage: 100,       // 1 GB NVMe = 100 FCFA / mo (~0.15 €)
   objectStorage: 15,  // 1 GB Object Storage = 15 FCFA / mo (~0.023 €)
@@ -36,6 +36,13 @@ export interface ConfigOptions {
   addons?: string[];
   isObjectStorage?: boolean;
   baseServicePrice?: number;
+}
+
+export function getDurationDiscountRate(duration?: number): number {
+  if (!duration || duration < 12) return 0;
+  if (duration >= 36) return 0.20;
+  if (duration >= 24) return 0.15;
+  return 0.10;
 }
 
 /**
@@ -75,16 +82,20 @@ export function calculateConfigPrice(config?: ConfigOptions, fallbackBasePrice: 
     });
   }
 
-  return Math.max(total, fallbackBasePrice);
+  const discountRate = getDurationDiscountRate(config.duration);
+  if (discountRate > 0) {
+    total = Math.round(total * (1 - discountRate));
+  }
+
+  return Math.max(total, discountRate > 0 ? 0 : fallbackBasePrice);
 }
 
 /**
  * Format price string in FCFA with option for EUR equivalent
  */
-export function formatPriceFCFA(amountFCFA: number, includeEur: boolean = true): string {
+export function formatPriceFCFA(amountFCFA: number, includeEur: boolean = true): string { 
   if (!amountFCFA || amountFCFA <= 0) return "Sur devis";
   const formattedFCFA = new Intl.NumberFormat("fr-FR").format(Math.round(amountFCFA)) + " FCFA";
   if (!includeEur) return formattedFCFA;
-  const eurVal = Math.round(amountFCFA / 655.957);
-  return `${formattedFCFA} (~${eurVal} €)`;
+  return `${formattedFCFA} `;
 }

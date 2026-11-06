@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText, Trash2, ArrowRight, CheckCircle2, User, Building2, Mail, Phone, MessageSquare, ChevronRight, Plus, ChevronDown, Download, Printer, ShieldCheck, Database, Cpu, Cloud, Lock, Check } from "lucide-react";
+import { FileText, Trash2, ArrowRight, CheckCircle2, User, Building2, Mail, Phone, MessageSquare, ChevronRight, Plus, ChevronDown, Download, Printer, ShieldCheck, Database, Cpu, Cloud, Lock, Check, Clock } from "lucide-react";
 import Link from "next/link";
 import { useCart, CartItem, ServiceConfig } from "@/context/CartContext";
 import { MANAGED_ADDONS, GPU_MODELS, formatPriceFCFA } from "@/lib/pricing";
@@ -163,7 +163,7 @@ export default function DevisPage() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease }}
             className="text-[15px] text-taupe/70 max-w-xl leading-relaxed">
-            Sélectionnez vos ressources cloud ci-dessous. Le montant se calcule en temps réel. Vous pouvez télécharger directement votre fiche devis ou la transmettre à nos experts.
+            Renseignez votre projet ci-dessous pour recevoir une étude personnalisée par nos architectes. Notre calculateur tarifaire interactif est actuellement en cours de formalisation et sera bientôt disponible en ligne.
           </motion.p>
         </div>
       </section>
@@ -198,20 +198,31 @@ export default function DevisPage() {
                 {/* LEFT: Article Selection + Contact Form */}
                 <div className="no-print space-y-10">
 
+                  {/* Bandeau d'information sur la formalisation */}
+                  <div className="p-4 sm:p-5 rounded-2xl bg-[#FBF4E4] border border-[#D86C24]/30 flex items-start gap-3.5 text-navy">
+                    <Clock className="w-5 h-5 text-rouge-ambra shrink-0 mt-0.5" />
+                    <div className="text-xs sm:text-sm">
+                      <span className="font-black text-rouge-ambra uppercase tracking-wider block text-[11px] mb-1">
+                        Calculateur & Grille tarifaire en cours d&apos;actualisation — Bientôt disponible
+                      </span>
+                      <span className="text-taupe/80 leading-relaxed">
+                        Nos équipes formalisent actuellement la nouvelle grille tarifaire unifiée. Le calculateur interactif est temporairement grisé. Remplissez simplement vos coordonnées et vos besoins ci-dessous pour recevoir une étude chiffrée personnalisée sous 24h ouvrées.
+                      </span>
+                    </div>
+                  </div>
+
                   {/* Quick Catalog Checkers */}
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <h2 className="text-[11px] font-black uppercase tracking-[0.3em] text-taupe/50">
-                        1. Sélection des Produits & Services
+                        1. Sélection des Produits & Services (Optionnel)
                       </h2>
-                      <span className="text-[10px] text-taupe/40 font-semibold">Cochez pour ajouter à votre devis</span>
+                      <span className="text-[10px] text-taupe/40 font-semibold">Cochez vos domaines d&apos;intérêt</span>
                     </div>
 
                     <div className="space-y-3">
                       {QUICK_CATALOG.map((catItem) => {
                         const active = isInCart(catItem.id);
-                        const cartItemObj = items.find((i) => i.id === catItem.id);
-                        const itemMonthly = cartItemObj?.config?.monthlyPrice ?? catItem.basePrice;
 
                         return (
                           <div
@@ -243,32 +254,11 @@ export default function DevisPage() {
                               </button>
 
                               <div className="text-right shrink-0">
-                                <span className="text-[12px] font-black text-navy block">
-                                  À partir de {formatPriceFCFA(itemMonthly, false)}/mo
+                                <span className="text-[11px] font-bold text-rouge-ambra bg-rouge-ambra/5 px-2.5 py-1 rounded-md border border-rouge-ambra/20 block">
+                                  Sur devis
                                 </span>
-                                {catItem.configurable && (
-                                  <button
-                                    type="button"
-                                    onClick={() => setConfiguringItem(catItem)}
-                                    className="mt-1 text-[10px] font-bold uppercase tracking-widest text-rouge-ambra hover:underline"
-                                  >
-                                    {active ? "Personnaliser ›" : "Configurer ›"}
-                                  </button>
-                                )}
                               </div>
                             </div>
-
-                            {active && cartItemObj?.config && (
-                              <div className="mt-3 pt-2.5 border-t border-taupe/10 text-[11px] text-taupe/70 flex flex-wrap gap-x-4 gap-y-1">
-                                {cartItemObj.config.vcpu !== undefined && <span>{cartItemObj.config.vcpu} vCPU</span>}
-                                {cartItemObj.config.ram !== undefined && <span>{cartItemObj.config.ram} Go RAM</span>}
-                                {cartItemObj.config.storage !== undefined && <span>{cartItemObj.config.storage} Go stockage</span>}
-                                {cartItemObj.config.gpuCount !== undefined && <span className="text-rouge-ambra font-bold">{cartItemObj.config.gpuCount}x GPU ({cartItemObj.config.gpuType?.toUpperCase()})</span>}
-                                {cartItemObj.config.addons && cartItemObj.config.addons.length > 0 && (
-                                  <span className="text-rouge-ambra font-medium">+{cartItemObj.config.addons.length} option(s) managée(s)</span>
-                                )}
-                              </div>
-                            )}
                           </div>
                         );
                       })}
@@ -347,85 +337,74 @@ export default function DevisPage() {
                   </div>
                 </div>
 
-                {/* RIGHT: Dynamic Calculation & Printable Section */}
-                <div className="lg:sticky lg:top-28" id="printable-devis">
-                  <div className="flex items-center justify-between mb-5">
-                    <h2 className="text-[11px] font-black uppercase tracking-[0.3em] text-taupe/50">Calculateur & Devis</h2>
-                    {items.length > 0 && (
-                      <button onClick={handlePrintQuote} className="no-print text-xs font-bold text-navy hover:text-rouge-ambra flex items-center gap-1">
-                        <Printer className="w-3.5 h-3.5" /> Imprimer
-                      </button>
-                    )}
+                {/* RIGHT: Dynamic Calculation & Printable Section - Grisé / Bientôt disponible */}
+                <div className="lg:sticky lg:top-28 relative" id="printable-devis">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-[11px] font-black uppercase tracking-[0.3em] text-taupe/50">Calculateur & Devis</h2>
+                      <span className="text-[9px] font-black uppercase tracking-wider bg-rouge-ambra/10 text-rouge-ambra px-2 py-0.5 rounded-full border border-rouge-ambra/20">
+                        Bientôt disponible
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="border border-taupe/15 bg-white rounded-2xl overflow-hidden shadow-lg">
-                    {/* Header for print preview */}
-                    <div className="p-6 bg-navy text-white flex items-center justify-between">
-                      <div>
-                        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary-light">AMBRA CLOUD</p>
-                        <h3 className="text-lg font-black text-white">Devis d&apos;Infrastructure</h3>
+                  <div className="relative border border-taupe/15 bg-white rounded-2xl overflow-hidden shadow-md">
+                    {/* Overlay d'information "Bientôt disponible" */}
+                    <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px] z-20 flex flex-col items-center justify-center p-6 text-center">
+                      <div className="w-12 h-12 rounded-2xl bg-[#FBF4E4] border border-[#D86C24]/30 flex items-center justify-center text-rouge-ambra mb-3 shadow-sm">
+                        <Clock className="w-6 h-6 text-rouge-ambra" />
                       </div>
-                      <div className="text-right">
-                        <span className="text-[10px] text-white/60 block font-mono">DEV-{new Date().getFullYear()}-{Math.floor(1000 + Math.random() * 9000)}</span>
-                        <span className="text-[10px] text-white/60 block">{new Date().toLocaleDateString("fr-FR")}</span>
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-rouge-ambra bg-rouge-ambra/10 px-3 py-1 rounded-full mb-2">
+                        Bientôt disponible
+                      </span>
+                      <h4 className="text-[15px] font-display font-bold text-navy mb-1.5">
+                        Calculateur tarifaire en cours de formalisation
+                      </h4>
+                      <p className="text-xs text-taupe/70 max-w-xs leading-relaxed mb-4">
+                        La nouvelle grille tarifaire unifiée est en cours de validation. Remplissez le formulaire de contact pour recevoir une offre sur-mesure sous 24h.
+                      </p>
+                      <div className="inline-flex items-center gap-1.5 text-[11px] font-bold text-navy bg-cream/80 px-3 py-1.5 rounded-xl border border-taupe/15">
+                        <ShieldCheck className="w-4 h-4 text-primary-light" />
+                        Chiffrage officiel transmis par nos architectes
                       </div>
                     </div>
 
-                    <AnimatePresence mode="popLayout">
-                      {items.length === 0 ? (
-                        <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                          className="flex flex-col items-center py-12 text-center px-6">
-                          <FileText className="w-10 h-10 text-taupe/20 mb-3" />
-                          <p className="text-[12px] font-bold text-taupe/40 uppercase tracking-widest mb-1">Aucune offre coché</p>
-                          <p className="text-[11px] text-taupe/40">Cochez des articles à gauche pour voir l&apos;estimation en temps réel.</p>
-                        </motion.div>
-                      ) : (
-                        <>
-                          <div className="divide-y divide-taupe/10">
-                            {items.map((item) => (
-                              <CartItemRow
-                                key={item.id}
-                                item={item}
-                                onRemove={() => removeItem(item.id)}
-                              />
-                            ))}
-                          </div>
+                    {/* Contenu grisé en arrière-plan */}
+                    <div className="opacity-35 grayscale pointer-events-none select-none">
+                      {/* Header for print preview */}
+                      <div className="p-6 bg-navy text-white flex items-center justify-between">
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary-light">AMBRA CLOUD</p>
+                          <h3 className="text-lg font-black text-white">Devis d&apos;Infrastructure</h3>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[10px] text-white/60 block font-mono">DEV-XXXX</span>
+                          <span className="text-[10px] text-white/60 block">{new Date().toLocaleDateString("fr-FR")}</span>
+                        </div>
+                      </div>
 
-                          {/* Dynamic total calculation block */}
-                          <div className="p-5 border-t border-taupe/15 bg-cream/40 space-y-3">
-                            <div className="flex items-center justify-between text-xs text-taupe/70 font-semibold">
-                              <span>Sous-total mensuel estimé :</span>
-                              <span className="font-bold text-navy">{formatPriceFCFA(totalMonthly, true)}</span>
-                            </div>
-                            <div className="flex items-center justify-between text-xs text-taupe/70 font-semibold">
-                              <span>Estimation annuelle (12 mois) :</span>
-                              <span className="font-bold text-navy">{formatPriceFCFA(totalAnnual, true)}</span>
-                            </div>
-                            <div className="pt-3 border-t border-taupe/15 flex items-center justify-between">
-                              <div>
-                                <span className="text-[11px] font-black uppercase tracking-widest text-navy block">Montant Total Mensuel</span>
-                                <span className="text-[10px] text-taupe/50 block">Calculé au fur et à mesure</span>
-                              </div>
-                              <div className="text-right">
-                                <span className="text-xl font-black text-rouge-ambra block">
-                                  {formatPriceFCFA(totalMonthly, true)}
-                                </span>
-                              </div>
-                            </div>
+                      <div className="flex flex-col items-center py-12 text-center px-6">
+                        <FileText className="w-10 h-10 text-taupe/20 mb-3" />
+                        <p className="text-[12px] font-bold text-taupe/40 uppercase tracking-widest mb-1">Calculateur automatique</p>
+                        <p className="text-[11px] text-taupe/40">Tarifs en cours de mise à jour.</p>
+                      </div>
 
-                            <div className="pt-2 flex items-center justify-between no-print">
-                              <span className="text-[11px] font-bold uppercase tracking-widest text-taupe/50">
-                                {count} article{count > 1 ? "s" : ""} sélectionné{count > 1 ? "s" : ""}
-                              </span>
-                              <button onClick={clearCart}
-                                className="text-[10px] font-bold uppercase tracking-widest text-taupe/40 hover:text-rouge-ambra transition-colors">
-                                Réinitialiser
-                              </button>
-                            </div>
+                      <div className="p-5 border-t border-taupe/15 bg-cream/40 space-y-3">
+                        <div className="flex items-center justify-between text-xs text-taupe/70 font-semibold">
+                          <span>Sous-total estimé :</span>
+                          <span className="font-bold text-navy">Sur devis</span>
+                        </div>
+                        <div className="pt-3 border-t border-taupe/15 flex items-center justify-between">
+                          <div>
+                            <span className="text-[11px] font-black uppercase tracking-widest text-navy block">Montant Mensuel</span>
+                            <span className="text-[10px] text-taupe/50 block">Étude personnalisée</span>
                           </div>
-                        </>
-                      )}
-                    </AnimatePresence>
+                          <div className="text-right">
+                            <span className="text-xl font-black text-rouge-ambra block">Sur devis</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="mt-4 p-4 rounded-xl border border-taupe/15 bg-white text-[11px] text-taupe/60 space-y-2">
@@ -440,8 +419,9 @@ export default function DevisPage() {
           </AnimatePresence>
         </div>
 
-        {/* Modal si clic sur Personnaliser */}
-        {configuringItem && (
+        {/* Modal si clic sur Personnaliser - Mis en commentaire pendant la formalisation */}
+        {/*
+        configuringItem && (
           <ServiceConfigModal
             service={{
               id: configuringItem.id,
@@ -454,7 +434,8 @@ export default function DevisPage() {
             onConfirm={handleModalConfirm}
             onClose={() => setConfiguringItem(null)}
           />
-        )}
+        )
+        */}
       </section>
 
       <CtaFinal />

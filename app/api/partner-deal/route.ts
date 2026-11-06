@@ -20,9 +20,16 @@ export async function POST(req: Request) {
     const closingTimeline = body.closingTimeline || body.dateCloture;
     const comments = body.comments || body.descriptionBesoin;
 
-    if (!partnerCompany || !clientName) {
+    if (!partnerCompany || !clientName || !partnerEmail) {
       return NextResponse.json(
-        { error: "Le nom du partenaire et le nom du client final sont obligatoires." },
+        { error: "Le nom, l'e-mail du partenaire et le nom du client final sont obligatoires." },
+        { status: 400 }
+      );
+    }
+
+    if (typeof partnerEmail !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(partnerEmail)) {
+      return NextResponse.json(
+        { error: "L'adresse e-mail du partenaire est invalide." },
         { status: 400 }
       );
     }
@@ -63,7 +70,11 @@ ${comments}`.trim();
     });
 
     if (!zohoResult.success) {
-      console.warn("L'opportunité a été reçue mais la synchronisation CRM Zoho a échoué.");
+      console.error("La synchronisation de l'opportunité vers Zoho Bigin a échoué.", zohoResult.details);
+      return NextResponse.json(
+        { error: "Zoho Bigin n'a pas confirmé l'enregistrement. Vérifiez la configuration CRM puis réessayez." },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json({

@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Cloud, Lock, CheckCircle2, FileText, Check, Pencil, Database, Cpu, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { Cloud, Lock, CheckCircle2, FileText, Check, Pencil, Database, Cpu, ShieldCheck, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCart, ServiceConfig } from "@/context/CartContext";
 import { ServiceConfigModal } from "@/components/sections/ServiceConfigModal";
@@ -288,8 +289,9 @@ function ServiceCard({
               <span className="text-sm font-display font-bold">{index + 1}</span>
             </div>
             <div className="h-px flex-1 bg-taupe/10" />
-            <span className="text-[12px] font-bold text-rouge-ambra bg-rouge-ambra/5 border border-rouge-ambra/20 px-3 py-1 rounded-full">
-              À partir de {formatPriceFCFA(service.basePrice, true)}/mo
+            <span className="text-[11px] font-bold text-navy/70 bg-cream border border-taupe/20 px-3 py-1 rounded-full flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-rouge-ambra" />
+              Sur devis · Tarifs bientôt en ligne
             </span>
           </div>
 
@@ -313,7 +315,27 @@ function ServiceCard({
             ))}
           </ul>
 
-          {/* CTA: Add to devis */}
+          {/* CTA: Devis & Bientôt disponible */}
+          <div className="flex items-center gap-3 flex-wrap">
+            <Link
+              href="/devis"
+              className={cn(
+                "inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 shadow-sm",
+                accent === "navy"
+                  ? "bg-navy text-white hover:bg-primary-light"
+                  : "bg-primary-light text-white hover:bg-ambre-signature"
+              )}
+            >
+              <FileText className="w-4 h-4" /> Demander un devis
+            </Link>
+
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-3 rounded-xl text-[10px] font-bold uppercase tracking-wider text-taupe/60 bg-cream/70 border border-taupe/15">
+              <Clock className="w-3.5 h-3.5 text-primary-light" />
+              Calculateur & panier bientôt disponibles
+            </span>
+          </div>
+
+          {/* Boutons panier et modal mis en commentaire le temps de formaliser les tarifs
           <div className="flex items-center gap-3 flex-wrap">
             <button
               onClick={handleCartClick}
@@ -333,7 +355,6 @@ function ServiceCard({
               )}
             </button>
 
-            {/* Edit config if already in cart */}
             {inCart && service.configurable && (
               <button
                 onClick={() => setModalOpen(true)}
@@ -344,7 +365,6 @@ function ServiceCard({
             )}
           </div>
 
-          {/* Show active custom config summary */}
           {inCart && (
             <div className="mt-3 p-3 bg-cream/70 rounded-xl border border-taupe/15 text-[12px] text-navy">
               <span className="font-bold text-rouge-ambra">Total configuré : {formatPriceFCFA(currentPrice, true)}/mo</span>
@@ -354,7 +374,6 @@ function ServiceCard({
             </div>
           )}
 
-          {/* Configurator modal */}
           {modalOpen && (
             <ServiceConfigModal
               service={{ id: itemId, name: service.title, category: categoryTitle, basePrice: service.basePrice }}
@@ -365,6 +384,7 @@ function ServiceCard({
               onClose={() => setModalOpen(false)}
             />
           )}
+          */}
         </div>
       </div>
     </motion.div>

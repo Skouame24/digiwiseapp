@@ -146,6 +146,7 @@ export function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
+            {/* Panier temporairement désactivé et mis en commentaire le temps de formaliser les tarifs
             <button
               onClick={() => setCartOpen(true)}
               className="relative p-3 text-[#5C4A3E] hover:bg-[#FBF4E4] rounded-full transition-colors group"
@@ -157,6 +158,7 @@ export function Navbar() {
                 </span>
               )}
             </button>
+            */}
 
             <Link
               href="/essai-gratuit"
@@ -239,7 +241,8 @@ export function Navbar() {
         </AnimatePresence>
       </motion.nav>
 
-      {/* Cart Modal (Slide-over) */}
+      {/* Cart Modal (Slide-over) - Mis en commentaire temporairement le temps de formaliser les tarifs */}
+      {/*
       <AnimatePresence>
         {cartOpen && (
           <>
@@ -322,6 +325,7 @@ export function Navbar() {
           </>
         )}
       </AnimatePresence>
+      */}
     </>
   );
 }

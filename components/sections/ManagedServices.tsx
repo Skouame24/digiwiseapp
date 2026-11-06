@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Eye, Lock, HardDrive, BarChart3, ShoppingBag, Check, CheckCircle2, Pencil } from "lucide-react";
+import Link from "next/link";
+import { Eye, Lock, HardDrive, BarChart3, ShoppingBag, Check, CheckCircle2, Pencil, FileText, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCart, ServiceConfig } from "@/context/CartContext";
 import { ServiceConfigModal } from "@/components/sections/ServiceConfigModal";
@@ -195,7 +196,22 @@ function ServiceCard({
             ))}
           </ul>
 
-          {/* CTA */}
+          {/* CTA: Devis & Bientôt disponible */}
+          <div className="flex items-center gap-3 flex-wrap">
+            <Link
+              href="/devis"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] bg-primary-light text-white hover:bg-ambre-signature transition-all duration-300 shadow-sm"
+            >
+              <FileText className="w-4 h-4" /> Demander un devis
+            </Link>
+
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-3 rounded-xl text-[10px] font-bold uppercase tracking-wider text-taupe/60 bg-cream/70 border border-taupe/15">
+              <Clock className="w-3.5 h-3.5 text-primary-light" />
+              Calculateur & panier bientôt disponibles
+            </span>
+          </div>
+
+          {/* Boutons panier et modal mis en commentaire le temps de formaliser les tarifs
           <div className="flex items-center gap-3 flex-wrap">
             <button
               onClick={handleCartClick}
@@ -217,7 +233,6 @@ function ServiceCard({
               )}
             </button>
 
-            {/* Edit config if already in cart */}
             {inCart && service.configurable && (
               <button
                 onClick={() => setModalOpen(true)}
@@ -228,14 +243,12 @@ function ServiceCard({
             )}
           </div>
 
-          {/* Show designation if configured */}
           {inCart && existingConfig?.designation && (
             <p className="mt-2 text-[12px] text-taupe/50 italic">
               &ldquo;{existingConfig.designation}&rdquo;
             </p>
           )}
 
-          {/* Configurator modal */}
           {modalOpen && (
             <ServiceConfigModal
               service={{ id: itemId, name: service.title, category: CATEGORY_TITLE }}
@@ -246,6 +259,7 @@ function ServiceCard({
               onClose={() => setModalOpen(false)}
             />
           )}
+          */}
         </div>
       </div>
     </motion.div>
