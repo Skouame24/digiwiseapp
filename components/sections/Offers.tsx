@@ -110,7 +110,7 @@ export function Offers() {
                   {offer.title}
                 </h3>
 
-                <p className="text-[13px] leading-relaxed mb-6 font-medium text-[#5C4A3E]/80 lg:min-h-[6.5rem]">
+                <p className="text-[13px] leading-relaxed mb-6 font-medium text-[#2E2018] lg:min-h-[6.5rem]">
                   {offer.description}
                 </p>
 

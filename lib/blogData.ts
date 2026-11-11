@@ -29,7 +29,7 @@ export const blogPosts: BlogPost[] = [
       role: "Directrice Générale d'AMBRA Cloud",
       avatar: "/dgamra.png",
     },
-    image: "/blog/Banques, Fintechs et Asurances - ARTICLE.jpg",
+    image: "/blog/banques-fintechs-assurances.jpg",
     content: `
       <p>On parle souvent du cloud résident comme d'un sujet unique, avec des arguments valables pour tout le monde. C'est une erreur d'approche.</p>
       <p>Ce que change réellement une infrastructure hébergée localement dépend entièrement du métier de celui qui pose la question. Une banque commerciale, une fintech de paiement et une compagnie d'assurance ne partagent ni les mêmes contraintes réglementaires, ni les mêmes cycles de vie de données, ni les mêmes urgences.</p>
@@ -264,7 +264,7 @@ export const blogPosts: BlogPost[] = [
     title: "Indépendance numérique : pourquoi le cloud résident est vital pour l'Afrique",
     excerpt: "Découvrez les enjeux de la localisation des données et comment AMBRA Cloud sécurise l'infrastructure numérique de la sous-région.",
     category: "Indépendance",
-    date: "15 Mai 2024",
+    date: "15 Mai 2026",
     readTime: "6 min de lecture",
     author: {
       name: "Dr. Amadou Koné",
@@ -297,7 +297,7 @@ export const blogPosts: BlogPost[] = [
     title: "Stratégies de sécurité avancées pour les environnements de cloud hybride",
     excerpt: "Comment protéger vos charges de travail critiques dans un environnement multi-cloud sans compromettre la performance.",
     category: "Sécurité",
-    date: "10 Mai 2024",
+    date: "10 Mai 2026",
     readTime: "8 min de lecture",
     author: {
       name: "Marc-Antoine Dubois",
@@ -328,7 +328,7 @@ export const blogPosts: BlogPost[] = [
     title: "Optimiser Kubernetes sur une infrastructure Bare Metal",
     excerpt: "Une analyse technique approfondie sur le déploiement de clusters K8s pour des performances maximales.",
     category: "Infrastructure",
-    date: "05 Mai 2024",
+    date: "05 Mai 2026",
     readTime: "7 min de lecture",
     author: {
       name: "Yassine Diop",
@@ -359,7 +359,7 @@ export const blogPosts: BlogPost[] = [
     title: "Services Managés : libérez vos équipes IT pour l'innovation",
     excerpt: "Déléguez l'exploitation de votre cloud à nos experts et concentrez-vous sur votre cœur de métier.",
     category: "Expertise",
-    date: "28 Avril 2024",
+    date: "28 Avril 2026",
     readTime: "5 min de lecture",
     author: {
       name: "Sarah Toure",
@@ -387,7 +387,7 @@ export const blogPosts: BlogPost[] = [
     title: "Cloud & Fintech : Répondre aux exigences de conformité en Côte d'Ivoire",
     excerpt: "Guide pratique pour les institutions financières souhaitant migrer vers le cloud en respectant les régulations locales.",
     category: "Secteurs",
-    date: "20 Avril 2024",
+    date: "20 Avril 2026",
     readTime: "7 min de lecture",
     author: {
       name: "Dr. Amadou Koné",
@@ -415,7 +415,7 @@ export const blogPosts: BlogPost[] = [
     title: "Plan de Reprise d'Activité (PRA) : Les piliers d'une résilience absolue",
     excerpt: "Pourquoi la sauvegarde géographique ne suffit plus et comment concevoir un PRA cloud performant.",
     category: "Sécurité",
-    date: "12 Avril 2024",
+    date: "12 Avril 2026",
     readTime: "6 min de lecture",
     author: {
       name: "Marc-Antoine Dubois",

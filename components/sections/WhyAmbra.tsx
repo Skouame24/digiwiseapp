@@ -19,18 +19,18 @@ const features = [
   {
     id: "latency",
     title: "Ultra Basse Latence",
-    desc: "Chaque milliseconde compte pour vos applications critiques. Notre Backbone 100Gbps assure une fluidité exceptionnelle pour vos services financiers et industriels.",
+    desc: "Chaque milliseconde compte pour vos applications critiques. Notre Backbone 100 Gbit/s assure une fluidité exceptionnelle pour vos services financiers et industriels.",
     icon: <Zap className="w-6 h-6" />,
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop",
-    details: ["Réseau 100Gbps redondé", "Peerings locaux directs", "Temps de réponse < 5ms"],
+    details: ["Réseau 100 Gbit/s redondé", "Peerings locaux directs", "Temps de réponse < 5 ms"],
   },
   {
     id: "sovereign",
-    title: "Maitrise totale",
+    title: "Maîtrise totale",
     desc: "Vos données ne quittent jamais le sol ivoirien. Une infrastructure résidente qui vous garantit une conformité totale avec les régulations locales et régionales.",
     icon: <Globe className="w-6 h-6" />,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
-    details: ["Hébergement Abidjan (Tier III)", "Conformité ARTCI", "Zéro juridiction étrangère"],
+    details: ["Hébergement Abidjan (Tier III)", "Conformité ARTCI & BCEAO", "Droit et souveraineté locale"],
   },
   {
     id: "support",
@@ -114,7 +114,7 @@ export function WhyAmbra() {
                   <h3 className="text-2xl font-display text-[#1A0F0A]">{feature.title}</h3>
                 </div>
 
-                <p className="text-lg text-[#5C4A3E]/80 leading-relaxed font-sans font-medium">
+                <p className="text-lg text-[#2E2018] leading-relaxed font-sans font-medium">
                   {feature.desc}
                 </p>
 

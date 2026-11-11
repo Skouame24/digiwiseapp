@@ -3,24 +3,17 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-/* ── All logos: Collaborateurs + Clients ──────────────── */
+/* ── Clients réels certifiés (Audit A30 : déduplication et séparation partenaires) ── */
 const logos = [
-   { name: "Société Générale", src: "/Collaborateur/image.png" },
-  { name: "Snedai Groupe",    src: "/Collaborateur/image1.png" },
-  { name: "SODECI",            src: "/Collaborateur/image2.png" },
-  { name: "Bridge Bank",      src: "/Collaborateur/image3.png" },
-  { name: "Bridge Bank",      src: "/Collaborateur/image4.png" },
-  { name: "Bridge Bank",      src: "/Collaborateur/image5.png" },
-  { name: "Bridge Bank",      src: "/Collaborateur/image6.png" }, 
-  { name: "Bridge Bank",      src: "/Collaborateur/image7.png" }, 
-  { name: "Bridge Bank",      src: "/Collaborateur/image8.png" }, 
-  { name: "Bridge Bank",      src: "/Collaborateur/image9.png" }, 
-  { name: "Bridge Bank",      src: "/Collaborateur/image10.png" }, 
-  { name: "Bridge Bank",      src: "/Collaborateur/image11.png" }, 
-  { name: "Bridge Bank",      src: "/Collaborateur/image12.png" }, 
-  { name: "Bridge Bank",      src: "/Collaborateur/image13.png" }, 
-  { name: "Bridge Bank",      src: "/Collaborateur/image14.png" }, 
-  
+  { name: "Société Générale", src: "/Clients/image1.png" },
+  { name: "Bridge Bank", src: "/Clients/image4.png" },
+  { name: "MTN Business", src: "/Clients/mtn.png" },
+  { name: "SUNU Assurances", src: "/Clients/sunu.png" },
+  { name: "Snedai Groupe", src: "/Clients/image2.png" },
+  { name: "SODECI", src: "/Clients/image3.png" },
+  { name: "RTI", src: "/Clients/rti.png" },
+  { name: "CloudInspire", src: "/Clients/cloudispire.png" },
+  { name: "Opeular", src: "/Clients/opeular.jpeg" },
 ];
 
 export function Reassurance() {

@@ -48,7 +48,7 @@ export function Footer() {
         return (
           <div className="space-y-4 text-sm text-taupe/80">
             <p>AMBRA Cloud opère une infrastructure cloud 100% résidente en Côte d&apos;Ivoire. Vos données ne quittent jamais le territoire national sans votre accord explicite.</p>
-            <p><strong>Certification Datacenter :</strong> Hébergement certifié Tier III par l&apos;Uptime Institute, garantissant 99,982 % de disponibilité.</p>
+            <p><strong>Certification Datacenter :</strong> Hébergement certifié Tier III, avec engagement de SLA contractuel AMBRA Cloud garanti à 99,95 %.</p>
             <p><strong>Conformité BCEAO & ARTCI :</strong> Architectures et chiffrement adaptés aux contraintes réglementaires du secteur bancaire, télécoms et organismes publics de la zone UEMOA.</p>
           </div>
         );

@@ -134,8 +134,7 @@ export default function PartenairesPage() {
             transition={{ duration: 0.7, delay: 0.2, ease }}
             className="text-[16px] text-taupe/80 max-w-3xl leading-relaxed"
           >
-            Recommandez AMBRA Cloud à vos clients et contacts professionnels. Nos architectes cloud étudient chaque opportunité et vous accompagnent dans son suivi.
-            <strong className="text-navy font-bold"> Vous nous présentez le projet, nos ingénieurs prennent en charge la technique et le déploiement.</strong>
+            Gagnez des commissions récurrentes ou une prime immédiate dès la signature sur chaque projet d&apos;hébergement et cloud privé recommandé. Nos architectes cloud gèrent 100% de la technique et du déploiement : vous encaissez vos sous sans effort technique.
           </motion.p>
 
           {/* Badges de réassurance */}

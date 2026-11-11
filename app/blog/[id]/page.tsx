@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Clock, Share2, Twitter, Linkedin, Facebook } from "lucide-react";
+import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { CtaFinal } from "@/components/sections/CtaFinal";
+import { ShareButtons } from "@/components/blog/ShareButtons";
 
 // Animation ease
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -121,26 +122,9 @@ export default function BlogPost() {
         {/* ── CONTENT ────────────────────────────────────────────── */}
         <section className="pt-20 px-6 max-w-4xl mx-auto flex flex-col lg:flex-row gap-16 relative">
           
-          {/* Share Sidebar (Sticky Desktop) */}
+          {/* Share Sidebar (Sticky Desktop - Audit A19) */}
           <div className="lg:w-16 shrink-0 order-2 lg:order-1">
-            <div className="sticky top-32 flex lg:flex-col gap-4 items-center">
-              <span className="text-[9px] font-bold uppercase tracking-widest text-taupe/40 lg:-rotate-90 lg:mb-8 whitespace-nowrap">
-                Partager
-              </span>
-              <div className="w-px h-8 bg-taupe/10 hidden lg:block mb-4" />
-              <button className="w-10 h-10 flex items-center justify-center rounded-full bg-cream hover:bg-primary-light hover:text-white transition-colors text-navy">
-                <Twitter className="w-4 h-4" />
-              </button>
-              <button className="w-10 h-10 flex items-center justify-center rounded-full bg-cream hover:bg-primary-light hover:text-white transition-colors text-navy">
-                <Linkedin className="w-4 h-4" />
-              </button>
-              <button className="w-10 h-10 flex items-center justify-center rounded-full bg-cream hover:bg-primary-light hover:text-white transition-colors text-navy">
-                <Facebook className="w-4 h-4" />
-              </button>
-              <button className="w-10 h-10 flex items-center justify-center rounded-full bg-cream hover:bg-primary-light hover:text-white transition-colors text-navy">
-                <Share2 className="w-4 h-4" />
-              </button>
-            </div>
+            <ShareButtons title={post.title} />
           </div>
 
           {/* Main Content */}

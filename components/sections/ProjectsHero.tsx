@@ -32,7 +32,7 @@ export function ProjectsHero() {
           transition={{ duration: 0.7, delay: 0.2, ease }}
           className="text-[15px] text-taupe/70 max-w-xl leading-relaxed"
         >
-          De la banque à l&apos;énergie, en passant par les télécoms et le secteur public —
+          De la banque à l&apos;énergie, en passant par les télécoms et le secteur public,
           découvrez comment AMBRA Cloud accompagne les organisations ivoiriennes dans leur
           transformation numérique.
         </motion.p>

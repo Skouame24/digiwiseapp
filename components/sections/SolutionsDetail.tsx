@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Cloud, Lock, CheckCircle2, FileText, Check, Pencil, Database, Cpu, ShieldCheck, Clock } from "lucide-react";
+import { Cloud, Lock, CheckCircle2, FileText, Check, Pencil, Database, Cpu, ShieldCheck, Clock, Plus, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useCart, ServiceConfig } from "@/context/CartContext";
+import { useCart, ServiceConfig, CartItem } from "@/context/CartContext";
 import { ServiceConfigModal } from "@/components/sections/ServiceConfigModal";
 import { formatPriceFCFA } from "@/lib/pricing";
 
@@ -84,9 +84,9 @@ const categories = [
           "Flexibilité et résilience maximales"
         ],
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
-        configurable: false,
+        configurable: true,
         basePrice: 150000,
-        fields: [] as const,
+        fields: ["duration"] as const,
       }
     ]
   },
@@ -223,40 +223,100 @@ function ServiceCard({
   categoryId: string;
   categoryTitle: string;
 }) {
-  const { addItem, removeItem, updateConfig, isInCart, items } = useCart();
+  const { addItem, updateConfig, items } = useCart();
   const itemId = `${categoryId}-${service.title.toLowerCase().replace(/\s+/g, "-")}`;
-  const inCart = isInCart(itemId);
-  const existingCartItem = items.find((i) => i.id === itemId);
-  const existingConfig = existingCartItem?.config;
+  const instances = items.filter(
+    (i) => i.serviceId === itemId || i.id === itemId || i.id.startsWith(`${itemId}_inst_`)
+  );
+  const instanceCount = instances.length;
+  const inCart = instanceCount > 0;
+
   const [modalOpen, setModalOpen] = useState(false);
+  const [editingInstance, setEditingInstance] = useState<CartItem | null>(null);
 
-  const currentPrice = existingConfig?.monthlyPrice ?? service.basePrice;
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-  const handleCartClick = () => {
+    const checkHashOrQuery = () => {
+      const hash = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+      const search = new URLSearchParams(window.location.search);
+      const edit = search.get("edit");
+
+      if (hash === itemId || edit === itemId) {
+        const el = document.getElementById(itemId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        if (edit === itemId) {
+          if (instances.length > 0) {
+            setEditingInstance(instances[0]);
+          }
+          setModalOpen(true);
+        }
+      }
+    };
+
+    checkHashOrQuery();
+    window.addEventListener("hashchange", checkHashOrQuery);
+    return () => window.removeEventListener("hashchange", checkHashOrQuery);
+  }, [itemId, instances]);
+
+  const handleStartConfigureNew = (e?: React.MouseEvent) => {
+    setEditingInstance(null);
     if (service.configurable) {
       setModalOpen(true);
     } else {
-      if (inCart) removeItem(itemId);
-      else addItem({ id: itemId, name: service.title, description: service.tagline, category: categoryTitle, basePrice: service.basePrice });
+      const coords = e ? { x: e.clientX, y: e.clientY } : undefined;
+      const newId = `${itemId}_inst_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`;
+      addItem(
+        {
+          id: newId,
+          serviceId: itemId,
+          name: service.title,
+          description: service.tagline,
+          category: categoryTitle,
+          basePrice: service.basePrice,
+        },
+        coords
+      );
     }
   };
 
-  const handleConfirm = (config: ServiceConfig) => {
+  const handleEditExisting = (targetItem: CartItem) => {
+    setEditingInstance(targetItem);
+    setModalOpen(true);
+  };
+
+  const handleConfirm = (config: ServiceConfig, sourceCoords?: { x: number; y: number }) => {
     setModalOpen(false);
-    if (inCart) {
-      updateConfig(itemId, config);
+    if (editingInstance) {
+      updateConfig(editingInstance.id, config, sourceCoords);
+      setEditingInstance(null);
     } else {
-      addItem({ id: itemId, name: service.title, description: service.tagline, category: categoryTitle, basePrice: service.basePrice, config });
+      const newId = `${itemId}_inst_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`;
+      addItem(
+        {
+          id: newId,
+          serviceId: itemId,
+          name: service.title,
+          description: service.tagline,
+          category: categoryTitle,
+          basePrice: service.basePrice,
+          config,
+        },
+        sourceCoords
+      );
     }
   };
 
   return (
     <motion.div
+      id={itemId}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-      className="group"
+      className="group scroll-mt-36"
     >
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Image side */}
@@ -289,10 +349,6 @@ function ServiceCard({
               <span className="text-sm font-display font-bold">{index + 1}</span>
             </div>
             <div className="h-px flex-1 bg-taupe/10" />
-            <span className="text-[11px] font-bold text-navy/70 bg-cream border border-taupe/20 px-3 py-1 rounded-full flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-rouge-ambra" />
-              Sur devis · Tarifs bientôt en ligne
-            </span>
           </div>
 
           <h4 className="text-2xl md:text-3xl font-display text-navy mb-4 group-hover:text-primary-light transition-colors duration-300">
@@ -315,76 +371,89 @@ function ServiceCard({
             ))}
           </ul>
 
-          {/* CTA: Devis & Bientôt disponible */}
+          {/* CTA: Configurer & Ajouter au devis */}
           <div className="flex items-center gap-3 flex-wrap">
-            <Link
-              href="/devis"
-              className={cn(
-                "inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 shadow-sm",
-                accent === "navy"
-                  ? "bg-navy text-white hover:bg-primary-light"
-                  : "bg-primary-light text-white hover:bg-ambre-signature"
-              )}
-            >
-              <FileText className="w-4 h-4" /> Demander un devis
-            </Link>
-
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-3 rounded-xl text-[10px] font-bold uppercase tracking-wider text-taupe/60 bg-cream/70 border border-taupe/15">
-              <Clock className="w-3.5 h-3.5 text-primary-light" />
-              Calculateur & panier bientôt disponibles
-            </span>
-          </div>
-
-          {/* Boutons panier et modal mis en commentaire le temps de formaliser les tarifs
-          <div className="flex items-center gap-3 flex-wrap">
-            <button
-              onClick={handleCartClick}
-              className={cn(
-                "inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 shadow-sm",
-                inCart
-                  ? "bg-primary-light/15 text-primary-light border border-primary-light/30"
-                  : accent === "navy"
-                    ? "bg-navy text-white hover:bg-primary-light"
-                    : "bg-primary-light text-white hover:bg-ambre-signature"
-              )}
-            >
-              {inCart ? (
-                <><Check className="w-4 h-4" /> Ajouté au panier</>
-              ) : (
-                <><FileText className="w-4 h-4" /> Ajouter au panier</>
-              )}
-            </button>
-
-            {inCart && service.configurable && (
+            {instanceCount === 0 ? (
               <button
-                onClick={() => setModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-4 py-3 border border-taupe/20 rounded-xl text-[11px] font-bold uppercase tracking-widest text-taupe/60 hover:text-navy hover:border-navy transition-colors"
+                onClick={handleStartConfigureNew}
+                className={cn(
+                  "inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer hover:shadow-lg active:scale-95",
+                  accent === "navy"
+                    ? "bg-[#1A0F0A] hover:bg-rouge-ambra text-white"
+                    : "bg-primary hover:bg-[#1A0F0A] text-white"
+                )}
               >
-                <Pencil className="w-3.5 h-3.5" /> Personnaliser
+                <FileText className="w-4 h-4" />
+                <span>{service.configurable ? "Configurer ma machine" : "Commander"}</span>
               </button>
+            ) : (
+              <>
+                <button
+                  onClick={handleStartConfigureNew}
+                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md bg-[#1A0F0A] hover:bg-rouge-ambra text-white cursor-pointer hover:shadow-lg active:scale-95"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>+ Ajouter une autre machine</span>
+                </button>
+
+                {instanceCount === 1 ? (
+                  <button
+                    type="button"
+                    onClick={() => handleEditExisting(instances[0])}
+                    className="inline-flex items-center gap-2 px-4 py-3.5 border-2 border-rouge-ambra/30 hover:border-rouge-ambra bg-white hover:bg-cream/40 text-navy rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-2xs hover:shadow-sm cursor-pointer"
+                    title="Modifier la machine configurée"
+                  >
+                    <Pencil className="w-3.5 h-3.5 text-rouge-ambra" />
+                    <span>Modifier ma machine</span>
+                  </button>
+                ) : (
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    {instances.map((inst, idx) => (
+                      <button
+                        key={inst.id}
+                        type="button"
+                        onClick={() => handleEditExisting(inst)}
+                        className="inline-flex items-center gap-1.5 px-3 py-2.5 bg-white hover:bg-cream/50 border border-taupe/20 rounded-xl text-[11px] font-bold text-navy transition-colors cursor-pointer shadow-2xs hover:border-rouge-ambra"
+                        title="Modifier cette machine"
+                      >
+                        <Pencil className="w-3 h-3 text-rouge-ambra" />
+                        <span>
+                          {inst.config?.designation ? `"${inst.config.designation}"` : `Machine #${idx + 1}`}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                <span className="text-[11px] font-black text-emerald-700 bg-emerald-50 px-3 py-2 rounded-xl border border-emerald-200 shadow-2xs">
+                  ✓ {instanceCount} machine{instanceCount > 1 ? "s" : ""} dans votre devis
+                </span>
+              </>
             )}
           </div>
 
-          {inCart && (
-            <div className="mt-3 p-3 bg-cream/70 rounded-xl border border-taupe/15 text-[12px] text-navy">
-              <span className="font-bold text-rouge-ambra">Total configuré : {formatPriceFCFA(currentPrice, true)}/mo</span>
-              {existingConfig?.designation && (
-                <span className="block text-taupe/60 italic mt-0.5">&ldquo;{existingConfig.designation}&rdquo;</span>
-              )}
-            </div>
-          )}
-
+          {/* Modal de configuration des ressources */}
           {modalOpen && (
             <ServiceConfigModal
-              service={{ id: itemId, name: service.title, category: categoryTitle, basePrice: service.basePrice }}
+              service={{
+                id: editingInstance?.id ?? `${itemId}_inst_${Date.now()}`,
+                name: service.title,
+                category: categoryTitle,
+                basePrice: service.basePrice,
+              }}
               fields={service.fields ?? []}
-              initial={existingConfig}
+              initial={
+                editingInstance?.config ??
+                (instanceCount > 0 ? { designation: `Serveur #${instanceCount + 1}`, addons: [] } : undefined)
+              }
               accent={accent}
               onConfirm={handleConfirm}
-              onClose={() => setModalOpen(false)}
+              onClose={() => {
+                setModalOpen(false);
+                setEditingInstance(null);
+              }}
             />
           )}
-          */}
         </div>
       </div>
     </motion.div>

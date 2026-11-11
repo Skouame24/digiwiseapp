@@ -4,10 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, ArrowRight, ChevronDown, FileText, Trash2, ShieldCheck, Database, Cpu, Cloud, ShoppingCart } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown, FileText, Trash2, Pencil, ShieldCheck, Database, Cpu, Cloud, ShoppingCart, Copy } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { useCart } from "@/context/CartContext";
+import { useCart, CartItem } from "@/context/CartContext";
 import { formatPriceFCFA } from "@/lib/pricing";
 
 const navLinks: { label: string; href: string; dropdown?: { label: string; href: string; icon?: React.ReactNode }[] }[] = [
@@ -33,10 +33,18 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [cartOpen, setCartOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const { items, removeItem, count, getTotalMonthlyPrice } = useCart();
+  const {
+    items,
+    removeItem,
+    duplicateItem,
+    count,
+    getTotalMonthlyPrice,
+    cartBounceKey,
+    isCartDrawerOpen,
+    setIsCartDrawerOpen,
+  } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -44,7 +52,9 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => { setCartOpen(false); }, [pathname]);
+  useEffect(() => {
+    setIsCartDrawerOpen(false);
+  }, [pathname, setIsCartDrawerOpen]);
 
   const totalMonthly = getTotalMonthlyPrice();
 
@@ -146,19 +156,28 @@ export function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            {/* Panier temporairement désactivé et mis en commentaire le temps de formaliser les tarifs
-            <button
-              onClick={() => setCartOpen(true)}
-              className="relative p-3 text-[#5C4A3E] hover:bg-[#FBF4E4] rounded-full transition-colors group"
+            <motion.button
+              id="navbar-cart-button"
+              key={cartBounceKey}
+              animate={cartBounceKey > 0 ? {
+                scale: [1, 1.35, 0.9, 1.15, 1],
+                rotate: [0, -8, 6, -3, 0],
+              } : {}}
+              transition={{ duration: 0.55, ease: "easeOut" }}
+              onClick={() => setIsCartDrawerOpen(true)}
+              className="relative p-2.5 text-[#5C4A3E] hover:text-navy hover:bg-[#FBF4E4] rounded-xl transition-all duration-300 group cursor-pointer"
+              aria-label="Voir mon panier"
             >
-              <ShoppingCart className="w-5 h-5 transition-transform group-hover:scale-110" />
+              <ShoppingCart className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
               {count > 0 && (
-                <span className="absolute top-1 right-1 w-4 h-4 bg-[#900C0C] text-white text-[9px] font-bold flex items-center justify-center rounded-full">
+                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-rouge-ambra text-white text-[10px] font-black flex items-center justify-center rounded-full shadow-sm">
                   {count}
+                  {cartBounceKey > 0 && (
+                    <span className="absolute inset-0 rounded-full bg-rouge-ambra animate-ping opacity-75 pointer-events-none" />
+                  )}
                 </span>
               )}
-            </button>
-            */}
+            </motion.button>
 
             <Link
               href="/essai-gratuit"
@@ -170,11 +189,35 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
-          <div className="lg:hidden flex items-center gap-2">
+          {/* Mobile Cart & Toggle */}
+          <div className="lg:hidden flex items-center gap-1.5">
+            <motion.button
+              id="navbar-cart-button-mobile"
+              key={`mob-${cartBounceKey}`}
+              animate={cartBounceKey > 0 ? {
+                scale: [1, 1.3, 0.92, 1.12, 1],
+                rotate: [0, -6, 5, -2, 0],
+              } : {}}
+              transition={{ duration: 0.55, ease: "easeOut" }}
+              onClick={() => setIsCartDrawerOpen(true)}
+              className="relative p-2 text-[#5C4A3E] hover:bg-[#FBF4E4] rounded-full transition-colors cursor-pointer"
+              aria-label="Voir mon panier"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              {count > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 min-w-[16px] h-[16px] px-1 bg-rouge-ambra text-white text-[9px] font-black flex items-center justify-center rounded-full shadow-sm">
+                  {count}
+                  {cartBounceKey > 0 && (
+                    <span className="absolute inset-0 rounded-full bg-rouge-ambra animate-ping opacity-75 pointer-events-none" />
+                  )}
+                </span>
+              )}
+            </motion.button>
+
             <button
-              className="p-2 text-[#5C4A3E] hover:bg-[#FBF4E4] rounded-full transition-colors"
+              className="p-2 text-[#5C4A3E] hover:bg-[#FBF4E4] rounded-full transition-colors cursor-pointer"
               onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Menu"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -241,16 +284,15 @@ export function Navbar() {
         </AnimatePresence>
       </motion.nav>
 
-      {/* Cart Modal (Slide-over) - Mis en commentaire temporairement le temps de formaliser les tarifs */}
-      {/*
+      {/* Cart Modal (Slide-over) */}
       <AnimatePresence>
-        {cartOpen && (
+        {isCartDrawerOpen && (
           <>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setCartOpen(false)}
+              onClick={() => setIsCartDrawerOpen(false)}
               className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[70]"
             />
             <motion.div
@@ -261,13 +303,13 @@ export function Navbar() {
               className="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-[80] flex flex-col"
             >
               <div className="p-6 border-b border-[#FBF4E4] flex items-center justify-between">
-                <h2 className="text-lg font-black text-[#1A0F0A] flex items-center gap-2">
-                  <ShoppingCart className="w-5 h-5 text-[#900C0C]" />
-                  VOTRE SÉLECTION
+                <h2 className="text-base font-black text-[#1A0F0A] flex items-center gap-2">
+                  <ShoppingCart className="w-5 h-5 text-rouge-ambra" />
+                  VOTRE SÉLECTION CLOUD
                 </h2>
                 <button
-                  onClick={() => setCartOpen(false)}
-                  className="p-2 text-[#5C4A3E] hover:bg-[#FBF4E4] rounded-full transition-colors"
+                  onClick={() => setIsCartDrawerOpen(false)}
+                  className="p-2 text-[#5C4A3E] hover:bg-[#FBF4E4] rounded-full transition-colors cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -277,27 +319,57 @@ export function Navbar() {
                 {items.length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-[#5C4A3E]/50">
                     <ShoppingCart className="w-12 h-12 mb-4 opacity-20" />
-                    <p className="text-sm font-bold uppercase tracking-wider">Votre panier est vide</p>
-                    <p className="text-xs text-center mt-2">Découvrez nos solutions cloud et ajoutez-les à votre sélection.</p>
+                    <p className="text-sm font-bold uppercase tracking-wider">Votre sélection est vide</p>
+                    <p className="text-xs text-center mt-2 text-taupe/60">
+                      Configurez et ajoutez des solutions cloud à votre devis en direct.
+                    </p>
                   </div>
                 ) : (
-                  <div className="space-y-4">
+                  <div className="space-y-3.5">
                     {items.map((item) => (
-                      <div key={item.id} className="p-4 rounded-xl border border-[#FBF4E4] bg-white shadow-sm flex items-start gap-4">
+                      <div key={item.id} className="p-4 rounded-2xl border border-taupe/15 bg-cream/20 shadow-2xs flex items-start gap-3">
                         <div className="flex-1 min-w-0">
-                          <p className="text-[10px] font-black uppercase tracking-wider text-[#900C0C]">{item.category}</p>
-                          <h4 className="text-sm font-bold text-[#1A0F0A] mt-1">{item.name}</h4>
-                          <p className="text-xs text-[#5C4A3E]/70 mt-1 line-clamp-2">{item.description}</p>
-                          <div className="mt-2 text-sm font-black text-[#1A0F0A]">
-                            {formatPriceFCFA(item.config?.monthlyPrice ?? item.basePrice ?? 0, true)}/mo
+                          <p className="text-[9px] font-black uppercase tracking-wider text-rouge-ambra">{item.category}</p>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <h4 className="text-sm font-bold text-navy mt-0.5 leading-snug">{item.name}</h4>
+                            {item.config?.designation && (
+                              <span className="text-[10px] font-bold text-rouge-ambra bg-rouge-ambra/10 px-2 py-0.5 rounded border border-rouge-ambra/25">
+                                &ldquo;{item.config.designation}&rdquo;
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-taupe/70 mt-1 line-clamp-2">{item.description}</p>
+                          <div className="mt-2 text-[13px] font-black text-navy">
+                            {formatPriceFCFA(item.config?.monthlyPrice ?? item.basePrice ?? 0, false)} / mois HT
                           </div>
                         </div>
-                        <button
-                          onClick={() => removeItem(item.id)}
-                          className="p-2 text-[#5C4A3E]/40 hover:text-[#900C0C] hover:bg-[#900C0C]/5 rounded-lg transition-colors"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                        <div className="flex items-center gap-1 shrink-0">
+                          <Link
+                            href={getSolutionTargetUrl(item)}
+                            onClick={() => setIsCartDrawerOpen(false)}
+                            className="p-2 text-taupe/40 hover:text-rouge-ambra hover:bg-rouge-ambra/5 rounded-lg transition-colors cursor-pointer"
+                            title="Modifier cette solution sur la page"
+                            aria-label="Modifier cette solution"
+                          >
+                            <Pencil className="w-4 h-4 text-rouge-ambra" />
+                          </Link>
+                          <button
+                            onClick={() => duplicateItem(item.id)}
+                            className="p-2 text-taupe/40 hover:text-navy hover:bg-cream/50 rounded-lg transition-colors cursor-pointer"
+                            title="Dupliquer cette machine"
+                            aria-label="Dupliquer cette machine"
+                          >
+                            <Copy className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={() => removeItem(item.id)}
+                            className="p-2 text-taupe/40 hover:text-rouge-ambra hover:bg-rouge-ambra/5 rounded-lg transition-colors cursor-pointer"
+                            title="Supprimer"
+                            aria-label="Supprimer"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -305,27 +377,57 @@ export function Navbar() {
               </div>
 
               {items.length > 0 && (
-                <div className="p-6 border-t border-[#FBF4E4] bg-[#FBF4E4]/30">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-bold text-[#5C4A3E]">Total estimé</span>
-                    <span className="text-xl font-black text-[#900C0C]">{formatPriceFCFA(totalMonthly, true)}<span className="text-sm font-bold">/mo</span></span>
+                <div className="p-6 border-t border-taupe/15 bg-cream/40 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold uppercase tracking-wider text-taupe/70">Total Mensuel Estimé</span>
+                    <span className="text-xl font-black text-rouge-ambra">{formatPriceFCFA(totalMonthly, false)}</span>
                   </div>
                   <Link
                     href="/devis"
-                    onClick={() => setCartOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full bg-[#900C0C] text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl shadow-lg shadow-[#900C0C]/20 hover:shadow-xl hover:shadow-[#900C0C]/30 hover:scale-[1.02] active:scale-95 transition-all"
+                    onClick={() => setIsCartDrawerOpen(false)}
+                    className="flex items-center justify-center gap-2 w-full bg-navy hover:bg-rouge-ambra text-white text-xs font-bold uppercase tracking-wider py-4 rounded-xl shadow-lg transition-all duration-300"
                   >
-                    Valider ma sélection
+                    <span>Finaliser mon devis</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
-
                 </div>
               )}
             </motion.div>
           </>
         )}
       </AnimatePresence>
-      */}
     </>
   );
+}
+
+function getSolutionTargetUrl(item: CartItem): string {
+  const id = item.id.toLowerCase();
+  const name = item.name.toLowerCase();
+
+  // Redirection vers les services managés (/services-manages)
+  if (
+    id.includes("managed") ||
+    id.includes("supervision") ||
+    id.includes("security") ||
+    id.includes("backup") ||
+    id.includes("reporting") ||
+    item.category.toLowerCase().includes("manag")
+  ) {
+    if (name.includes("supervision") || id.includes("supervision")) {
+      return `/services-manages?edit=${encodeURIComponent(item.id)}#managed-supervision`;
+    }
+    if (name.includes("sécurité") || name.includes("securite") || id.includes("security") || name.includes("zero trust")) {
+      return `/services-manages?edit=${encodeURIComponent(item.id)}#managed-security`;
+    }
+    if (name.includes("sauvegarde") || id.includes("backup")) {
+      return `/services-manages?edit=${encodeURIComponent(item.id)}#managed-backup`;
+    }
+    if (name.includes("reporting") || id.includes("reporting")) {
+      return `/services-manages?edit=${encodeURIComponent(item.id)}#managed-reporting`;
+    }
+    return `/services-manages?edit=${encodeURIComponent(item.id)}`;
+  }
+
+  // Redirection vers la solution spécifique sur /solutions avec scroll et ouverture du configurateur
+  return `/solutions?edit=${encodeURIComponent(item.id)}#${encodeURIComponent(item.id)}`;
 }

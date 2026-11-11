@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
 import Image from "next/image";
@@ -17,7 +18,11 @@ interface BlogCardProps {
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
+const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop";
+
 export function BlogCard({ id, title, excerpt, category, date, image, index }: BlogCardProps) {
+  const [imgSrc, setImgSrc] = useState(image || FALLBACK_IMAGE);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -26,11 +31,12 @@ export function BlogCard({ id, title, excerpt, category, date, image, index }: B
       transition={{ duration: 0.8, delay: index * 0.1, ease }}
       className="group flex flex-col bg-white overflow-hidden"
     >
-      <Link href={`/blog/${id}`} className="relative block aspect-[16/10] overflow-hidden">
+      <Link href={`/blog/${id}`} className="relative block aspect-[16/10] overflow-hidden bg-cream/50">
         <Image
-          src={image}
+          src={imgSrc}
           alt={title}
           fill
+          onError={() => setImgSrc(FALLBACK_IMAGE)}
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/10 transition-colors duration-500" />

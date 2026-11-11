@@ -21,7 +21,7 @@ const slides = [
     image:
       "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop",
     eyebrow: "Haute Disponibilité & Résilience",
-    h1line1: "SLA 99,9 % garanti.",
+    h1line1: "SLA 99,95 % garanti.",
     h1line2: "Zéro compromis",
     h1accent: "sur vos services.",
     sub: "Notre infrastructure Tier III redondante, localisée en Côte d'Ivoire, assure une disponibilité maximale pour vos applications et bases de données critiques.",
@@ -33,7 +33,7 @@ const slides = [
     h1line1: "Vos données restent",
     h1line2: "en Afrique.",
     h1accent: "Protégées. Maîtrisées.",
-    sub: "Conformité CIMA, chiffrement end-to-end, PRA intégré et sécurité managée multicouche — pensé pour les environnements où la donnée ne peut pas quitter le territoire.",
+    sub: "Conformité CIMA, chiffrement de bout en bout, PRA intégré et sécurité managée multicouche, spécialement conçue pour les environnements où la donnée doit rester sur le territoire national.",
   },
 ];
 
@@ -153,7 +153,7 @@ export function Hero() {
             className="grid grid-cols-3 gap-2 sm:flex sm:gap-8 pt-5 border-t border-taupe/15"
           >
             {[
-              { value: "99,9%", label: "SLA garanti" },
+              { value: "99,95%", label: "SLA garanti" },
               { value: "Tier III", label: "Datacenter" },
               { value: "24/7", label: "Support dédié" },
             ].map((s) => (
@@ -182,7 +182,7 @@ export function Hero() {
             </div>
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-taupe/40">Uptime</p>
-              <p className="text-[18px] font-display text-navy">99,99%</p>
+              <p className="text-[18px] font-display text-navy">99,95%</p>
             </div>
           </div>
         </div>

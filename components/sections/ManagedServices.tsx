@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Eye, Lock, HardDrive, BarChart3, ShoppingBag, Check, CheckCircle2, Pencil, FileText, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -14,17 +14,16 @@ const services = [
     title: "Supervision 24/7",
     tagline: "Monitoring proactif en continu",
     description:
-      "Monitoring proactif, alerting en temps réel et SLA garanti à 99,9 %. Nos équipes surveillent votre infrastructure 24h/24 et 7j/7 pour anticiper les incidents avant qu'ils n'impactent votre activité.",
+      "Monitoring proactif, alerting en temps réel et SLA garanti à 99,95 %. Nos équipes surveillent votre infrastructure 24h/24 et 7j/7 pour anticiper les incidents avant qu'ils n'impactent votre activité.",
     icon: <Eye className="w-6 h-6" />,
     features: [
       "Surveillance infrastructure 24h/24 et 7j/7",
       "Alertes temps réel multicanal (SMS, email, Slack)",
       "Dashboards personnalisés et rapports mensuels",
       "Détection proactive des anomalies",
-      "SLA garanti à 99,9 %",
+      "SLA garanti à 99,95 %",
     ],
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+    image: "/screen.png",
     configurable: true,
     fields: ["designation", "duration"] as const,
   },
@@ -39,7 +38,7 @@ const services = [
       "Pare-feu managé et mis à jour en continu",
       "Approche Zero Trust (ZTNA) native",
       "Protection des endpoints et du réseau",
-      "SIEM — corrélation des événements de sécurité",
+      "SIEM : corrélation et analyse des événements de sécurité",
       "Détection et prévention d'intrusions (IDS/IPS)",
       "Audit de conformité régulier",
     ],
@@ -53,7 +52,7 @@ const services = [
     title: "Sauvegarde Automatisée",
     tagline: "Protection sans intervention",
     description:
-      "Politique de sauvegarde configurable, restauration rapide et PRA documenté. Service entièrement opéré par nos équipes — planification, exécution, tests de restauration et reporting.",
+      "Politique de sauvegarde configurable, restauration rapide et PRA documenté. Service entièrement opéré par nos équipes : planification, exécution, tests de restauration et reporting.",
     icon: <HardDrive className="w-6 h-6" />,
     features: [
       "Planification automatique des sauvegardes",
@@ -106,38 +105,73 @@ function ServiceCard({
   const existingConfig = items.find((i) => i.id === itemId)?.config;
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleCartClick = () => {
-    if (service.configurable) {
-      setModalOpen(true);
-    } else {
-      if (inCart) removeItem(itemId);
-      else
-        addItem({
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const checkHashOrQuery = () => {
+      const hash = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+      const search = new URLSearchParams(window.location.search);
+      const edit = search.get("edit");
+
+      if (
+        hash === itemId ||
+        hash === `managed-${service.id}` ||
+        edit === itemId ||
+        edit === `managed-${service.id}`
+      ) {
+        const el =
+          document.getElementById(`managed-${service.id}`) ||
+          document.getElementById(itemId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        if (edit === itemId || edit === `managed-${service.id}`) {
+          setModalOpen(true);
+        }
+      }
+    };
+
+    checkHashOrQuery();
+    window.addEventListener("hashchange", checkHashOrQuery);
+    return () => window.removeEventListener("hashchange", checkHashOrQuery);
+  }, [itemId, service.id]);
+
+  const handleCartClick = (e?: React.MouseEvent) => {
+    if (!inCart) {
+      const coords = e ? { x: e.clientX, y: e.clientY } : undefined;
+      addItem(
+        {
           id: itemId,
           name: service.title,
           description: service.tagline,
           category: CATEGORY_TITLE,
-        });
+        },
+        coords
+      );
     }
   };
 
-  const handleConfirm = (config: ServiceConfig) => {
+  const handleConfirm = (config: ServiceConfig, sourceCoords?: { x: number; y: number }) => {
     setModalOpen(false);
     if (inCart) {
-      updateConfig(itemId, config);
+      updateConfig(itemId, config, sourceCoords);
     } else {
-      addItem({
-        id: itemId,
-        name: service.title,
-        description: service.tagline,
-        category: CATEGORY_TITLE,
-        config,
-      });
+      addItem(
+        {
+          id: itemId,
+          name: service.title,
+          description: service.tagline,
+          category: CATEGORY_TITLE,
+          config,
+        },
+        sourceCoords
+      );
     }
   };
 
   return (
     <motion.div
+      id={`managed-${service.id}`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -146,7 +180,7 @@ function ServiceCard({
         delay: index * 0.1,
         ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
       }}
-      className="group"
+      className="group scroll-mt-36"
     >
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Image — alternates */}
@@ -196,70 +230,55 @@ function ServiceCard({
             ))}
           </ul>
 
-          {/* CTA: Devis & Bientôt disponible */}
-          <div className="flex items-center gap-3 flex-wrap">
-            <Link
-              href="/devis"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] bg-primary-light text-white hover:bg-ambre-signature transition-all duration-300 shadow-sm"
-            >
-              <FileText className="w-4 h-4" /> Demander un devis
-            </Link>
-
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-3 rounded-xl text-[10px] font-bold uppercase tracking-wider text-taupe/60 bg-cream/70 border border-taupe/15">
-              <Clock className="w-3.5 h-3.5 text-primary-light" />
-              Calculateur & panier bientôt disponibles
-            </span>
-          </div>
-
-          {/* Boutons panier et modal mis en commentaire le temps de formaliser les tarifs
+          {/* CTA: Commander & Modifier */}
           <div className="flex items-center gap-3 flex-wrap">
             <button
-              onClick={handleCartClick}
+              onClick={!inCart ? handleCartClick : undefined}
+              disabled={inCart}
               className={cn(
-                "inline-flex items-center gap-2 px-6 py-3.5 text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300",
+                "inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md",
                 inCart
-                  ? "bg-primary-light/10 text-primary-light"
-                  : "bg-primary-light text-white hover:bg-ambre-signature"
+                  ? "bg-rouge-ambra text-white cursor-default select-none shadow-sm opacity-95"
+                  : "bg-primary hover:bg-[#1A0F0A] text-white cursor-pointer hover:shadow-lg active:scale-95"
               )}
             >
               {inCart ? (
                 <>
-                  <Check className="w-4 h-4" /> Ajouté au panier
+                  <Check className="w-4 h-4 stroke-[2.5]" />
+                  <span>Ajouté à ma commande</span>
                 </>
               ) : (
                 <>
-                  <ShoppingBag className="w-4 h-4" /> Ajouter au panier
+                  <FileText className="w-4 h-4" />
+                  <span>Commander</span>
                 </>
               )}
             </button>
 
-            {inCart && service.configurable && (
+            {inCart && (
               <button
+                type="button"
                 onClick={() => setModalOpen(true)}
-                className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-taupe/40 hover:text-navy transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-3.5 border-2 border-rouge-ambra/30 hover:border-rouge-ambra bg-white hover:bg-cream/40 text-navy rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-2xs hover:shadow-sm cursor-pointer"
+                title="Modifier mon choix"
               >
-                <Pencil className="w-3.5 h-3.5" /> Modifier
+                <Pencil className="w-3.5 h-3.5 text-rouge-ambra" />
+                <span>Modifier mon choix</span>
               </button>
             )}
           </div>
 
-          {inCart && existingConfig?.designation && (
-            <p className="mt-2 text-[12px] text-taupe/50 italic">
-              &ldquo;{existingConfig.designation}&rdquo;
-            </p>
-          )}
-
+          {/* Modal de personnalisation */}
           {modalOpen && (
             <ServiceConfigModal
               service={{ id: itemId, name: service.title, category: CATEGORY_TITLE }}
-              fields={service.fields ?? []}
+              fields={service.fields ? Array.from(service.fields) : ["duration"]}
               initial={existingConfig}
               accent="primary-light"
               onConfirm={handleConfirm}
               onClose={() => setModalOpen(false)}
             />
           )}
-          */}
         </div>
       </div>
     </motion.div>

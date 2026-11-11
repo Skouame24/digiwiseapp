@@ -37,25 +37,25 @@ export function CtaFinal() {
           </motion.p>
           
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3.5"
           >
             <Button 
               href="/devis"
-              className="w-full sm:w-auto bg-rouge-ambra text-white px-6 py-3 text-[11px] sm:text-xs font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl group/btn border-none"
+              className="w-full sm:w-auto bg-[#1A0F0A] hover:bg-rouge-ambra text-white px-7 py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg shadow-black/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 border-none group/btn cursor-pointer whitespace-nowrap"
             >
-              <span>Demander un devis sur-mesure</span>
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
+              <span>Demander un devis sur mesure</span>
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/btn:translate-x-1 shrink-0" />
             </Button>
             <Button 
               href="/contact"
               variant="secondary"
-              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border-white/20 px-6 py-3 text-[11px] sm:text-xs font-bold uppercase tracking-widest hover:scale-105 transition-all"
+              className="w-full sm:w-auto bg-white/15 hover:bg-white text-white hover:text-navy border border-white/25 hover:border-transparent px-7 py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl backdrop-blur-md transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
             >
-              <span>Contacter un Expert</span>
+              <span>Contacter un expert</span>
             </Button>
           </motion.div>
         </div>

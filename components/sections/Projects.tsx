@@ -8,19 +8,6 @@ import Link from "next/link";
 
 const ease = [0.25, 1, 0.5, 1] as [number, number, number, number];
 
-// Liste des filtres disponibles
-const filters = [
-  "Tous",
-  "IaaS VPC",
-  "Bare Metal",
-  "Data Center Virtuel",
-  "Cloud Privé",
-  "Sauvegarde Managée & PRA",
-  "Colocation",
-];
-
-
-
 // Liste des projets avec leurs informations
 const projects = [
   // {
@@ -200,8 +187,8 @@ const projects = [
     service: "Colocation",
     shortDesc: "Colocation des infrastructures de Mansa Capital dans les racks d'Ambra Cloud.",
     longDesc:
-      "Colocation des infrastructures de MANSA CAPITAL dans les racks d'Ambra Cloud au datacentre RAXIO. Le dispositif offre une connectivité à très haut débit, une disponibilité de 99,9%, une surveillance physique et logique continue ainsi qu'une gestion câblage optimisée.",
-    results: ["Connectivité haut débit", "Disponibilité 99,9%", "Surveillance continue"],
+      "Colocation des infrastructures de MANSA CAPITAL dans les racks d'Ambra Cloud au datacentre RAXIO. Le dispositif offre une connectivité à très haut débit, une disponibilité de 99,95 %, une surveillance physique et logique continue ainsi qu'une gestion câblage optimisée.",
+    results: ["Connectivité haut débit", "Disponibilité 99,95 %", "Surveillance continue"],
     image: "/Collaborateur/image8.png",
     year: "2026",
   },
@@ -218,6 +205,12 @@ const projects = [
     image: "/Collaborateur/image12.png",
     year: "2026",
   },
+];
+
+// Liste dynamique des filtres basés exclusivement sur les projets existants (Audit A22)
+const filters = [
+  "Tous",
+  ...Array.from(new Set(projects.map((p) => p.service))).filter(Boolean),
 ];
 
 export function Projects() {

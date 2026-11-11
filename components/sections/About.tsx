@@ -24,27 +24,20 @@ const partners = [
   { name: "PECB", logo: "/Collaborateur/image9.png" },
   { name: "SOCRadar", logo: "/Collaborateur/image10.png" },
   { name: "Synology", logo: "/Collaborateur/image11.png" },
-  { name: "Synology", logo: "/Collaborateur/image12.png" },
-  { name: "Synology", logo: "/Collaborateur/image13.png" },
-  { name: "Synology", logo: "/Collaborateur/image14.png" },
-
 ];
 
 /* ── Client data (local images from /Clients) ──────── */
 const clients = [
   { name: "Société Générale", logo: "/Clients/image1.png" },
-  { name: "Snedai Groupe", logo: "/Clients/image2.png" },
-  // { name: "SODECI", logo: "/Clients/image3.png" },
   { name: "Bridge Bank", logo: "/Clients/image4.png" },
-  { name: "MTN", logo: "/Clients/mtn.png" },
-  { name: "opeular", logo: "/Clients/opeular.jpeg" },
-
-  { name: "Client", logo: "/Clients/image5.png" },
-  { name: "Client", logo: "/Clients/image6.png" },
-  { name: "Client", logo: "/Clients/image7.png" },
-  { name: "Client", logo: "/Clients/image8.png" },
+  { name: "MTN Business", logo: "/Clients/mtn.png" },
+  { name: "SUNU Assurances", logo: "/Clients/sunu.png" },
+  { name: "Snedai Groupe", logo: "/Clients/image2.png" },
+  { name: "SODECI", logo: "/Clients/image3.png" },
+  { name: "RTI", logo: "/Clients/rti.png" },
+  { name: "Opeular", logo: "/Clients/opeular.jpeg" },
   { name: "Agilly", logo: "/Collaborateur/agilly.png" },
-  { name: "cloudispire", logo: "/Clients/cloudispire.png" },
+  { name: "CloudInspire", logo: "/Clients/cloudispire.png" },
 ];
 
 const certifications = [
@@ -115,7 +108,7 @@ const strengths = [
   },
   {
     icon: <Clock className="w-6 h-6" />,
-    stat: "99.95%",
+    stat: "99,95 %",
     title: "Disponibilité",
     desc: "Datacenter Tier III certifié, alimentation N+1 et connectivité redondante pour garantir la continuité de vos services 24/7.",
   },
@@ -194,7 +187,7 @@ export function About() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-[15px] text-taupe/70 max-w-2xl mx-auto leading-relaxed"
           >
-            Depuis Abidjan, AMBRA Cloud opère une infrastructure cloud résidente de classe entreprise —
+            Depuis Abidjan, AMBRA Cloud opère une infrastructure cloud résidente de classe entreprise,
             fiable, sécurisée et conçue pour les organisations africaines qui exigent
             la gouvernance locale de leurs données.
           </motion.p>
@@ -257,9 +250,8 @@ export function About() {
                 // Fondée en 2021 — Abidjan, Côte d&apos;Ivoire
               </p>
               <h2 className="text-3xl md:text-[40px] font-display text-navy leading-tight mb-6">
-                Meilleur opérateur cloud{" "}
-                <span className="italic text-primary-light">résident</span>{" "}
-                de Côte d&apos;Ivoire
+                Opérateur cloud souverain de référence en{" "}
+                <span className="italic text-primary-light">Côte d&apos;Ivoire</span>
               </h2>
               <div className="space-y-4 text-[14px] text-taupe/70 leading-[1.85]">
                 <p>
@@ -419,9 +411,10 @@ export function About() {
         </div>
 
         {/* ─ Row 1 : Partenaires technologiques — scroll left ─ */}
-        <div className="mb-3">
-          <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-taupe/40 mb-5">
-            Nos clients
+        {/* ─ Row 1 : Partenaires technologiques — scroll left ─ */}
+        <div className="mb-8">
+          <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-taupe/50 mb-5">
+            Partenaires technologiques
           </p>
           <div className="relative">
             <div className="absolute left-0 top-0 bottom-0 w-28 bg-gradient-to-r from-cream/30 to-transparent z-10 pointer-events-none" />
@@ -434,7 +427,7 @@ export function About() {
               {[...partners, ...partners].map((p, i) => (
                 <div
                   key={`partner-${p.name}-${i}`}
-                  className="shrink-0 w-52 h-24 bg-white border border-taupe/10 flex items-center justify-center px-6 grayscale hover:grayscale-0 hover:border-primary-light/30 transition-all duration-500"
+                  className="shrink-0 w-52 h-24 bg-white border border-taupe/10 rounded-xl flex items-center justify-center px-6 grayscale hover:grayscale-0 hover:border-primary-light/40 transition-all duration-300 shadow-2xs"
                 >
                   <img src={p.logo} alt={p.name} className="max-h-12 max-w-full object-contain" />
                 </div>
@@ -443,10 +436,10 @@ export function About() {
           </div>
         </div>
 
-        {/* ─ Row 2 : Clients — scroll right (reverse) ─ */}
-        <div className="mt-6">
-          <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-taupe/40 mb-5">
-            Partenaires technologiques
+        {/* ─ Row 2 : Clients de référence — scroll right ─ */}
+        <div className="mt-8">
+          <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-taupe/50 mb-5">
+            Ils nous font confiance (Clients &amp; Références)
           </p>
           <div className="relative">
             <div className="absolute left-0 top-0 bottom-0 w-28 bg-gradient-to-r from-cream/30 to-transparent z-10 pointer-events-none" />
@@ -459,7 +452,7 @@ export function About() {
               {[...clients, ...clients].map((c, i) => (
                 <div
                   key={`client-${c.name}-${i}`}
-                  className="shrink-0 w-52 h-24 bg-white border border-taupe/10 flex items-center justify-center px-6 grayscale hover:grayscale-0 hover:border-primary-light/30 transition-all duration-500"
+                  className="shrink-0 w-52 h-24 bg-white border border-taupe/10 rounded-xl flex items-center justify-center px-6 grayscale hover:grayscale-0 hover:border-primary-light/40 transition-all duration-300 shadow-2xs"
                 >
                   <img src={c.logo} alt={c.name} className="max-h-12 max-w-full object-contain" />
                 </div>

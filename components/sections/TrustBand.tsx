@@ -13,7 +13,7 @@ const pillars = [
   },
   {
     icon: <Activity className="w-5 h-5" />,
-    label: "SLA 99,9 %",
+    label: "SLA 99,95 %",
     sub: "Haute disponibilité garantie contractuellement",
   },
   {
