@@ -18,6 +18,94 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "cout-reel-hebergement-etranger",
+    title: "Hébergement à l’étranger : le coût réel pour l’entreprise",
+    excerpt: "Taux de change, sortie des données, conformité : trois coûts d’un hébergement à l’étranger que la facture ne montre pas, et comment les anticiper.",
+    category: "Expertise",
+    date: "24 Novembre 2026",
+    readTime: "6 min de lecture",
+    author: {
+      name: "Evelyne Boko",
+      role: "Directrice Générale d'AMBRA Cloud",
+      avatar: "/dgamra.png",
+    },
+    image: "/cloud.jpg",
+    hideHeroImage: true,
+    content: `
+      <div style="background:linear-gradient(135deg,#FBF4EC 0%,#F6E9DA 100%);border-radius:20px;padding:40px 32px;margin:0 0 40px;border:1px solid rgba(155,28,28,0.12);box-shadow:0 10px 30px rgba(120,30,20,0.08);text-align:center;">
+        <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700;font-size:clamp(28px,5vw,42px);line-height:1.15;color:#9B1C1C;margin:0 0 16px;">Héberger à l’étranger,<br/>à quel prix ?</p>
+        <p style="color:#C0391A;font-size:18px;line-height:1.5;margin:0 0 20px;">Au-delà de la facture mensuelle,<br/>trois coûts que l’on découvre trop tard.</p>
+        <div style="display:inline-block;text-align:left;color:#3B2A25;font-size:16px;line-height:1.8;margin:0 0 24px;">
+          1. Le taux de change<br/>2. La sortie des données<br/>3. La conformité
+        </div>
+        <div style="background:#8B1A12;color:#fff;border-radius:999px;padding:10px 20px;font-size:13px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;">
+          <span>+225 07 16 74 73 87</span><span>infos@ambracloud.net</span><span>Ambra Cloud</span>
+        </div>
+      </div>
+
+      <p>Sur le papier, la comparaison est vite faite. Un grand fournisseur international affiche un prix au serveur, à l'heure, au gigaoctet. Le tarif est public, il paraît imbattable, et beaucoup d'entreprises s'arrêtent là.</p>
+      <p>Le coût réel d'un hébergement à l'étranger ne se lit pourtant pas sur la facture mensuelle. Trois dépenses s'y ajoutent, et on les découvre presque toujours après la signature. Il s'agit du taux de change, de la sortie des données et de la conformité. Aucune ne figure sur le devis. Voici ce que chacune représente pour une entreprise ivoirienne, et ce qu'il faut vérifier avant de s'engager.</p>
+
+      <h2>Ce que la facture mensuelle montre, et ce qu'elle laisse de côté</h2>
+      <p>La facture d'un hébergeur décrit ce que vous avez consommé, c'est-à-dire de la puissance de calcul, du stockage, des licences et parfois du support. Elle est exacte et détaillée. Elle répond à une seule question, celle du montant payé ce mois-ci.</p>
+      <p>Elle ne dit rien de la monnaie dans laquelle ce montant vous sera réclamé demain, du prix à payer pour récupérer vos propres données, ni des démarches que la loi vous impose quand ces données quittent le pays. Ce sont ces trois angles morts qui font la différence entre un prix affiché et un coût complet.</p>
+
+      <h2>Premier coût caché, le taux de change</h2>
+      <p>La plupart des hébergeurs étrangers facturent en dollars. Votre budget, lui, est voté en francs CFA. Or le franc CFA est arrimé à l'euro, à une parité fixe de 655,957 francs CFA pour un euro depuis le 1er janvier 1999, comme le rappelle la <a href="https://www.bceao.int/fr/content/histoire-du-franc-cfa" target="_blank" rel="noopener noreferrer">BCEAO</a>. Face au dollar, rien n'est fixe. Le prix de votre abonnement suit donc le cours euro-dollar, que personne ne contrôle.</p>
+      <p>L'effet est loin d'être théorique. Prenons un abonnement de 1 000 dollars par mois. En <a href="https://www.banque-france.fr/en/statistics/rates-and-prices/exchange-rates-average-month-2021jan" target="_blank" rel="noopener noreferrer">janvier 2021</a>, il représentait environ 539 000 francs CFA. En <a href="https://www.banque-france.fr/fr/statistiques/taux-et-cours/taux-de-change-parites-quotidiennes-21-oct-2022" target="_blank" rel="noopener noreferrer">octobre 2022</a>, quand le dollar est passé au-dessus de l'euro, la même facture atteignait environ 674 000 francs CFA. Cela fait 25 % de plus, soit plus de 1,6 million de francs CFA sur un an, sans qu'un seul service ait changé.</p>
+      <blockquote><p>Votre fournisseur peut ne pas toucher à son prix, et votre facture augmenter quand même.</p></blockquote>
+      <p>Ce risque ne se négocie pas en cours d'année. Il se prévoit au moment du budget, en mesurant la part de vos dépenses libellée en devises et en lui réservant une marge.</p>
+
+      <h2>Deuxième coût caché, la sortie des données</h2>
+      <p>Déposer des données chez un grand fournisseur ne coûte généralement rien. Les récupérer, si. Les fournisseurs appellent cela les frais de sortie, c'est-à-dire le prix facturé pour chaque gigaoctet qui quitte leur réseau.</p>
+      <p>Chez AWS par exemple, les 100 premiers gigaoctets sortants sont gratuits chaque mois. Au-delà, le tarif tourne autour de 0,09 dollar par gigaoctet selon la région. Rapatrier deux téraoctets de sauvegardes dans vos locaux après un incident coûte alors environ 170 dollars, à payer précisément le jour où l'entreprise a d'autres urgences.</p>
+      <p>AWS <a href="https://aws.amazon.com/blogs/aws/free-data-transfer-out-to-internet-when-moving-out-of-aws/" target="_blank" rel="noopener noreferrer">rembourse ces frais</a> quand un client quitte entièrement ses services, à condition d'en faire la demande au support et de terminer le transfert dans un délai fixé. Ce geste ne couvre ni une restauration ponctuelle, ni un départ partiel.</p>
+      <p>Surtout, la sortie ne se limite pas à ce tarif. Changer d'hébergeur mobilise l'équipe pendant plusieurs semaines, impose de payer l'ancien et le nouveau fournisseur pendant la bascule, et prend d'autant plus de temps que la connexion internationale est lente. Aucune de ces lignes n'apparaît au moment de la signature, et toutes grossissent avec le volume de données accumulé.</p>
+      <p><strong>La question à poser avant de signer.</strong> Si nous devions partir dans deux ans, combien cela nous coûterait-il, et en combien de temps récupérerions-nous l'ensemble de nos données ?</p>
+
+      <h2>Troisième coût caché, la conformité</h2>
+      <p>Héberger à l'étranger des données qui concernent des personnes (clients, salariés, patients) n'est pas un choix purement technique. En Côte d'Ivoire, la <a href="https://www.afapdp.org/wp-content/uploads/2018/05/Cote-Ivoire-LOI-SUR-LA-PROTECTION-DES-DONNEES-A-CARACTERE-PERSONNEL.pdf" target="_blank" rel="noopener noreferrer">loi n° 2013-450 relative à la protection des données à caractère personnel</a> encadre ce cas.</p>
+      <p>Le texte qualifie de pays tiers tout État qui n'est pas membre de la CEDEAO. Un transfert de données personnelles vers un tel pays n'est permis que si celui-ci offre un niveau de protection équivalent ou supérieur, et il doit recevoir l'autorisation préalable de l'autorité de protection, l'ARTCI (articles 7 et 26).</p>
+      <p>Le coût, ici, prend plusieurs formes. Il y a le dossier à constituer, le délai d'instruction et souvent l'appui d'un conseil juridique. Il y a aussi le risque, puisque la loi prévoit des sanctions financières en cas de manquement. Certains secteurs, comme la banque ou la santé, sont en outre soumis à des exigences de localisation plus strictes de la part de leurs régulateurs.</p>
+      <p>Ces démarches prennent du temps et ont un coût. Une ligne « conformité » a donc toute sa place dans la comparaison.</p>
+
+      <h2>Comparer un hébergement à l'étranger et une offre locale sur leur coût complet</h2>
+      <p>Comparer un hébergement à l'étranger et un hébergement en local sur le seul prix mensuel revient à comparer deux loyers sans regarder les charges. Trois questions suffisent à rétablir l'équilibre.</p>
+      <div style="margin:32px 0 40px;">
+        <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:16px;padding:0 4px 10px;border-bottom:2px dashed #E0712A;margin-bottom:14px;">
+          <span style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700;font-size:22px;color:#9B1C1C;">Le coût caché</span>
+          <span style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700;font-size:22px;color:#9B1C1C;">La question à poser</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1.3fr;border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 4px 14px rgba(0,0,0,0.08);">
+          <div style="background:#8E1510;color:#fff;font-weight:700;padding:18px 20px;display:flex;align-items:center;">Le taux de change</div>
+          <div style="background:#fff;color:#3B2A25;padding:18px 20px;">Dans quelle monnaie serons-nous facturés, et le prix peut-il être fixé en francs CFA ?</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1.3fr;border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 4px 14px rgba(0,0,0,0.08);">
+          <div style="background:#C0391A;color:#fff;font-weight:700;padding:18px 20px;display:flex;align-items:center;">La sortie des données</div>
+          <div style="background:#fff;color:#3B2A25;padding:18px 20px;">Combien coûte la récupération de nos données, et en combien de temps ?</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1.3fr;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.08);">
+          <div style="background:#E0712A;color:#fff;font-weight:700;padding:18px 20px;display:flex;align-items:center;">La conformité</div>
+          <div style="background:#fff;color:#3B2A25;padding:18px 20px;">Où nos données seront-elles stockées, et quelles démarches cela nous impose-t-il ?</div>
+        </div>
+      </div>
+      <p>Ajoutez ensuite ces réponses au prix affiché, sur trois ans plutôt que sur un mois. C'est ce total qui mérite d'être présenté à la direction financière.</p>
+
+      <h2>Ce que change un hébergement en local</h2>
+      <p>Un hébergement en Côte d'Ivoire ne supprime pas toutes les questions, mais il en simplifie trois. La facture est en francs CFA, donc le montant inscrit au budget est celui que vous payez. Les données restent sur le territoire, sous droit ivoirien. Et la récupération se fait sur le réseau national, sans dépendre d'une liaison internationale.</p>
+      <p>C'est le choix que nous avons fait chez AMBRA Cloud. Notre infrastructure est hébergée au datacenter Raxio de Grand-Bassam, nos services sont facturés en francs CFA, et la sauvegarde comme la supervision sont incluses dans nos services managés.</p>
+      <p>Récupérer vos données chez AMBRA Cloud ne vous coûte rien, que ce soit pour une restauration ou pour reprendre l'ensemble de vos fichiers. Si vous souhaitez que nos équipes les déploient pour vous dans un autre service, cette migration fait l'objet d'une prestation à part, chiffrée à l'avance.</p>
+      <blockquote><p>Le bon prix n'est pas le plus bas sur le devis. C'est celui qui ne change pas en cours de route.</p></blockquote>
+
+      <div style="background:#8B1A12;border-radius:20px;padding:28px 28px;margin-top:40px;color:#fff;">
+        <p style="color:#fff;font-size:18px;font-weight:600;margin:0 0 10px;">Vous comparez plusieurs offres d’hébergement ?</p>
+        <p style="color:rgba(255,255,255,0.85);margin:0 0 16px;">Nous calculons avec vous leur coût complet sur trois ans.</p>
+        <p style="color:#fff;font-weight:600;margin:0;"><a href="mailto:infos@ambracloud.net" style="color:#FFD9C2;">infos@ambracloud.net</a> &nbsp;|&nbsp; +225 07 16 74 73 87</p>
+      </div>
+    `,
+    tags: ["Coût du cloud", "Budget informatique", "Souveraineté des données", "Conformité"],
+  },
+  {
     id: "banques-fintech-assurances-cloud-resident",
     title: "Banques, fintech, assurances : ce que le cloud résident change concrètement pour chacun",
     excerpt: "On parle souvent du cloud résident comme d'un sujet unique, avec des arguments valables pour tout le monde. C'est une erreur d'approche. Ce que change réellement une infrastructure hébergée localement dépend entièrement du métier.",
